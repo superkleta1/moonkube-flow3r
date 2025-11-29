@@ -1,0 +1,11 @@
+![GitHub top language](https://img.shields.io/github/languages/top/superkleta1/moonkube-flow3r?logo=godotengine)
+
+# FLOW3R #
+A 3D RPG using Godot.
+
+# Assets #
+The following assets were used in the making of this game.
+
+## 3D Models ##
+
+### Environment ###
