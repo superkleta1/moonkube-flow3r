@@ -1,11 +1,17 @@
+# scripts/minddive_tileslot.gd
 extends Node2D
+class_name MindDiveTileSlot
 
+@export var grid_x: int
+@export var grid_y: int
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var can_place_item: bool = true
+@export var is_start: bool = false
+@export var is_door: bool = false
+@export var is_exit: bool = false   # where they died
 
+# The item currently placed here (if any)
+@export var item: MindDiveItem = null
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func has_item() -> bool:
+	return item != null
