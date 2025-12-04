@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnfv6x223kwuh"]
+
+[ext_resource type="Script" uid="uid://c7s3q6gox7jt5" path="res://scripts/computer_screen.gd" id="1_3wd8d"]
+[ext_resource type="Texture2D" uid="uid://cmj4doxkqjncq" path="res://assets/images/Whatsapp.png" id="2_uvtvd"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qpc4k"]
+
+[node name="ComputerScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3wd8d")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_right = 1150.0
+offset_bottom = 649.0
+texture = SubResource("PlaceholderTexture2D_qpc4k")
+
+[node name="TextingAppButton" type="Button" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 215.99997
+offset_top = 131.0
+offset_right = 343.99997
+offset_bottom = 259.0
+scale = Vector2(1.0373635, 1.0451174)
+icon = ExtResource("2_uvtvd")
+
+[node name="WindowLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
