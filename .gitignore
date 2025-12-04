@@ -1,7 +1,22 @@
-# Godot 4+ specific ignores
+# Godot 4
+.import/
 .godot/
-/android/
+*.import
 
-# macOS
+# UIDs (Godot 4 unique node IDs)
+*.uid
+
+# MacOS junk
 .DS_Store
 **/.DS_Store
+
+# Exported builds
+export/
+*.zip
+*.pck
+*.exe
+*.dmg
+
+# Logs and temp
+*.log
+*.tmp
