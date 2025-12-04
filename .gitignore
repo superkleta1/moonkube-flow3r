@@ -3,20 +3,27 @@
 .godot/
 *.import
 
-# UIDs (Godot 4 unique node IDs)
+# Godot UIDs
 *.uid
 
-# MacOS junk
-.DS_Store
-**/.DS_Store
+# GDExtension / Native build outputs
+*.dll
+*.so
+*.dylib
 
-# Exported builds
+# Platform builds
 export/
 *.zip
 *.pck
+*.apk
 *.exe
 *.dmg
 
-# Logs and temp
+# Temporary / cache / logs
 *.log
 *.tmp
+
+# OS junk
+.DS_Store
+**/.DS_Store
+Thumbs.db
