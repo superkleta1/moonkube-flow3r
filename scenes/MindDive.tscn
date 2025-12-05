@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://de4xfs0jlrm16"]
+[gd_scene load_steps=3 format=4 uid="uid://de4xfs0jlrm16"]
+
+[ext_resource type="Texture2D" uid="uid://5gae3p8bq0n3" path="res://assets/images/background_temp.png" id="1_3hf74"]
+[ext_resource type="TileSet" uid="uid://cpweiu1fcsna5" path="res://resources/tilesets/minddive_tileset.tres" id="1_mn4sb"]
 
 [node name="MindDive" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.1465168, 0.5965581, 0.6111167, 1)
+texture = ExtResource("1_3hf74")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAIAPb/AQAAAAIAAAD3/wgAAQAKAAQAAAD3/wUAAQAGAAQAAAD6/wgAAQAJAAQAABD8/wYAAQAGAAQAAAD//wQAAQAGAAQAAAACAAQAAQAGAAQAAAAEAAIAAQAGAA8AAAAJAAgAAQAJAAQAAAAJAAUAAQAJAAQAAAAHAAkAAQAGAA8AAAAFAAgAAQAJAAQAAAAEAAYAAQAJAAQAAAAJAAIAAQAJAAQAAAAJAP//AQAJAAQAAAAJAPz/AQAJAAQAAAAJAPn/AQAJAAQAAAAHAP//AQAGAAQAAAAEAP//AQAGAAQAAAAHAPj/AQAGAA8AAAD///z/AQAGAAQAAAAEAPz/AQAGAAQAAAAHAPr/AQAGAAQAAAAAAPn/AQAJAAQAAAD///b/AQAGAAQAAAACAPX/AQAGAAQAAAAFAPX/AQAGAAQAAAD3//b/AQAGAA8AAAD2//j/AQAJAAQAAAD2//v/AQAJAAQAAAD2//7/AQAJAAQAAAD2/wEAAQAJAAQAAAD6//b/AQAGAAQAAAD8//b/AQAJAAQAAAD9//b/AQAJAAQAAAD9//3/AQAJAAQAAAD8////AQAJAAQAAAD6////AQAGAAQAAAA=")
+tile_set = ExtResource("1_mn4sb")
