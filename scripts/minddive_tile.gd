@@ -1,5 +1,5 @@
 # scripts/minddive_tileslot.gd
-extends Node2D
+extends Resource
 class_name MindDiveTileSlot
 
 @export var grid_x: int

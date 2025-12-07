@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MindDiveTileSlot" load_steps=2 format=3 uid="uid://boy041hac8nuw"]
+
+[ext_resource type="Script" uid="uid://cbklun4mspc52" path="res://scripts/minddive_tile.gd" id="1_d10kb"]
+
+[resource]
+script = ExtResource("1_d10kb")
+metadata/_custom_type_script = "uid://cbklun4mspc52"
