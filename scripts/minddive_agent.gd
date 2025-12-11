@@ -8,6 +8,8 @@ var game_manager: MindDiveGameManager
 @export var move_interval: float = 1.0
 var _move_timer: float = 0.0
 
+@export var tag_attractions: Dictionary[String, float] = {}
+
 func _process(delta: float) -> void:
 	if not game_manager or not current_slot:
 		return

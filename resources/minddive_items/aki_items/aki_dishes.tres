@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MindDiveItem" load_steps=2 format=3 uid="uid://iuoj0xn0o3hm"]
+
+[ext_resource type="Script" uid="uid://c4vobmi3umeaa" path="res://scripts/minddive_item.gd" id="1_xauj5"]
+
+[resource]
+script = ExtResource("1_xauj5")
+id = "a_dishes"
+display_name = "Unwashed Dishes"
+description = "A pile of unwashed dishes. Have some... interesting smell."
+base_attraction = -1.0
+tags = Array[String](["Bad Smell"])
+metadata/_custom_type_script = "uid://c4vobmi3umeaa"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjvy8wj1bbaai"]
 
-[ext_resource type="Script" uid="uid://di5jmwy3bvv5r" path="res://scripts/app_texting.gd" id="1_gxcqv"]
+[ext_resource type="Script" uid="uid://cewqpbralxaxx" path="res://scripts/app_texting.gd" id="1_gxcqv"]
 
 [node name="TextingApp" type="Panel"]
 custom_minimum_size = Vector2(400, 260)

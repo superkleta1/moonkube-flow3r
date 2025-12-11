@@ -11,6 +11,8 @@ var victim: MindDiveAgent
 
 var doors_passed: int = 0
 
+var item_attractions: Dictionary[String, float] = {}
+
 signal mind_dive_success(victim_id: String)
 signal mind_dive_failed(victim_id: String)
 

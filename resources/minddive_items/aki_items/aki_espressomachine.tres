@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MindDiveItem" load_steps=2 format=3 uid="uid://b4vy3cioaxrst"]
+
+[ext_resource type="Script" uid="uid://c4vobmi3umeaa" path="res://scripts/minddive_item.gd" id="1_konmp"]
+
+[resource]
+script = ExtResource("1_konmp")
+metadata/_custom_type_script = "uid://c4vobmi3umeaa"
