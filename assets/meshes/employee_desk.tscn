@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj785mbbaqmtv"]
+
+[ext_resource type="PackedScene" uid="uid://cqwsbby3sos57" path="res://assets/meshes/employee_desk.fbx" id="1_lx8dx"]
+
+[node name="employee_desk" instance=ExtResource("1_lx8dx")]
