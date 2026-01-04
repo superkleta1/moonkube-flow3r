@@ -1,6 +1,6 @@
 # scripts/minddive_gamemanager.gd
 extends Node2D
-class_name MindDiveGameManager
+# class_name MindDiveGameManager
 
 @export var level_config: MindDiveLevelConfig
 @export var slots_root: NodePath = ^"SlotsRoot"

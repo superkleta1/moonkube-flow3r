@@ -71,7 +71,7 @@ transform = Transform3D(-0.7071068, -0.6830126, -0.18301272, -2.2626683e-08, -0.
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(0.5875635, -0.28932425, 0.7556855, -0.2625647, 0.81519204, 0.51625746, -0.7653946, -0.50175035, 0.4030108, 6.054502, 5.2200627, 4.770993)
+transform = Transform3D(0.6566371, -0.2369994, 0.71600217, -0.26521423, 0.8161542, 0.5133749, -0.7060377, -0.52699494, 0.47306144, 5.700861, 5.080209, 5.096873)
 projection = 1
 current = true
 

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bkqooi1ckpmw4"]
+
+[ext_resource type="Script" uid="uid://dtt4qdqlem6fm" path="res://scripts/mvp_scripts/item.gd" id="1_2rmpf"]
+
+[resource]
+script = ExtResource("1_2rmpf")
+display_name = "TV"
+metadata/_custom_type_script = "uid://dtt4qdqlem6fm"
