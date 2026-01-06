@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=3 format=3 uid="uid://bpf8mux8u5mcs"]
+
+[ext_resource type="Texture2D" uid="uid://b7fk3rfkxc6u1" path="res://assets/mvp_assets/TV.png" id="1_47pli"]
+[ext_resource type="Script" uid="uid://cbortuoghs228" path="res://scripts/mvp_scripts/base_item.gd" id="2_5eky7"]
+
+[resource]
+script = ExtResource("2_5eky7")
+display_name = "TV"
+icon = ExtResource("1_47pli")
+metadata/_custom_type_script = "uid://cbortuoghs228"

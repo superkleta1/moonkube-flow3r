@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=3 format=3 uid="uid://cno78tw23pkvd"]
+
+[ext_resource type="Texture2D" uid="uid://mktroukeqdak" path="res://assets/mvp_assets/Sketchbook.png" id="1_mrgqp"]
+[ext_resource type="Script" uid="uid://cbortuoghs228" path="res://scripts/mvp_scripts/base_item.gd" id="2_3xwqo"]
+
+[resource]
+script = ExtResource("2_3xwqo")
+display_name = "Sketchbook"
+icon = ExtResource("1_mrgqp")
+metadata/_custom_type_script = "uid://cbortuoghs228"

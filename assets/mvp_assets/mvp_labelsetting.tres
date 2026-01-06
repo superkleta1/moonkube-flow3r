@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bfkp6akpgipuc"]
+
+[ext_resource type="FontFile" uid="uid://cioepgr1gabwi" path="res://assets/mvp_assets/fonts/CaesarDressing-Regular.ttf" id="1_yn5a4"]
+
+[resource]
+font = ExtResource("1_yn5a4")
+font_size = 128
+font_color = Color(0.2901961, 0.1882353, 0.54509807, 1)
