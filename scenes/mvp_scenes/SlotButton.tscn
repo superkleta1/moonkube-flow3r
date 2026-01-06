@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cppsaa4pkttq8"]
+
+[node name="SlotButton" type="TextureButton"]
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SelectedOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(0.33333334, 0.7607843, 0.70980394, 1)

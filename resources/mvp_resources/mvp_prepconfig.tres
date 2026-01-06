@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PrepConfig" load_steps=11 format=3 uid="uid://32xys63xq4r7"]
+
+[ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/mvp_scripts/information.gd" id="2_xyhbj"]
+[ext_resource type="Script" uid="uid://6j3aodx0phrt" path="res://scripts/mvp_scripts/concept_recipe.gd" id="3_xnvji"]
+[ext_resource type="Resource" uid="uid://qnwjx33db5x8" path="res://resources/mvp_resources/concept_recipes/cr_tv_lazy.tres" id="3_xyhbj"]
+[ext_resource type="Script" uid="uid://bnyl4ure4o4fk" path="res://scripts/mvp_scripts/prep_config.gd" id="4_1vlrs"]
+[ext_resource type="Resource" uid="uid://b00lvvs1hwfxy" path="res://resources/mvp_resources/concept_recipes/cr_tv_inspired.tres" id="4_xnvji"]
+[ext_resource type="Resource" uid="uid://bss51dfu3qeso" path="res://resources/mvp_resources/concept_recipes/cr_cdplayer_lazy.tres" id="5_hjyuu"]
+[ext_resource type="Resource" uid="uid://cwn4iffljyuhw" path="res://resources/mvp_resources/concept_recipes/cr_sketchbook_lazy.tres" id="6_i4l64"]
+[ext_resource type="Resource" uid="uid://dx1kfwpck5wrt" path="res://resources/mvp_resources/concept_recipes/cr_cdplayer_inspired.tres" id="7_frgkc"]
+[ext_resource type="Resource" uid="uid://bdxebylikfb2o" path="res://resources/mvp_resources/concept_recipes/cr_sketchbook_inspired.tres" id="8_y243b"]
+
+[sub_resource type="GDScript" id="GDScript_g3wey"]
+
+[resource]
+script = ExtResource("4_1vlrs")
+base_items = Array[SubResource("GDScript_g3wey")]([null, null, null])
+informations = Array[ExtResource("2_xyhbj")]([null])
+recipes = Array[ExtResource("3_xnvji")]([ExtResource("3_xyhbj"), ExtResource("4_xnvji"), ExtResource("5_hjyuu"), ExtResource("6_i4l64"), ExtResource("7_frgkc"), ExtResource("8_y243b")])
+metadata/_custom_type_script = "uid://bnyl4ure4o4fk"

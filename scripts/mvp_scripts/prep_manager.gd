@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 class_name PreparationManager
 
 @export var config: PrepConfig
@@ -11,6 +11,9 @@ class_name PreparationManager
 var selected_base: BaseItem = null
 var selected_infos: Array[Information] = []
 var crafted: Array[ConceptItem] = []
+
+var base_buttons: Dictionary[BaseItem, SlotButton] = {}
+var info_buttons: Dictionary[Information, SlotButton] = {}
 
 # Fast lookup: key -> concept
 var recipe_lookup: Dictionary[String, ConceptItem] = {}
@@ -42,6 +45,7 @@ func _make_recipe_key(base_item: BaseItem, infos: Array[Information]) -> String:
 	return base_item.id + "|" + ",".join(ids)
 
 func _build_base_row() -> void:
+	base_buttons.clear()
 	for c in base_row.get_children():
 		c.queue_free()
 
@@ -50,8 +54,10 @@ func _build_base_row() -> void:
 		btn.set_payload(b)
 		btn.picked.connect(_on_base_picked)
 		base_row.add_child(btn)
+		base_buttons[b] = btn
 
 func _build_info_row() -> void:
+	info_buttons.clear()
 	for c in info_row.get_children():
 		c.queue_free()
 
@@ -60,57 +66,60 @@ func _build_info_row() -> void:
 		btn.set_payload(info)
 		btn.picked.connect(_on_info_picked)
 		info_row.add_child(btn)
+		info_buttons[info] = btn
+		
+func _refresh_highlights() -> void:
+	# Base highlight
+	for b in base_buttons.keys():
+		var btn := base_buttons[b]
+		btn.set_selected(b == selected_base)
+
+	# Info highlight
+	for info in info_buttons.keys():
+		var btn := info_buttons[info]
+		btn.set_selected(selected_infos.has(info))
 
 func _on_base_picked(res: Resource) -> void:
 	selected_base = res as BaseItem
 	selected_infos.clear()
-	# Optional: visually indicate selection / clear info highlights
+	_refresh_highlights()
 	_try_autocraft()
 
 func _on_info_picked(res: Resource) -> void:
 	if selected_base == null:
-		# MVP: require base first
 		return
 
 	var info := res as Information
 	if info == null:
 		return
 
-	# Toggle behavior feels best for MVP
 	var idx := selected_infos.find(info)
 	if idx != -1:
 		selected_infos.remove_at(idx)
 	else:
-		# Enforce base slot_count
 		if selected_infos.size() >= selected_base.slot_count:
-			# MVP: replace oldest
 			selected_infos.remove_at(0)
 		selected_infos.append(info)
 
+	_refresh_highlights()
 	_try_autocraft()
 
 func _try_autocraft() -> void:
 	if selected_base == null:
 		return
-
-	# Only craft when filled all slots (strongly recommended)
 	if selected_infos.size() < selected_base.slot_count:
 		return
 
 	var key := _make_recipe_key(selected_base, selected_infos)
 	var result: ConceptItem = recipe_lookup.get(key) as ConceptItem
-
 	if result == null:
-		# MVP: if no recipe, do nothing (or show "??" in UI)
 		return
 
-	# Add to crafted list (avoid duplicates if you want)
 	crafted.append(result)
 
-	# Reset selection for next craft (common crafting UX)
 	selected_base = null
 	selected_infos.clear()
-
+	_refresh_highlights()
 	_refresh_result_row()
 
 func _refresh_result_row() -> void:

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ConceptRecipe" load_steps=3 format=3 uid="uid://bdxebylikfb2o"]
+
+[ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/mvp_scripts/information.gd" id="1_4vaho"]
+[ext_resource type="Script" uid="uid://6j3aodx0phrt" path="res://scripts/mvp_scripts/concept_recipe.gd" id="2_3slrx"]
+
+[resource]
+script = ExtResource("2_3slrx")
+metadata/_custom_type_script = "uid://6j3aodx0phrt"
