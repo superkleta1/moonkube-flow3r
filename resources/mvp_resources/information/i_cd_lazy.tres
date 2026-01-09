@@ -8,4 +8,5 @@ script = ExtResource("1_4x6nc")
 id = "i_cd_lazy"
 display_name = "Drowsing CD"
 icon = ExtResource("1_4qyif")
+description = "A dumb CD"
 metadata/_custom_type_script = "uid://bkmp8ktpdekv2"

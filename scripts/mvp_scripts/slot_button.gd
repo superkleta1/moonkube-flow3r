@@ -15,6 +15,17 @@ func set_payload(r: Resource) -> void:
 		texture_normal = r.icon
 	else:
 		texture_normal = null
+		
+	if r != null:
+		if "icon" in r and r.icon != null:
+			texture_normal = r.icon
+		else:
+			texture_normal = null
+		
+		if "description" in r and r.description != null:
+			tooltip_text = r.description
+	else:
+		texture_normal = null
 
 func set_selected(v: bool) -> void:
 	if selected_overlay != null:

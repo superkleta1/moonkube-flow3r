@@ -6,7 +6,9 @@ class_name PreparationManager
 
 @onready var base_row: GridContainer = $BaseItemSelection/GridContainer
 @onready var info_row: GridContainer = $InformationSelection/GridContainer
-@onready var result_row: GridContainer = $ConceptItemResult/GridContainer  # adjust to your scene
+@onready var result_row: GridContainer = $ConceptItemResult/GridContainer
+@onready var concept_item_count: Label = $ConceptItemCount
+@onready var finished_prep_button: Button = $FinishedPrepButton
 
 var selected_base: BaseItem = null
 var selected_infos: Array[Information] = []
@@ -19,11 +21,19 @@ var info_buttons: Dictionary[Information, SlotButton] = {}
 var recipe_lookup: Dictionary[String, ConceptItem] = {}
 
 func _ready() -> void:
+	# fill out the containers
 	_build_recipe_lookup()
 	_build_base_row()
 	_build_info_row()
-	_refresh_result_row()
 	
+	# refresh the visuals
+	_refresh_result_row()
+	_refresh_concept_item_count()
+	
+	# setup callbacks
+	finished_prep_button.pressed.connect(_on_finished_prep_button_clicked)
+	
+	# debugging info
 	var g := $"BaseItemSelection/GridContainer" as GridContainer
 	print("h_sep = ", g.get_theme_constant("h_separation"))
 	print("v_sep = ", g.get_theme_constant("v_separation"))
@@ -83,6 +93,9 @@ func _refresh_highlights() -> void:
 		var btn := info_buttons[info]
 		btn.set_selected(selected_infos.has(info))
 
+func _refresh_concept_item_count() -> void:
+	concept_item_count.text = "%d / %d" % [crafted.size(), config.max_concept_items]
+
 func _on_base_picked(res: Resource) -> void:
 	selected_base = res as BaseItem
 	selected_infos.clear()
@@ -113,6 +126,9 @@ func _try_autocraft() -> void:
 		return
 	if selected_infos.size() < selected_base.slot_count:
 		return
+	if crafted.size() >= config.max_concept_items:
+		# early out for now, later will add logic to display error notice
+		return
 
 	var key := _make_recipe_key(selected_base, selected_infos)
 	var result: ConceptItem = recipe_lookup.get(key) as ConceptItem
@@ -125,6 +141,7 @@ func _try_autocraft() -> void:
 	selected_infos.clear()
 	_refresh_highlights()
 	_refresh_result_row()
+	_refresh_concept_item_count()
 
 func _refresh_result_row() -> void:
 	for c in result_row.get_children():
@@ -145,3 +162,10 @@ func _on_concept_clicked_to_remove(res: Resource) -> void:
 	if idx != -1:
 		crafted.remove_at(idx)
 	_refresh_result_row()
+	_refresh_concept_item_count()
+
+func _on_finished_prep_button_clicked() -> void:
+	if crafted.size() != config.max_concept_items:
+		return
+	
+	print("KABOOM!")

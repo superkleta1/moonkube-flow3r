@@ -8,4 +8,5 @@ script = ExtResource("2_my88h")
 id = "ci_sketchbook_inspired"
 display_name = "Inspiring Sketchbook"
 icon = ExtResource("1_3krqb")
+description = "An inspiring sketchbook"
 metadata/_custom_type_script = "uid://b6a4o566xv4vs"

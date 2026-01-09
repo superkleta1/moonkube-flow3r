@@ -68,15 +68,39 @@ offset_right = 856.0
 offset_bottom = 512.0
 columns = 2
 
-[node name="Text" type="Label" parent="PrepManager"]
+[node name="ConceptItemWarning" type="Label" parent="PrepManager"]
 layout_mode = 0
-offset_left = -728.0
-offset_top = -88.0
-offset_right = 714.0
-offset_bottom = 69.0
-text = "OMG THIS IS SO COOL!"
+offset_left = -960.0
+offset_top = -536.0
+offset_right = -440.0
+offset_bottom = -360.0
+text = "Selected Concept
+Items:"
 label_settings = ExtResource("3_lt3ye")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ConceptItemCount" type="Label" parent="PrepManager"]
+layout_mode = 0
+offset_left = -960.0
+offset_top = -376.0
+offset_right = -440.0
+offset_bottom = -314.0
+text = "%d / %d"
+label_settings = ExtResource("3_lt3ye")
+horizontal_alignment = 1
+
 [node name="Camera2D" type="Camera2D" parent="PrepManager"]
+
+[node name="MenuButton" type="MenuButton" parent="PrepManager"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 24.0
+
+[node name="FinishedPrepButton" type="Button" parent="PrepManager"]
+layout_mode = 0
+offset_left = -904.0
+offset_top = -240.0
+offset_right = -484.0
+offset_bottom = -154.0
+text = "Finished Preparing"

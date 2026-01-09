@@ -8,6 +8,6 @@ script = ExtResource("2_r2oor")
 id = "ci_cdplayer_lazy"
 display_name = "Drowsing CD Player"
 icon = ExtResource("1_qtegy")
-description = "It's playing \"A Lazy Song\"..."
+description = "A drowsing CD player"
 laziness_gain = 10.0
 metadata/_custom_type_script = "uid://b6a4o566xv4vs"

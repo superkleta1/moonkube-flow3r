@@ -8,5 +8,6 @@ script = ExtResource("1_n1jvr")
 id = "bi_tv"
 display_name = "TV"
 icon = ExtResource("1_cvdvi")
+description = "An... interesting TV head(man?)"
 slot_count = 1
 metadata/_custom_type_script = "uid://cbortuoghs228"

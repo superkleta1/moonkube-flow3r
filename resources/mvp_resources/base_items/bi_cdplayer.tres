@@ -8,5 +8,6 @@ script = ExtResource("1_aohn6")
 id = "bi_cdplayer"
 display_name = "CD Player"
 icon = ExtResource("1_t6rbf")
+description = "A CD Player"
 slot_count = 1
 metadata/_custom_type_script = "uid://cbortuoghs228"

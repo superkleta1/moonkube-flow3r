@@ -8,4 +8,5 @@ script = ExtResource("1_uog6i")
 id = "i_cd_inspired"
 display_name = "Inspiring CD"
 icon = ExtResource("1_rmpbb")
+description = "A beautifully sounding CD"
 metadata/_custom_type_script = "uid://bkmp8ktpdekv2"

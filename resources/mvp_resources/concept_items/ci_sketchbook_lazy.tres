@@ -8,4 +8,5 @@ script = ExtResource("2_q25vk")
 id = "ci_sketchbook_lazy"
 display_name = "Drowsing Sketchbook"
 icon = ExtResource("1_io8js")
+description = "A drowsing sketchbook"
 metadata/_custom_type_script = "uid://b6a4o566xv4vs"

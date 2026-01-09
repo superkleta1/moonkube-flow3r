@@ -8,4 +8,5 @@ script = ExtResource("2_jdvnt")
 id = "ci_tv_lazy"
 display_name = "Drowsing TV"
 icon = ExtResource("1_3e2gn")
+description = "A drowsing TV"
 metadata/_custom_type_script = "uid://b6a4o566xv4vs"

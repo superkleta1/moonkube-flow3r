@@ -8,5 +8,6 @@ script = ExtResource("1_igequ")
 id = "bi_sketchbook"
 display_name = "Sketchbook"
 icon = ExtResource("1_7qy12")
+description = "A sketchbook"
 slot_count = 1
 metadata/_custom_type_script = "uid://cbortuoghs228"
