@@ -1,50 +1,75 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgxxkwv5ej35c"]
+[gd_scene load_steps=7 format=3 uid="uid://cgxxkwv5ej35c"]
 
 [ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="1_2ecor"]
 [ext_resource type="Script" uid="uid://dgety7djvi5cj" path="res://scripts/mvp_scripts/prep_manager.gd" id="1_475vc"]
-[ext_resource type="Texture2D" uid="uid://cm63tfqbrq07g" path="res://assets/mvp_assets/Selection.png" id="2_475vc"]
 [ext_resource type="Resource" uid="uid://32xys63xq4r7" path="res://resources/mvp_resources/mvp_prepconfig.tres" id="2_lt3ye"]
 [ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/mvp_scenes/SlotButton.tscn" id="3_7p8pb"]
 [ext_resource type="LabelSettings" uid="uid://bfkp6akpgipuc" path="res://assets/mvp_assets/mvp_labelsetting.tres" id="3_lt3ye"]
-[ext_resource type="Texture2D" uid="uid://c83ie4rpvy3xn" path="res://assets/mvp_assets/FLOW3R_MVP64.png" id="4_7p8pb"]
+[ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="4_cf7dw"]
 
-[node name="MindDivePrep" type="Node2D"]
+[node name="MindDivePrep" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("4_cf7dw")
+
+[node name="PrepManager" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_475vc")
 config = ExtResource("2_lt3ye")
 slot_button_scene = ExtResource("3_7p8pb")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="TextureRect" parent="PrepManager"]
+layout_mode = 0
+offset_left = -960.0
+offset_top = -536.0
+offset_right = 960.0
+offset_bottom = 544.0
 texture = ExtResource("1_2ecor")
 
-[node name="BaseItemSelection" type="Sprite2D" parent="."]
-position = Vector2(-480, 272)
-texture = ExtResource("2_475vc")
+[node name="BaseItemSelection" type="Panel" parent="PrepManager"]
+layout_mode = 0
+offset_left = -960.0
+offset_bottom = 544.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BaseItemSelection"]
-offset_left = -400.0
-offset_top = -224.0
-offset_right = 400.0
-offset_bottom = 224.0
+[node name="GridContainer" type="GridContainer" parent="PrepManager/BaseItemSelection"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 928.0
+offset_bottom = 520.0
+columns = 2
 
-[node name="InformationSelection" type="Sprite2D" parent="."]
-position = Vector2(480, 272)
-texture = ExtResource("2_475vc")
+[node name="InformationSelection" type="Panel" parent="PrepManager"]
+layout_mode = 0
+offset_right = 960.0
+offset_bottom = 544.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InformationSelection"]
-offset_left = -400.0
-offset_top = -224.0
-offset_right = 400.0
-offset_bottom = 224.0
+[node name="GridContainer" type="GridContainer" parent="PrepManager/InformationSelection"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 928.0
+offset_bottom = 520.0
+columns = 2
 
-[node name="ConceptItemResult" type="Sprite2D" parent="."]
-position = Vector2(0, -264)
-texture = ExtResource("2_475vc")
+[node name="ConceptItemResult" type="Panel" parent="PrepManager"]
+layout_mode = 0
+offset_left = -440.0
+offset_top = -536.0
+offset_right = 448.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ConceptItemResult"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="GridContainer" type="GridContainer" parent="PrepManager/ConceptItemResult"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 856.0
+offset_bottom = 512.0
+columns = 2
 
-[node name="Text" type="Label" parent="."]
+[node name="Text" type="Label" parent="PrepManager"]
+layout_mode = 0
 offset_left = -728.0
 offset_top = -88.0
 offset_right = 714.0
@@ -54,8 +79,4 @@ label_settings = ExtResource("3_lt3ye")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="palette" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, 1039.9999)
-scale = Vector2(4.386643, 4.386643)
-texture = ExtResource("4_7p8pb")
+[node name="Camera2D" type="Camera2D" parent="PrepManager"]

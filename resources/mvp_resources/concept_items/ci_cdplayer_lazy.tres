@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="ConceptItem" load_steps=3 format=3 uid="uid://cv8ejjfllalc0"]
 
-[ext_resource type="Texture2D" uid="uid://0j18oda8qeqn" path="res://assets/mvp_assets/CDPlayer_Lazy.png" id="1_nr6vr"]
+[ext_resource type="Texture2D" uid="uid://dgv8yxmti8vke" path="res://assets/mvp_assets/sprites224/CDPlayer_Lazy224.png" id="1_qtegy"]
 [ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/mvp_scripts/concept_item.gd" id="2_r2oor"]
 
 [resource]
 script = ExtResource("2_r2oor")
+id = "ci_cdplayer_lazy"
 display_name = "Drowsing CD Player"
-icon = ExtResource("1_nr6vr")
+icon = ExtResource("1_qtegy")
 description = "It's playing \"A Lazy Song\"..."
 laziness_gain = 10.0
 metadata/_custom_type_script = "uid://b6a4o566xv4vs"

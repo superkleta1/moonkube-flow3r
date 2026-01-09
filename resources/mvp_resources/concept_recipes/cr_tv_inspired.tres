@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="ConceptRecipe" load_steps=3 format=3 uid="uid://b00lvvs1hwfxy"]
+[gd_resource type="Resource" script_class="ConceptRecipe" load_steps=6 format=3 uid="uid://b00lvvs1hwfxy"]
 
 [ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/mvp_scripts/information.gd" id="1_1qywi"]
+[ext_resource type="Resource" uid="uid://dlmmack06o68r" path="res://resources/mvp_resources/base_items/bi_tv.tres" id="1_pggck"]
 [ext_resource type="Script" uid="uid://6j3aodx0phrt" path="res://scripts/mvp_scripts/concept_recipe.gd" id="2_n068i"]
+[ext_resource type="Resource" uid="uid://rkqsvct7a8gh" path="res://resources/mvp_resources/information/i_cd_inspired.tres" id="3_5cuo3"]
+[ext_resource type="Resource" uid="uid://by80vggnh34pk" path="res://resources/mvp_resources/concept_items/ci_tv_inspired.tres" id="4_i3chx"]
 
 [resource]
 script = ExtResource("2_n068i")
+base_item = ExtResource("1_pggck")
+informations = Array[ExtResource("1_1qywi")]([ExtResource("3_5cuo3")])
+result = ExtResource("4_i3chx")
 metadata/_custom_type_script = "uid://6j3aodx0phrt"

@@ -1,8 +1,14 @@
-[gd_resource type="Resource" script_class="ConceptRecipe" load_steps=3 format=3 uid="uid://bdxebylikfb2o"]
+[gd_resource type="Resource" script_class="ConceptRecipe" load_steps=6 format=3 uid="uid://bdxebylikfb2o"]
 
 [ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/mvp_scripts/information.gd" id="1_4vaho"]
+[ext_resource type="Resource" uid="uid://dpx41lxduwavg" path="res://resources/mvp_resources/base_items/bi_sketchbook.tres" id="1_e246j"]
 [ext_resource type="Script" uid="uid://6j3aodx0phrt" path="res://scripts/mvp_scripts/concept_recipe.gd" id="2_3slrx"]
+[ext_resource type="Resource" uid="uid://rkqsvct7a8gh" path="res://resources/mvp_resources/information/i_cd_inspired.tres" id="3_2j2al"]
+[ext_resource type="Resource" uid="uid://dm4a4tvxgejg8" path="res://resources/mvp_resources/concept_items/ci_sketchbook_inspired.tres" id="4_tp1ko"]
 
 [resource]
 script = ExtResource("2_3slrx")
+base_item = ExtResource("1_e246j")
+informations = Array[ExtResource("1_4vaho")]([ExtResource("3_2j2al")])
+result = ExtResource("4_tp1ko")
 metadata/_custom_type_script = "uid://6j3aodx0phrt"

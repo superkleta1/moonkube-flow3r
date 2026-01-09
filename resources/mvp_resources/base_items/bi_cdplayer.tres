@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=3 format=3 uid="uid://x4rx1a0xsifu"]
+
+[ext_resource type="Script" uid="uid://cbortuoghs228" path="res://scripts/mvp_scripts/base_item.gd" id="1_aohn6"]
+[ext_resource type="Texture2D" uid="uid://dheq71a2mcn10" path="res://assets/mvp_assets/sprites224/CDPlayer224.png" id="1_t6rbf"]
+
+[resource]
+script = ExtResource("1_aohn6")
+id = "bi_cdplayer"
+display_name = "CD Player"
+icon = ExtResource("1_t6rbf")
+slot_count = 1
+metadata/_custom_type_script = "uid://cbortuoghs228"

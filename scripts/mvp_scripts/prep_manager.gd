@@ -1,12 +1,12 @@
-extends Node2D
+extends Control
 class_name PreparationManager
 
 @export var config: PrepConfig
 @export var slot_button_scene: PackedScene  # assign SlotButton.tscn
 
-@onready var base_row: HBoxContainer = $BaseItemSelection/HBoxContainer
-@onready var info_row: HBoxContainer = $InformationSelection/HBoxContainer
-@onready var result_row: HBoxContainer = $ConceptItemResult/HBoxContainer  # adjust to your scene
+@onready var base_row: GridContainer = $BaseItemSelection/GridContainer
+@onready var info_row: GridContainer = $InformationSelection/GridContainer
+@onready var result_row: GridContainer = $ConceptItemResult/GridContainer  # adjust to your scene
 
 var selected_base: BaseItem = null
 var selected_infos: Array[Information] = []
@@ -23,6 +23,10 @@ func _ready() -> void:
 	_build_base_row()
 	_build_info_row()
 	_refresh_result_row()
+	
+	var g := $"BaseItemSelection/GridContainer" as GridContainer
+	print("h_sep = ", g.get_theme_constant("h_separation"))
+	print("v_sep = ", g.get_theme_constant("v_separation"))
 
 func _build_recipe_lookup() -> void:
 	recipe_lookup.clear()
