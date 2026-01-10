@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConceptRecipe" load_steps=5 format=3 uid="uid://ctkkkxxlee8qr"]
+
+[ext_resource type="Resource" uid="uid://dlmmack06o68r" path="res://resources/mvp_resources/base_items/bi_tv.tres" id="1_phqb8"]
+[ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/mvp_scripts/information.gd" id="1_s70r5"]
+[ext_resource type="Script" uid="uid://6j3aodx0phrt" path="res://scripts/mvp_scripts/concept_recipe.gd" id="2_mv1yt"]
+[ext_resource type="Resource" uid="uid://6y1ma7ahu2ab" path="res://resources/mvp_resources/concept_items/ci_tv_neutral.tres" id="3_amwdy"]
+
+[resource]
+script = ExtResource("2_mv1yt")
+base_item = ExtResource("1_phqb8")
+result = ExtResource("3_amwdy")
+metadata/_custom_type_script = "uid://6j3aodx0phrt"

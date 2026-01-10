@@ -39,7 +39,7 @@ offset_left = 32.0
 offset_top = 24.0
 offset_right = 928.0
 offset_bottom = 520.0
-columns = 2
+columns = 3
 
 [node name="InformationSelection" type="Panel" parent="PrepManager"]
 layout_mode = 0
@@ -52,7 +52,7 @@ offset_left = 32.0
 offset_top = 24.0
 offset_right = 928.0
 offset_bottom = 520.0
-columns = 2
+columns = 3
 
 [node name="ConceptItemResult" type="Panel" parent="PrepManager"]
 layout_mode = 0
@@ -66,7 +66,7 @@ offset_left = 32.0
 offset_top = 24.0
 offset_right = 856.0
 offset_bottom = 512.0
-columns = 2
+columns = 3
 
 [node name="ConceptItemWarning" type="Label" parent="PrepManager"]
 layout_mode = 0

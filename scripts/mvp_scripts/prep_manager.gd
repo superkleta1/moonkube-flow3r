@@ -12,6 +12,8 @@ class_name PreparationManager
 
 var selected_base: BaseItem = null
 var selected_infos: Array[Information] = []
+var used_base_items: Array[BaseItem] = []
+var used_infos: Array[Information] = []
 var crafted: Array[ConceptItem] = []
 
 var base_buttons: Dictionary[BaseItem, SlotButton] = {}
@@ -19,6 +21,7 @@ var info_buttons: Dictionary[Information, SlotButton] = {}
 
 # Fast lookup: key -> concept
 var recipe_lookup: Dictionary[String, ConceptItem] = {}
+var recipes: Dictionary[ConceptItem, ConceptRecipe] = {}
 
 func _ready() -> void:
 	# fill out the containers
@@ -49,6 +52,7 @@ func _build_recipe_lookup() -> void:
 			continue
 		var key := _make_recipe_key(r.base_item, r.informations)
 		recipe_lookup[key] = r.result
+		recipes[r.result] = r
 
 func _make_recipe_key(base_item: BaseItem, infos: Array[Information]) -> String:
 	var ids: Array[String] = []
@@ -64,6 +68,8 @@ func _build_base_row() -> void:
 		c.queue_free()
 
 	for b: BaseItem in config.base_items:
+		if b in used_base_items:
+			continue
 		var btn: SlotButton = slot_button_scene.instantiate() as SlotButton
 		btn.set_payload(b)
 		btn.picked.connect(_on_base_picked)
@@ -76,6 +82,8 @@ func _build_info_row() -> void:
 		c.queue_free()
 
 	for info: Information in config.informations:
+		if info in used_infos:
+			continue
 		var btn: SlotButton = slot_button_scene.instantiate() as SlotButton
 		btn.set_payload(info)
 		btn.picked.connect(_on_info_picked)
@@ -97,10 +105,12 @@ func _refresh_concept_item_count() -> void:
 	concept_item_count.text = "%d / %d" % [crafted.size(), config.max_concept_items]
 
 func _on_base_picked(res: Resource) -> void:
-	selected_base = res as BaseItem
-	selected_infos.clear()
+	if selected_base == (res as BaseItem):
+		_try_autocraft()
+	else:
+		selected_base = res as BaseItem
+		selected_infos.clear()
 	_refresh_highlights()
-	_try_autocraft()
 
 func _on_info_picked(res: Resource) -> void:
 	if selected_base == null:
@@ -124,7 +134,7 @@ func _on_info_picked(res: Resource) -> void:
 func _try_autocraft() -> void:
 	if selected_base == null:
 		return
-	if selected_infos.size() < selected_base.slot_count:
+	if selected_infos.size() != 0 and selected_infos.size() < selected_base.slot_count:
 		return
 	if crafted.size() >= config.max_concept_items:
 		# early out for now, later will add logic to display error notice
@@ -136,11 +146,16 @@ func _try_autocraft() -> void:
 		return
 
 	crafted.append(result)
+	used_base_items.append(selected_base)
+	for info in selected_infos:
+		used_infos.append(info)
 
 	selected_base = null
 	selected_infos.clear()
 	_refresh_highlights()
 	_refresh_result_row()
+	_build_base_row()
+	_build_info_row()
 	_refresh_concept_item_count()
 
 func _refresh_result_row() -> void:
@@ -161,7 +176,17 @@ func _on_concept_clicked_to_remove(res: Resource) -> void:
 	var idx := crafted.find(ci)
 	if idx != -1:
 		crafted.remove_at(idx)
+	
+	if ci in recipes:
+		var base_to_remove: BaseItem = recipes[ci].base_item
+		if base_to_remove != null:
+			used_base_items.erase(base_to_remove)
+		var infos_to_remove: Array[Information] = recipes[ci].informations
+		for info in infos_to_remove:
+			used_infos.erase(info)
 	_refresh_result_row()
+	_build_base_row()
+	_build_info_row()
 	_refresh_concept_item_count()
 
 func _on_finished_prep_button_clicked() -> void:

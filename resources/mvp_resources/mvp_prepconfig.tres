@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PrepConfig" load_steps=16 format=3 uid="uid://32xys63xq4r7"]
+[gd_resource type="Resource" script_class="PrepConfig" load_steps=19 format=3 uid="uid://32xys63xq4r7"]
 
 [ext_resource type="Script" uid="uid://cbortuoghs228" path="res://scripts/mvp_scripts/base_item.gd" id="1_p8m6c"]
 [ext_resource type="Resource" uid="uid://dlmmack06o68r" path="res://resources/mvp_resources/base_items/bi_tv.tres" id="2_f7ir0"]
@@ -15,11 +15,14 @@
 [ext_resource type="Resource" uid="uid://dx1kfwpck5wrt" path="res://resources/mvp_resources/concept_recipes/cr_cdplayer_inspired.tres" id="7_frgkc"]
 [ext_resource type="Resource" uid="uid://rkqsvct7a8gh" path="res://resources/mvp_resources/information/i_cd_inspired.tres" id="7_oquwf"]
 [ext_resource type="Resource" uid="uid://bdxebylikfb2o" path="res://resources/mvp_resources/concept_recipes/cr_sketchbook_inspired.tres" id="8_y243b"]
+[ext_resource type="Resource" uid="uid://dl2lc1gif0xps" path="res://resources/mvp_resources/concept_recipes/cr_cdplayer_neutral.tres" id="15_4hx83"]
+[ext_resource type="Resource" uid="uid://bljpu300cinlp" path="res://resources/mvp_resources/concept_recipes/cr_sketchbook_neutral.tres" id="16_f2ofe"]
+[ext_resource type="Resource" uid="uid://ctkkkxxlee8qr" path="res://resources/mvp_resources/concept_recipes/cr_tv_neutral.tres" id="17_ysoq6"]
 
 [resource]
 script = ExtResource("4_1vlrs")
 base_items = Array[ExtResource("1_p8m6c")]([ExtResource("2_f7ir0"), ExtResource("3_uybw6"), ExtResource("4_oquwf")])
 informations = Array[ExtResource("2_xyhbj")]([ExtResource("6_uybw6"), ExtResource("7_oquwf")])
-recipes = Array[ExtResource("3_xnvji")]([ExtResource("3_xyhbj"), ExtResource("4_xnvji"), ExtResource("5_hjyuu"), ExtResource("6_i4l64"), ExtResource("7_frgkc"), ExtResource("8_y243b")])
+recipes = Array[ExtResource("3_xnvji")]([ExtResource("3_xyhbj"), ExtResource("4_xnvji"), ExtResource("5_hjyuu"), ExtResource("6_i4l64"), ExtResource("7_frgkc"), ExtResource("8_y243b"), ExtResource("15_4hx83"), ExtResource("16_f2ofe"), ExtResource("17_ysoq6")])
 max_concept_items = 3
 metadata/_custom_type_script = "uid://bnyl4ure4o4fk"

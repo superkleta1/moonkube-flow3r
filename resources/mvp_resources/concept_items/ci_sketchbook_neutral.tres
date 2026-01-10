@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=3 format=3 uid="uid://d07r487dmsxql"]
+
+[ext_resource type="Texture2D" uid="uid://b1vpja7hio7un" path="res://assets/mvp_assets/sprites224/Sketchbook224.png" id="1_3jvvk"]
+[ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/mvp_scripts/concept_item.gd" id="1_wme67"]
+
+[resource]
+script = ExtResource("1_wme67")
+id = "ci_sketchbook_neutral"
+display_name = "A Sketchbook"
+icon = ExtResource("1_3jvvk")
+description = "A regular sketchbook"
+metadata/_custom_type_script = "uid://b6a4o566xv4vs"
