@@ -190,7 +190,8 @@ func _on_concept_clicked_to_remove(res: Resource) -> void:
 	_refresh_concept_item_count()
 
 func _on_finished_prep_button_clicked() -> void:
-	if crafted.size() != config.max_concept_items:
+	if crafted.size() > config.max_concept_items:
 		return
 	
-	print("KABOOM!")
+	RunContext.crafted_concepts = crafted.duplicate() # shallow copy ok (Resources)
+	get_tree().change_scene_to_file("res://scenes/mvp_scenes/MindDive.tscn")

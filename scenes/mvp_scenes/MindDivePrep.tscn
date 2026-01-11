@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgxxkwv5ej35c"]
 
 [ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="1_2ecor"]
-[ext_resource type="Script" uid="uid://dgety7djvi5cj" path="res://scripts/mvp_scripts/prep_manager.gd" id="1_475vc"]
+[ext_resource type="Script" uid="uid://dgety7djvi5cj" path="res://scripts/mvp_scripts/minddive_preparation/prep_manager.gd" id="1_475vc"]
 [ext_resource type="Resource" uid="uid://32xys63xq4r7" path="res://resources/mvp_resources/mvp_prepconfig.tres" id="2_lt3ye"]
 [ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/mvp_scenes/SlotButton.tscn" id="3_7p8pb"]
 [ext_resource type="LabelSettings" uid="uid://bfkp6akpgipuc" path="res://assets/mvp_assets/mvp_labelsetting.tres" id="3_lt3ye"]
@@ -9,13 +9,19 @@
 
 [node name="MindDivePrep" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_cf7dw")
 
 [node name="PrepManager" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 960.0
+offset_top = 536.0
+offset_right = 1000.0
+offset_bottom = 576.0
 script = ExtResource("1_475vc")
 config = ExtResource("2_lt3ye")
 slot_button_scene = ExtResource("3_7p8pb")
@@ -89,8 +95,6 @@ offset_bottom = -314.0
 text = "%d / %d"
 label_settings = ExtResource("3_lt3ye")
 horizontal_alignment = 1
-
-[node name="Camera2D" type="Camera2D" parent="PrepManager"]
 
 [node name="MenuButton" type="MenuButton" parent="PrepManager"]
 layout_mode = 0

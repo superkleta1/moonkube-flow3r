@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cppsaa4pkttq8"]
 
-[ext_resource type="Script" uid="uid://dljboqqao31r4" path="res://scripts/mvp_scripts/slot_button.gd" id="1_gvh7a"]
+[ext_resource type="Script" uid="uid://dljboqqao31r4" path="res://scripts/mvp_scripts/minddive_preparation/slot_button.gd" id="1_gvh7a"]
 
 [node name="SlotButton" type="TextureButton"]
 custom_minimum_size = Vector2(64, 64)

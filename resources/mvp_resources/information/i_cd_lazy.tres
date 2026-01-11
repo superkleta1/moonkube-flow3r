@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Information" load_steps=3 format=3 uid="uid://14dwmvkh6c57"]
 
 [ext_resource type="Texture2D" uid="uid://bbpxo4sgdc4hy" path="res://assets/mvp_assets/sprites224/CD_Lazy224.png" id="1_4qyif"]
-[ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/mvp_scripts/information.gd" id="1_4x6nc"]
+[ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/mvp_scripts/minddive_preparation/information.gd" id="1_4x6nc"]
 
 [resource]
 script = ExtResource("1_4x6nc")

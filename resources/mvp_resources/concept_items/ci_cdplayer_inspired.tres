@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ConceptItem" load_steps=3 format=3 uid="uid://bnykn6qoew0t1"]
 
 [ext_resource type="Texture2D" uid="uid://byss1s4smar8u" path="res://assets/mvp_assets/sprites224/CDPlayer_Inspired224.png" id="1_g7tde"]
-[ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/mvp_scripts/concept_item.gd" id="2_s4inu"]
+[ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/mvp_scripts/minddive_preparation/concept_item.gd" id="2_s4inu"]
 
 [resource]
 script = ExtResource("2_s4inu")

@@ -15,10 +15,15 @@ run/main_scene="uid://bnfv6x223kwuh"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+RunContext="*res://scripts/mvp_scripts/run_context.gd"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/resizable=false
 window/stretch/mode="canvas_items"
 
 [editor]
