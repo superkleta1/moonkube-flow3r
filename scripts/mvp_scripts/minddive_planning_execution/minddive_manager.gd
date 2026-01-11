@@ -1,4 +1,5 @@
 extends Node2D
+class_name MindDiveManager
 
 enum State { PLANNING, EXECUTION }
 var state: State = State.PLANNING
@@ -20,6 +21,9 @@ func enter_planning() -> void:
 
 	planning_ui.set_concepts(RunContext.crafted_concepts)
 	planning_ui.concept_selected.connect(_on_concept_selected)
+
+func enter_execution() -> void:
+	_set_state(State.EXECUTION)
 
 func _on_concept_selected(ci: ConceptItem) -> void:
 	print("Selected: ", ci.description) # description for now bc display name not filled out
