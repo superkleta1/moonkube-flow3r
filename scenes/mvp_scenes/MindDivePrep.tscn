@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="1_2ecor"]
 [ext_resource type="Script" uid="uid://dgety7djvi5cj" path="res://scripts/mvp_scripts/minddive_preparation/prep_manager.gd" id="1_475vc"]
 [ext_resource type="Resource" uid="uid://32xys63xq4r7" path="res://resources/mvp_resources/mvp_prepconfig.tres" id="2_lt3ye"]
-[ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/mvp_scenes/SlotButton.tscn" id="3_7p8pb"]
+[ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/mvp_scenes/mvp_packed_scenes/SlotButton.tscn" id="3_7p8pb"]
 [ext_resource type="LabelSettings" uid="uid://bfkp6akpgipuc" path="res://assets/mvp_assets/mvp_labelsetting.tres" id="3_lt3ye"]
 [ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="4_cf7dw"]
 

@@ -5,6 +5,8 @@ class_name ConceptItem
 @export var display_name: String
 @export var icon: Texture2D
 @export var description: String
+@export var natsu_notes: String
+@export var mesh_scene: PackedScene
 
 @export var base_attraction: float = 1.0
 @export var inspired_scalar: float = 0.0

@@ -1,12 +1,12 @@
 extends Control
-class_name PlanningUI
+class_name PlanningUI2D
 
 @export var slot_button_scene: PackedScene
 
 @onready var vcontainer: VBoxContainer = $AvailableConceptItems/ScrollContainer/VBoxContainer
 @onready var planning_mode: Node = $"../..//Modes/PlanningMode"
 @onready var start_execution_button: Button = $StartExecutionButton
-@onready var minddive_manager: Node3D = $"../../..//MindDive"
+@onready var minddive_manager: Node2D = $"../../..//MindDive"
 
 var selected_concept_item: ConceptItem
 

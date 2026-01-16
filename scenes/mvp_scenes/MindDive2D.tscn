@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=4 uid="uid://de4xfs0jlrm16"]
+
+[ext_resource type="Script" uid="uid://de8p8idelkomc" path="res://scripts/mvp_scripts/minddive_planning_execution2d/minddive_manager2d.gd" id="1_n7ui8"]
+[ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="2_mech5"]
+[ext_resource type="TileSet" uid="uid://b2kg0tj63ofru" path="res://resources/tilesets/MVP_tilesets.tres" id="3_6esgb"]
+[ext_resource type="Texture2D" uid="uid://ckmrrn2ep1237" path="res://assets/mvp_assets/sprites2000/Aki_Inspired2000.png" id="4_7xu2x"]
+[ext_resource type="Script" uid="uid://b2bovsr5lkq2y" path="res://scripts/mvp_scripts/minddive_planning_execution2d/planning_mode2d.gd" id="5_b2f6q"]
+[ext_resource type="PackedScene" uid="uid://dw5an5nol8400" path="res://scenes/mvp_scenes/PlacedConceptItem2D.tscn" id="6_rlpfm"]
+[ext_resource type="Script" uid="uid://b682c4uxewsd3" path="res://scripts/mvp_scripts/minddive_planning_execution2d/execution_mode2d.gd" id="7_21050"]
+[ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="8_22fio"]
+[ext_resource type="Script" uid="uid://82uwb6wxklsf" path="res://scripts/mvp_scripts/minddive_planning_execution2d/planning_ui2d.gd" id="9_56nh5"]
+[ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/mvp_scenes/mvp_packed_scenes/SlotButton.tscn" id="10_kiye3"]
+[ext_resource type="Script" uid="uid://bxrqd23nysdvx" path="res://scripts/mvp_scripts/minddive_planning_execution2d/execution_ui2d.gd" id="11_okf8p"]
+
+[node name="MindDive" type="Node2D"]
+script = ExtResource("1_n7ui8")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="World"]
+position = Vector2(960, 544)
+texture = ExtResource("2_mech5")
+
+[node name="TileMap" type="TileMapLayer" parent="World"]
+position = Vector2(504, 136)
+scale = Vector2(2.535705, 2.535705)
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAAAAADAAAAAgAAAAAAAAAEAAAAAgAAAAAAAAAFAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAHAAAAAgAAAAAAAAAIAAAAAgAAAAAAAAAJAAAAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAYAAgAAAAAAAAAAAAcAAgAAAAAAAAAAAAgAAgAAAAAAAAAAAAkAAgAAAAAAAAAAAAoAAgAAAAAAAAABAAEAAgAAAAAAAAACAAEAAgAAAAAAAAADAAEAAgAAAAAAAAAEAAEAAgAAAAAAAAAFAAEAAgAAAAAAAAAGAAEAAgAAAAAAAAAHAAEAAgAAAAAAAAAIAAEAAgAAAAAAAAAJAAEAAgAAAAAAAAABAAIAAgAAAAAAAAACAAIAAgAAAAAAAAADAAIAAgAAAAAAAAAEAAIAAgAAAAAAAAAFAAIAAgAAAAAAAAAGAAIAAgAAAAAAAAAIAAIAAgAAAAAAAAAJAAIAAgAAAAAAAAAJAAMAAgAAAAAAAAAIAAMAAgAAAAAAAAAHAAMAAgAAAAAAAAAGAAMAAgAAAAAAAAAFAAMAAgAAAAAAAAAEAAMAAgAAAAAAAAADAAMAAgAAAAAAAAACAAMAAgAAAAAAAAABAAMAAgAAAAAAAAABAAQAAgAAAAAAAAACAAQAAgAAAAAAAAADAAQAAgAAAAAAAAAEAAQAAgAAAAAAAAAFAAQAAgAAAAAAAAAGAAQAAgAAAAAAAAAHAAQAAgAAAAAAAAAIAAQAAgAAAAAAAAAJAAQAAgAAAAAAAAABAAUAAgAAAAAAAAACAAUAAgAAAAAAAAADAAUAAgAAAAAAAAAEAAUAAgAAAAAAAAAFAAUAAgAAAAAAAAAGAAUAAgAAAAAAAAAHAAUAAgAAAAAAAAAIAAUAAgAAAAAAAAAJAAUAAgAAAAAAAAABAAYAAgAAAAAAAAACAAYAAgAAAAAAAAADAAYAAgAAAAAAAAAEAAYAAgAAAAAAAAAGAAYAAgAAAAAAAAAHAAYAAgAAAAAAAAAIAAYAAgAAAAAAAAAJAAYAAgAAAAAAAAABAAcAAgAAAAAAAAACAAcAAgAAAAAAAAADAAcAAgAAAAAAAAAEAAcAAgAAAAAAAAAFAAcAAgAAAAAAAAAGAAcAAgAAAAAAAAAHAAcAAgAAAAAAAAAIAAcAAgAAAAAAAAAJAAcAAgAAAAAAAAABAAgAAgAAAAAAAAACAAgAAgAAAAAAAAADAAgAAgAAAAAAAAAEAAgAAgAAAAAAAAAFAAgAAgAAAAAAAAAGAAgAAgAAAAAAAAAHAAgAAgAAAAAAAAAIAAgAAgAAAAAAAAAJAAgAAgAAAAAAAAABAAkAAgAAAAAAAAACAAkAAgAAAAAAAAADAAkAAgAAAAAAAAAEAAkAAgAAAAAAAAAFAAkAAgAAAAAAAAAGAAkAAgAAAAAAAAAHAAkAAgAAAAAAAAAJAAkAAgAAAAAAAAABAAoAAgAAAAAAAAACAAoAAgAAAAAAAAADAAoAAgAAAAAAAAAEAAoAAgAAAAAAAAAFAAoAAgAAAAAAAAAGAAoAAgAAAAAAAAAHAAoAAgAAAAAAAAAIAAoAAgAAAAAAAAAJAAoAAgAAAAAAAAAAAP//AgABAAAAAAABAP//AgABAAAAAAACAP//AgABAAAAAAADAP//AgABAAAAAAAEAP//AgABAAAAAAAFAP//AgABAAAAAAAGAP//AgABAAAAAAAHAP//AgABAAAAAAAIAP//AgABAAAAAAAJAP//AgABAAAAAAAKAP//AgABAAAAAAAKAAAAAgABAAAAAAAKAAEAAgABAAAAAAAKAAIAAgABAAAAAAAKAAMAAgABAAAAAAAKAAQAAgABAAAAAAAKAAUAAgABAAAAAAAKAAYAAgABAAAAAAAKAAcAAgABAAAAAAAKAAgAAgABAAAAAAAKAAkAAgABAAAAAAAKAAoAAgABAAAAAAAKAAsAAgABAAAAAAAFAAYAAgABAAEAAAAIAAkAAgABAAEAAAAHAAIAAgABAAEAAAA=")
+tile_set = ExtResource("3_6esgb")
+
+[node name="PlacedConceptItems" type="Node2D" parent="World"]
+
+[node name="Spirit" type="Node2D" parent="World"]
+
+[node name="Sprite2D" type="Sprite2D" parent="World/Spirit"]
+position = Vector2(568, 520)
+scale = Vector2(0.11718753, 0.11718753)
+texture = ExtResource("4_7xu2x")
+
+[node name="Modes" type="Node" parent="."]
+
+[node name="PlanningMode" type="Node" parent="Modes"]
+script = ExtResource("5_b2f6q")
+placed_item_scene = ExtResource("6_rlpfm")
+
+[node name="ExecutionMode" type="Node" parent="Modes"]
+script = ExtResource("7_21050")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PlanningUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("8_22fio")
+script = ExtResource("9_56nh5")
+slot_button_scene = ExtResource("10_kiye3")
+
+[node name="AvailableConceptItems" type="Panel" parent="UI/PlanningUI"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 960.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/PlanningUI/AvailableConceptItems"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 240.0
+offset_bottom = 744.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlanningUI/AvailableConceptItems/ScrollContainer"]
+layout_mode = 2
+
+[node name="StartExecutionButton" type="Button" parent="UI/PlanningUI"]
+layout_mode = 0
+offset_left = 1536.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 256.0
+text = "Execute"
+
+[node name="ExecutionUI" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_okf8p")
+
+[node name="DebubgHUD" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

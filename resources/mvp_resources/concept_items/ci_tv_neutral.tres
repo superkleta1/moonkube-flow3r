@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="ConceptItem" load_steps=3 format=3 uid="uid://6y1ma7ahu2ab"]
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=4 format=3 uid="uid://6y1ma7ahu2ab"]
 
-[ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/mvp_scripts/minddive_preparation/concept_item.gd" id="1_myeql"]
 [ext_resource type="Texture2D" uid="uid://cgl5glvgfp1qm" path="res://assets/mvp_assets/sprites224/TV224.png" id="1_u1eji"]
+[ext_resource type="PackedScene" uid="uid://jck2u8x4v7bn" path="res://assets/mvp_assets/meshes/tv_test.fbx" id="2_06m4i"]
+[ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/mvp_scripts/minddive_preparation/concept_item.gd" id="3_8316o"]
 
 [resource]
-script = ExtResource("1_myeql")
+script = ExtResource("3_8316o")
 id = "ci_tv_neutral"
 display_name = "A TV"
 icon = ExtResource("1_u1eji")
 description = "A regular TV"
+mesh_scene = ExtResource("2_06m4i")
 metadata/_custom_type_script = "uid://b6a4o566xv4vs"

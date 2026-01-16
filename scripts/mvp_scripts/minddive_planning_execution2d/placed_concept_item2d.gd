@@ -1,16 +1,14 @@
 extends Node2D
-class_name PlacedConceptItem
+class_name PlacedConceptItem2D
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var mesh_scene: PackedScene = $
+@onready var button: Button = $Button
 var concept: ConceptItem
 
 func set_concept(ci: ConceptItem) -> void:
 	concept = ci
-	if mesh_scene:
-		mesh_scene = 
+	if sprite:
 		sprite.texture = ci.icon
-		mesh.mesh = ci.mesh_scene
 	
 	if button:
 		button.tooltip_text = ci.description

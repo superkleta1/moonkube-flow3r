@@ -1,5 +1,5 @@
-extends Node3D
-class_name MindDiveManager
+extends Node2D
+class_name MindDiveManager2D
 
 enum State { PLANNING, EXECUTION }
 var state: State = State.PLANNING
@@ -9,8 +9,9 @@ var state: State = State.PLANNING
 @onready var planning_ui: Control = $UI/PlanningUI
 @onready var execution_ui: Control = $UI/ExecutionUI
 
-@onready var world_tilemap = $World/GridMap
+@onready var world_tilemap = $World/TileMap
 @onready var anchors = $World/PlacedConceptItems
+@onready var spirit = $World/Spirit
 
 func _ready() -> void:
 	enter_planning() # starts off in planning phase

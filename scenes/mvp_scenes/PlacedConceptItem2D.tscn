@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dw5an5nol8400"]
 
-[ext_resource type="Script" uid="uid://bdnp5pevk4fcl" path="res://scripts/mvp_scripts/minddive_planning_execution/placed_concept_item.gd" id="1_f71nr"]
+[ext_resource type="Script" uid="uid://bdnp5pevk4fcl" path="res://scripts/mvp_scripts/minddive_planning_execution2d/placed_concept_item2d.gd" id="1_f71nr"]
 [ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="2_4ixw8"]
 
 [node name="PlacedConceptItem" type="Node2D"]
