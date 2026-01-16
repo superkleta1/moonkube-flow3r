@@ -94,6 +94,7 @@ offset_bottom = 256.0
 text = "Execute"
 
 [node name="ConceptItemDeatil" type="Control" parent="UI/PlanningUI"]
+visible = false
 anchors_preset = 0
 offset_left = 1528.0
 offset_top = 320.0

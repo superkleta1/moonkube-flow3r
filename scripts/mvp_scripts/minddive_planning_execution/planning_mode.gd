@@ -68,7 +68,8 @@ func _try_place_at_mouse(screen_pos: Vector2) -> bool:
 	print("grid local:", gridmap.to_local(world_pos))
 	print("cell:", cell)
 	print("item at cell:", gridmap.get_cell_item(cell))
-
+	
+	cell.y = 0
 	var kind := _get_tile_kind(cell)
 	if kind != TileKind.ITEM_SLOT:
 		return false
