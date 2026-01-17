@@ -3,11 +3,12 @@ class_name PlanningMode3D
 
 enum TileKind { NONE = 0, START = 1, EXIT = 2, DOOR = 3, ITEM_SLOT = 4, ROADBLOCK = 5 }
 
-@onready var gridmap: GridMap = $"../..//World/GridMap"
+@onready var gridmap: GridMap = $"../..//World/GridMapLevel"
 @onready var placed_parent: Node3D = $"../..//World/PlacedConceptItems"
 @onready var planning_ui: Control = $"../..//UI/PlanningUI"
 
 @export var planning_camera: Camera3D
+@export var placed_concept_item_scene: PackedScene
 
 var _selected_concept: ConceptItem = null
 # Map GridMap "cell item index" (mesh library item id) -> TileKind
@@ -23,9 +24,8 @@ var tile_kind_by_item_id: Dictionary = {
 signal concept_placed(concept: ConceptItem)
 signal concept_removed(concept: ConceptItem)
 
-# Prevent double placing
-var _placed_by_cell: Dictionary = {} # Vector3i -> Node3D
-var _concept_by_cell: Dictionary = {} # Vector3i -> ConceptItem
+var _placed_by_cell: Dictionary = {} # Vector3i -> PlacedConceptItem
+var _concept_by_cell: Dictionary = {} # Vector3i -> ConceptItem  (optional now)
 
 func _ready() -> void:
 	if planning_camera == null:
@@ -62,6 +62,7 @@ func _try_place_at_mouse(screen_pos: Vector2) -> bool:
 	# Convert world position -> grid cell
 	var world_pos: Vector3 = hit["position"]
 	var cell: Vector3i = gridmap.local_to_map(gridmap.to_local(world_pos))
+	cell.y = 0
 	
 	print("hit world:", world_pos)
 	print("grid global:", gridmap.global_position, " basis:", gridmap.global_transform.basis)
@@ -69,7 +70,6 @@ func _try_place_at_mouse(screen_pos: Vector2) -> bool:
 	print("cell:", cell)
 	print("item at cell:", gridmap.get_cell_item(cell))
 	
-	cell.y = 0
 	var kind := _get_tile_kind(cell)
 	if kind != TileKind.ITEM_SLOT:
 		return false
@@ -113,29 +113,25 @@ func _get_tile_kind(cell: Vector3i) -> int:
 func _place_concept(cell: Vector3i) -> void:
 	if _selected_concept == null:
 		return
-	if _selected_concept.mesh_scene == null:
-		push_warning("Selected concept has no mesh_scene: %s" % _selected_concept.display_name)
+	if placed_concept_item_scene == null:
+		push_warning("PlanningMode3D: placed_concept_item_scene not set.")
 		return
 
-	var node := _selected_concept.mesh_scene.instantiate() as Node3D
-	if node == null:
-		push_warning("mesh_scene root must be Node3D.")
+	var placed := placed_concept_item_scene.instantiate() as PlacedConceptItem
+	if placed == null:
+		push_warning("placed_concept_item_scene root must have PlacedConceptItem script.")
 		return
 
-	placed_parent.add_child(node)
+	placed_parent.add_child(placed)
 
-	# Position at cell center
-	var cell_local: Vector3 = gridmap.map_to_local(cell)
-	var cell_world: Vector3 = gridmap.to_global(cell_local)
-	node.global_position = cell_world
+	# Position wrapper at cell center
+	var cell_world: Vector3 = gridmap.to_global(gridmap.map_to_local(cell))
+	placed.global_position = cell_world
 
-	# Optional: rotate / offset if needed
-	# node.global_rotation.y = ...
+	# Store data on wrapper and let it spawn its own visual
+	placed.setup(_selected_concept, cell)
 
-	if node.has_method("set_concept"):
-		node.call("set_concept", _selected_concept)
-
-	_placed_by_cell[cell] = node
+	_placed_by_cell[cell] = placed
 	_concept_by_cell[cell] = _selected_concept
 
 	concept_placed.emit(_selected_concept)
@@ -147,14 +143,22 @@ func _remove_at_cell(cell: Vector3i) -> void:
 	if not _placed_by_cell.has(cell):
 		return
 
-	var concept: ConceptItem = _concept_by_cell.get(cell)
-	var node: Node3D = _placed_by_cell.get(cell)
+	var placed: PlacedConceptItem = _placed_by_cell.get(cell)
+	var concept: ConceptItem = placed.concept if placed != null else _concept_by_cell.get(cell)
 
-	if node != null and is_instance_valid(node):
-		node.queue_free()
+	if placed != null and is_instance_valid(placed):
+		placed.queue_free()
 
 	if concept != null:
 		concept_removed.emit(concept)
 
 	_concept_by_cell.erase(cell)
 	_placed_by_cell.erase(cell)
+
+func get_placed_items() -> Array[PlacedConceptItem]:
+	var out: Array[PlacedConceptItem] = []
+	for v in _placed_by_cell.values():
+		var p := v as PlacedConceptItem
+		if p != null and is_instance_valid(p):
+			out.append(p)
+	return out

@@ -11,4 +11,5 @@ display_name = "A TV"
 icon = ExtResource("1_u1eji")
 description = "A regular TV"
 mesh_scene = ExtResource("2_06m4i")
+base_attraction = 20.0
 metadata/_custom_type_script = "uid://b6a4o566xv4vs"

@@ -11,4 +11,5 @@ display_name = "A CD player"
 icon = ExtResource("1_xrs1v")
 description = "A regular CD player"
 mesh_scene = ExtResource("2_8gm1g")
+base_attraction = 5.0
 metadata/_custom_type_script = "uid://b6a4o566xv4vs"
