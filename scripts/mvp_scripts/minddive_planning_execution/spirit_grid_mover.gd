@@ -76,6 +76,9 @@ func _take_next_step() -> void:
 		print("No move chosen; stuck at ", _current_cell)
 		return
 	_last_step_dir = next - _current_cell
+	
+	print("chosen next cell", next)
+	
 	move_one_step_to(next)
 
 func choose_next_cell_local() -> Vector3i:
@@ -121,6 +124,7 @@ func score_cell(cell: Vector3i) -> float:
 
 	# Small noise so ties don’t create loops
 	score += randf_range(-noise_amount, noise_amount)
+	print("Cell ", cell, "score is ", score)
 	return score
 
 func _is_item_perceivable(placed: PlacedConceptItem, spirit_pos: Vector3, forward: Vector3) -> bool:
