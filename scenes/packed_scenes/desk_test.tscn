@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgm44cwtx82y0"]
+
+[ext_resource type="PackedScene" uid="uid://cdxbhit3gsi21" path="res://assets/mvp_assets/meshes/desk_test.fbx" id="1_7wbas"]
+
+[node name="desk_test" instance=ExtResource("1_7wbas")]

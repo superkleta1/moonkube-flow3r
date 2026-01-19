@@ -1,0 +1,2 @@
+extends SenseProfile
+class_name SenseProfileSee

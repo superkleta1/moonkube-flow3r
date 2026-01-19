@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="PrepConfig" load_steps=19 format=3 uid="uid://32xys63xq4r7"]
+
+[ext_resource type="Script" uid="uid://cbortuoghs228" path="res://scripts/minddive_preparation/base_item.gd" id="1_p8m6c"]
+[ext_resource type="Resource" uid="uid://dlmmack06o68r" path="res://resources/mvp_resources/base_items/bi_tv.tres" id="2_f7ir0"]
+[ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/minddive_preparation/information.gd" id="2_xyhbj"]
+[ext_resource type="Resource" uid="uid://x4rx1a0xsifu" path="res://resources/mvp_resources/base_items/bi_cdplayer.tres" id="3_uybw6"]
+[ext_resource type="Script" uid="uid://6j3aodx0phrt" path="res://scripts/minddive_preparation/concept_recipe.gd" id="3_xnvji"]
+[ext_resource type="Resource" uid="uid://qnwjx33db5x8" path="res://resources/mvp_resources/concept_recipes/cr_tv_lazy.tres" id="3_xyhbj"]
+[ext_resource type="Script" uid="uid://bnyl4ure4o4fk" path="res://scripts/minddive_preparation/prep_config.gd" id="4_1vlrs"]
+[ext_resource type="Resource" uid="uid://dpx41lxduwavg" path="res://resources/mvp_resources/base_items/bi_sketchbook.tres" id="4_oquwf"]
+[ext_resource type="Resource" uid="uid://b00lvvs1hwfxy" path="res://resources/mvp_resources/concept_recipes/cr_tv_inspired.tres" id="4_xnvji"]
+[ext_resource type="Resource" uid="uid://bss51dfu3qeso" path="res://resources/mvp_resources/concept_recipes/cr_cdplayer_lazy.tres" id="5_hjyuu"]
+[ext_resource type="Resource" uid="uid://cwn4iffljyuhw" path="res://resources/mvp_resources/concept_recipes/cr_sketchbook_lazy.tres" id="6_i4l64"]
+[ext_resource type="Resource" uid="uid://14dwmvkh6c57" path="res://resources/mvp_resources/information/i_cd_lazy.tres" id="6_uybw6"]
+[ext_resource type="Resource" uid="uid://dx1kfwpck5wrt" path="res://resources/mvp_resources/concept_recipes/cr_cdplayer_inspired.tres" id="7_frgkc"]
+[ext_resource type="Resource" uid="uid://rkqsvct7a8gh" path="res://resources/mvp_resources/information/i_cd_inspired.tres" id="7_oquwf"]
+[ext_resource type="Resource" uid="uid://bdxebylikfb2o" path="res://resources/mvp_resources/concept_recipes/cr_sketchbook_inspired.tres" id="8_y243b"]
+[ext_resource type="Resource" uid="uid://dl2lc1gif0xps" path="res://resources/mvp_resources/concept_recipes/cr_cdplayer_neutral.tres" id="15_4hx83"]
+[ext_resource type="Resource" uid="uid://bljpu300cinlp" path="res://resources/mvp_resources/concept_recipes/cr_sketchbook_neutral.tres" id="16_f2ofe"]
+[ext_resource type="Resource" uid="uid://ctkkkxxlee8qr" path="res://resources/mvp_resources/concept_recipes/cr_tv_neutral.tres" id="17_ysoq6"]
+
+[resource]
+script = ExtResource("4_1vlrs")
+base_items = Array[ExtResource("1_p8m6c")]([ExtResource("2_f7ir0"), ExtResource("3_uybw6"), ExtResource("4_oquwf")])
+informations = Array[ExtResource("2_xyhbj")]([ExtResource("6_uybw6"), ExtResource("7_oquwf")])
+recipes = Array[ExtResource("3_xnvji")]([ExtResource("3_xyhbj"), ExtResource("4_xnvji"), ExtResource("5_hjyuu"), ExtResource("6_i4l64"), ExtResource("7_frgkc"), ExtResource("8_y243b"), ExtResource("15_4hx83"), ExtResource("16_f2ofe"), ExtResource("17_ysoq6")])
+max_concept_items = 3
+metadata/_custom_type_script = "uid://bnyl4ure4o4fk"

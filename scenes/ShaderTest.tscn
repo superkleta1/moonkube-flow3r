@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://j0sn23gxmpnp"]
+
+[ext_resource type="Shader" uid="uid://c5dfqc88e1wju" path="res://assets/shaders/dot_3d.gdshader" id="1_ncpff"]
+[ext_resource type="PackedScene" uid="uid://c043kvefh6sui" path="res://assets/meshes/aki fbx.fbx" id="1_piusi"]
+
+[sub_resource type="Environment" id="Environment_g2tnf"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g2tnf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g2tnf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_piusi"]
+render_priority = 0
+shader = ExtResource("1_ncpff")
+shader_parameter/depth_threshold = 0.05
+shader_parameter/reverse_depth_threshold = 0.25
+shader_parameter/normal_threshold = 0.33200001577
+shader_parameter/darken_amount = 0.35999999195328
+shader_parameter/lighten_amount = 6.82999984733584
+shader_parameter/normal_edge_bias = Vector3(1, 1, 1)
+shader_parameter/light_direction = Vector3(-0.96, -0.18, 0.2)
+shader_parameter/dither_repeat = 1.0
+shader_parameter/dither_strength = 1.0
+shader_parameter/min_dither_brightness = 0.1
+shader_parameter/color_a = Vector4(0, 0, 0, 0.255)
+shader_parameter/color_b = Vector4(0.248, 0.245, 0.173, 0.25)
+shader_parameter/bayer_mode = 4
+
+[sub_resource type="QuadMesh" id="QuadMesh_g2tnf"]
+material = SubResource("ShaderMaterial_piusi")
+flip_faces = true
+size = Vector2(3, 3)
+
+[node name="ShaderTest" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="Level" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Level"]
+environment = SubResource("Environment_g2tnf")
+
+[node name="Floor" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Level"]
+transform = Transform3D(1, 0, 0, 0, 0.05, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_g2tnf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Level/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Level/Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_g2tnf")
+
+[node name="aki fbx" parent="SubViewportContainer/SubViewport/Level" instance=ExtResource("1_piusi")]
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.7071068, -0.6830126, -0.18301272, -2.2626683e-08, -0.25881907, 0.9659258, -0.7071067, 0.6830127, 0.18301272, 0, 10, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.6566371, -0.2369994, 0.71600217, -0.26521423, 0.8161542, 0.5133749, -0.7060377, -0.52699494, 0.47306144, 5.700861, 5.080209, 5.096873)
+projection = 1
+current = true
+
+[node name="PostProcessing" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D"]
+transform = Transform3D(1, 0, -5.9604645e-08, 0, 1.0000002, 9.685755e-08, 0, 1.4901161e-08, 1, 0.020459175, 0.03443992, 0.02781105)
+mesh = SubResource("QuadMesh_g2tnf")

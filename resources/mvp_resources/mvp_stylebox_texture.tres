@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dmkyvr4cghwpn"]
+
+[ext_resource type="Texture2D" uid="uid://cms7u5ijalpi8" path="res://assets/mvp_assets/Result.png" id="1_vta5p"]
+
+[resource]
+texture = ExtResource("1_vta5p")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0

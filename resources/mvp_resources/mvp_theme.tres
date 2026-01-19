@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b80glpgan4anq"]
+
+[ext_resource type="StyleBox" uid="uid://dmkyvr4cghwpn" path="res://resources/mvp_resources/mvp_stylebox_texture.tres" id="1_0n6cv"]
+[ext_resource type="FontFile" uid="uid://cioepgr1gabwi" path="res://assets/mvp_assets/fonts/CaesarDressing-Regular.ttf" id="1_mnp5f"]
+
+[resource]
+default_font = ExtResource("1_mnp5f")
+default_font_size = 45
+Button/colors/font_color = Color(0.27450982, 0.1764706, 0.5294118, 1)
+Button/colors/font_focus_color = Color(0.27450982, 0.1764706, 0.5294118, 1)
+Button/colors/font_hover_color = Color(0.5882353, 0.7372549, 0.8235294, 1)
+Button/colors/font_outline_color = Color(0.5882353, 0.7372549, 0.8235294, 1)
+Button/colors/font_pressed_color = Color(0.29411766, 0.8, 0.7294118, 1)
+Button/constants/outline_size = 0
+Button/styles/disabled = ExtResource("1_0n6cv")
+Button/styles/focus = ExtResource("1_0n6cv")
+Button/styles/hover = ExtResource("1_0n6cv")
+Button/styles/normal = ExtResource("1_0n6cv")
+Button/styles/pressed = ExtResource("1_0n6cv")
+GridContainer/constants/h_separation = 16
+GridContainer/constants/v_separation = 16
+Panel/styles/panel = ExtResource("1_0n6cv")
+TooltipPanel/colors/title_color = Color(0.6715, 0.85, 0.73992497, 0.5882353)
+TooltipPanel/colors/title_outline_modulate = Color(0.6715, 0.85, 0.73992497, 0.5882353)

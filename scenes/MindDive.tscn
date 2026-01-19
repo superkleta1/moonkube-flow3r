@@ -1,0 +1,209 @@
+[gd_scene load_steps=22 format=3 uid="uid://umrb2tqp65aa"]
+
+[ext_resource type="Script" uid="uid://buhagbtnm6qat" path="res://scripts/minddive_planning_execution/minddive_manager.gd" id="1_u6ybt"]
+[ext_resource type="MeshLibrary" uid="uid://c3n10ewajoe11" path="res://assets/mvp_assets/mvp_nav_mesh_library.tres" id="2_frgdn"]
+[ext_resource type="MeshLibrary" uid="uid://w3dr7gwqc2k2" path="res://assets/mvp_assets/mvp_mesh_library.tres" id="3_5rs8m"]
+[ext_resource type="Script" uid="uid://c6hxekvtqldm1" path="res://scripts/minddive_planning_execution/spirit_grid_mover.gd" id="4_3lqmu"]
+[ext_resource type="Texture2D" uid="uid://ckmrrn2ep1237" path="res://assets/mvp_assets/sprites2000/Aki_Inspired2000.png" id="5_hnkkq"]
+[ext_resource type="Script" uid="uid://dh5bipvbfl6rs" path="res://scripts/minddive_planning_execution/planning_mode.gd" id="6_ajo3u"]
+[ext_resource type="PackedScene" uid="uid://bsipmrbwdtgwg" path="res://scenes/packed_scenes/PlacedConceptItem.tscn" id="7_bgjkm"]
+[ext_resource type="Script" uid="uid://l02pevw83or5" path="res://scripts/minddive_planning_execution/execution_mode.gd" id="8_pkqqb"]
+[ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="9_dvhuj"]
+[ext_resource type="Script" uid="uid://bo6rkv3kpmsbv" path="res://scripts/minddive_planning_execution/planning_ui.gd" id="10_lx1jq"]
+[ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/packed_scenes/SlotButton.tscn" id="11_61xmi"]
+[ext_resource type="Texture2D" uid="uid://c41e8lly2c8q2" path="res://assets/mvp_assets/card.png" id="12_btogk"]
+[ext_resource type="FontFile" uid="uid://cotbysrbdbpnq" path="res://assets/mvp_assets/fonts/Monoton-Regular.ttf" id="13_ji337"]
+[ext_resource type="Texture2D" uid="uid://dheq71a2mcn10" path="res://assets/mvp_assets/sprites224/CDPlayer224.png" id="14_wfwe4"]
+[ext_resource type="FontFile" uid="uid://cioepgr1gabwi" path="res://assets/mvp_assets/fonts/CaesarDressing-Regular.ttf" id="15_68hnv"]
+[ext_resource type="Script" uid="uid://bxugqbqt3r8jt" path="res://scripts/minddive_planning_execution/execution_ui.gd" id="16_61jb5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv7ke"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hv7ke"]
+material = SubResource("StandardMaterial3D_hv7ke")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8kv6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0qkf"]
+albedo_texture = ExtResource("5_hnkkq")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o8kv6"]
+material = SubResource("StandardMaterial3D_m0qkf")
+
+[node name="MindDive" type="Node3D"]
+script = ExtResource("1_u6ybt")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="GridMapNav" type="GridMap" parent="World"]
+visible = false
+mesh_library = ExtResource("2_frgdn")
+cell_size = Vector3(1, 1, 1)
+bake_navigation = true
+data = {
+"cells": PackedInt32Array(3, 0, 327680, 4, 0, 327680, 1, 0, 327680, 2, 0, 327680, 1, 65534, 327680, 1, 65535, 327680, 1, 65533, 327680, 1, 65532, 327680, 0, 65532, 327680, 65535, 65532, 327680, 65533, 65532, 327680, 65534, 65532, 327680, 65531, 65532, 327680, 65532, 65532, 327680, 65534, 65534, 327680, 65534, 65533, 327680, 65534, 1, 327680, 65534, 0, 327680, 65534, 65535, 327680, 1, 4, 327680, 1, 3, 327680, 1, 2, 327680, 1, 1, 327680, 65534, 4, 327680, 65534, 3, 327680, 65534, 2, 327680, 65535, 4, 327680, 0, 4, 327680, 65532, 4, 327680, 65533, 4, 327680, 65531, 4, 327680)
+}
+
+[node name="GridMapLevel" type="GridMap" parent="World"]
+mesh_library = ExtResource("3_5rs8m")
+cell_size = Vector3(1, 1, 1)
+collision_layer = 2
+data = {
+"cells": PackedInt32Array(65535, 65535, 1048581, 65535, 65534, 1048581, 65535, 65533, 1048581, 65535, 65532, 851968, 65535, 65531, 720901, 65535, 0, 1048581, 65535, 1, 1048581, 65535, 2, 1048581, 65535, 3, 655365, 65535, 4, 851968, 0, 65531, 720901, 1, 65531, 720900, 2, 65531, 720901, 3, 65531, 720901, 4, 65531, 720901, 65534, 65531, 720901, 65533, 65531, 720901, 65532, 65531, 720901, 65531, 65531, 720901, 65530, 65531, 720901, 4, 65532, 720901, 0, 4, 851968, 1, 4, 851968, 2, 4, 720901, 3, 4, 720901, 4, 4, 720901, 4, 3, 720901, 4, 2, 720901, 4, 1, 720901, 4, 0, 720897, 3, 0, 851968, 3, 65535, 720901, 3, 65534, 720901, 3, 65533, 720901, 4, 65533, 720901, 4, 65534, 720901, 4, 65535, 720901, 0, 65532, 851968, 0, 65533, 1048581, 0, 3, 655365, 0, 2, 655365, 0, 1, 1048581, 0, 0, 1048581, 0, 65535, 1048581, 0, 65534, 1048581, 1, 65532, 720899, 2, 65532, 720901, 3, 65532, 720901, 1, 65533, 851968, 1, 65534, 851968, 1, 65535, 851968, 1, 3, 851968, 1, 2, 851968, 2, 3, 720901, 3, 3, 720901, 3, 2, 720901, 2, 2, 720901, 2, 1, 720901, 3, 1, 720901, 2, 0, 851968, 2, 65535, 720901, 2, 65534, 720901, 2, 65533, 720901, 65530, 65532, 1048581, 65531, 65532, 851968, 65532, 65532, 851968, 65533, 65532, 851968, 65534, 65532, 851968, 65534, 65533, 851968, 65533, 65533, 5, 65532, 65533, 5, 65531, 65533, 1048580, 65530, 65533, 1048581, 65530, 65534, 1048581, 65531, 65534, 1048581, 65532, 65534, 1048581, 65533, 65534, 1048581, 65534, 65534, 851968, 65534, 65535, 851968, 65533, 65535, 1048581, 65532, 65535, 1048581, 65531, 65535, 1048581, 65530, 65535, 1048581, 65534, 0, 851968, 65534, 1, 851968, 65534, 4, 1048576, 65534, 3, 1048576, 65534, 2, 851968, 65533, 3, 1048581, 65533, 4, 851968, 65533, 2, 1048581, 65532, 1, 1048581, 65532, 0, 1048581, 65533, 0, 1048581, 65533, 1, 1048581, 65532, 2, 1048581, 65532, 4, 851968, 65532, 3, 1048581, 65531, 0, 1048581, 65531, 1, 1048581, 65531, 4, 2, 65531, 3, 1048580, 65531, 2, 1048581, 65530, 4, 1048581, 65530, 3, 1048581, 65530, 2, 1048581, 65530, 1, 1048581, 65530, 0, 1048581, 0, 5, 851973, 65535, 5, 851973, 65534, 5, 851973, 65533, 5, 851973, 65530, 5, 1048581, 65531, 5, 851973, 65532, 5, 851973, 65534, 65530, 1179653, 65533, 65530, 1179653, 65532, 65530, 1179653, 65531, 65530, 1179653, 65530, 65530, 1179653, 4, 65530, 1179653, 3, 65530, 1179653, 2, 65530, 1179653, 1, 65530, 1179653, 0, 65530, 1179653, 65535, 65530, 1179653, 5, 65534, 1179653, 5, 65533, 1179653, 5, 65532, 720901, 5, 65531, 1179653, 5, 65530, 1179653, 5, 5, 720901, 5, 4, 1179653, 5, 3, 1179653, 5, 2, 1179653, 5, 1, 1179653, 5, 0, 1179653, 5, 65535, 1179653, 1, 5, 458757, 2, 5, 458757, 3, 5, 720901, 4, 5, 720901, 1, 1, 851968, 1, 0, 0)
+}
+
+[node name="Floor" type="MeshInstance3D" parent="World"]
+transform = Transform3D(37.635956, 0, 0, 0, 1.0022488, 0, 0, 0, 44.48812, -0.009585381, -0.0076527596, -0.0030794144)
+mesh = SubResource("PlaneMesh_hv7ke")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="World"]
+transform = Transform3D(-1, 4.6972218e-08, -7.373162e-08, -9.17459e-09, 0.7823473, 0.62284243, 8.694002e-08, 0.62284243, -0.7823473, 0, 4.325953, -5.8284845)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, -0.09938926, 0.99504864, 0, -0.99504864, -0.09938926, 0, 13.589895, 0)
+
+[node name="PlacedConceptItems" type="Node3D" parent="World"]
+
+[node name="Spirit" type="Node3D" parent="World"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="World/Spirit" node_paths=PackedStringArray("gridmap_nav", "gridmap_level")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 2.5275073, 0)
+script = ExtResource("4_3lqmu")
+gridmap_nav = NodePath("../../GridMapNav")
+gridmap_level = NodePath("../../GridMapLevel")
+speed_tiles_per_second = 1.0
+vision_angle_degrees = 360.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/Spirit/CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_o8kv6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/Spirit/CharacterBody3D"]
+transform = Transform3D(-0.65713847, 0, -0.7537699, 0, 1, 0, 0.7537699, 0, -0.65713847, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_o8kv6")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="World/Spirit/CharacterBody3D"]
+
+[node name="Modes" type="Node" parent="."]
+
+[node name="PlanningMode" type="Node" parent="Modes" node_paths=PackedStringArray("planning_camera")]
+script = ExtResource("6_ajo3u")
+planning_camera = NodePath("../../World/Camera3D")
+placed_concept_item_scene = ExtResource("7_bgjkm")
+
+[node name="ExecutionMode" type="Node" parent="Modes" node_paths=PackedStringArray("spirit_grid_mover", "spirit")]
+script = ExtResource("8_pkqqb")
+spirit_grid_mover = NodePath("../../World/Spirit/CharacterBody3D")
+spirit = NodePath("../../World/Spirit")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PlanningUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("9_dvhuj")
+script = ExtResource("10_lx1jq")
+slot_button_scene = ExtResource("11_61xmi")
+
+[node name="AvailableConceptItems" type="Panel" parent="UI/PlanningUI"]
+layout_mode = 0
+offset_top = 192.0
+offset_right = 256.0
+offset_bottom = 960.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/PlanningUI/AvailableConceptItems"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 240.0
+offset_bottom = 744.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PlanningUI/AvailableConceptItems/ScrollContainer"]
+layout_mode = 2
+
+[node name="StartExecutionButton" type="Button" parent="UI/PlanningUI"]
+layout_mode = 0
+offset_left = 1536.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 256.0
+text = "Execute"
+
+[node name="ConceptItemDeatil" type="Control" parent="UI/PlanningUI"]
+visible = false
+anchors_preset = 0
+offset_left = 1528.0
+offset_top = 320.0
+offset_right = 1568.0
+offset_bottom = 360.0
+
+[node name="Background" type="TextureRect" parent="UI/PlanningUI/ConceptItemDeatil"]
+layout_mode = 0
+offset_right = 756.0
+offset_bottom = 986.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_btogk")
+stretch_mode = 4
+
+[node name="Name" type="Label" parent="UI/PlanningUI/ConceptItemDeatil"]
+layout_mode = 0
+offset_left = 152.00002
+offset_top = 48.0
+offset_right = 277.0
+offset_bottom = 119.0
+rotation = 0.092202865
+theme_override_fonts/font = ExtResource("13_ji337")
+text = "Title"
+
+[node name="Icon" type="TextureRect" parent="UI/PlanningUI/ConceptItemDeatil"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 72.0
+offset_right = 264.0
+offset_bottom = 296.0
+scale = Vector2(1.3078017, 1.3138906)
+texture = ExtResource("14_wfwe4")
+
+[node name="Description" type="Label" parent="UI/PlanningUI/ConceptItemDeatil"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 320.0
+offset_right = 594.847
+offset_bottom = 444.9936
+scale = Vector2(0.51202625, 0.51202625)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Description"
+
+[node name="Notes" type="Label" parent="UI/PlanningUI/ConceptItemDeatil"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 416.0
+offset_right = 320.0
+offset_bottom = 456.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("15_68hnv")
+theme_override_font_sizes/font_size = 15
+text = "Notes"
+
+[node name="ExecutionUI" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("16_61jb5")
+
+[node name="DebubgHUD" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

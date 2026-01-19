@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cppsaa4pkttq8"]
+
+[ext_resource type="Script" uid="uid://dljboqqao31r4" path="res://scripts/minddive_preparation/slot_button.gd" id="1_gvh7a"]
+[ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="1_r5nka"]
+
+[node name="SlotButton" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+tooltip_text = "temp
+"
+theme = ExtResource("1_r5nka")
+script = ExtResource("1_gvh7a")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 5
+
+[node name="SelectedOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.33333334, 0.7607843, 0.70980394, 0.4392157)

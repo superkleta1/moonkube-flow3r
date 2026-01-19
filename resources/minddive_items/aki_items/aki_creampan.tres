@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MindDiveItem" load_steps=2 format=3 uid="uid://bsuwvl8kb55"]
+
+[ext_resource type="Script" uid="uid://c4vobmi3umeaa" path="res://scripts/minddive_item.gd" id="1_0ay26"]
+
+[resource]
+script = ExtResource("1_0ay26")
+id = "a_creamPan"
+display_name = "A Cream Pan"
+description = "A well known brand from Aoyama."
+base_attraction = 10.0
+tags = Array[String](["Food"])
+metadata/_custom_type_script = "uid://c4vobmi3umeaa"

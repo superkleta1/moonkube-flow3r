@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=4 format=3 uid="uid://c2wfyotv5frj8"]
+
+[ext_resource type="Texture2D" uid="uid://dheq71a2mcn10" path="res://assets/mvp_assets/sprites224/CDPlayer224.png" id="1_xrs1v"]
+[ext_resource type="PackedScene" uid="uid://bgm44cwtx82y0" path="res://scenes/packed_scenes/desk_test.tscn" id="2_8gm1g"]
+[ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/minddive_preparation/concept_item.gd" id="3_u221d"]
+
+[resource]
+script = ExtResource("3_u221d")
+id = "ci_cdplayer_neutral"
+display_name = "A CD player"
+icon = ExtResource("1_xrs1v")
+description = "A regular CD player"
+mesh_scene = ExtResource("2_8gm1g")
+base_attraction = 5.0
+metadata/_custom_type_script = "uid://b6a4o566xv4vs"

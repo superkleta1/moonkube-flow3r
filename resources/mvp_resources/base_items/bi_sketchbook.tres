@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=3 format=3 uid="uid://dpx41lxduwavg"]
+
+[ext_resource type="Texture2D" uid="uid://b1vpja7hio7un" path="res://assets/mvp_assets/sprites224/Sketchbook224.png" id="1_7qy12"]
+[ext_resource type="Script" uid="uid://cbortuoghs228" path="res://scripts/minddive_preparation/base_item.gd" id="1_igequ"]
+
+[resource]
+script = ExtResource("1_igequ")
+id = "bi_sketchbook"
+display_name = "Sketchbook"
+icon = ExtResource("1_7qy12")
+description = "A sketchbook"
+slot_count = 1
+metadata/_custom_type_script = "uid://cbortuoghs228"
