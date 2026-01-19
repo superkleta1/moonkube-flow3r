@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-RunContext="*res://scripts/mvp_scripts/run_context.gd"
+RunContext="*res://scripts/run_context.gd"
 
 [display]
 

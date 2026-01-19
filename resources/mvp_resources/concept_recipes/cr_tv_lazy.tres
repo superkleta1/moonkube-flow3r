@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ConceptRecipe" load_steps=6 format=3 uid="uid://qnwjx33db5x8"]
 
-[ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/mvp_scripts/minddive_preparation/information.gd" id="1_lmvjc"]
+[ext_resource type="Script" uid="uid://bkmp8ktpdekv2" path="res://scripts/minddive_preparation/information.gd" id="1_lmvjc"]
 [ext_resource type="Resource" uid="uid://dlmmack06o68r" path="res://resources/mvp_resources/base_items/bi_tv.tres" id="1_xe1jd"]
-[ext_resource type="Script" uid="uid://6j3aodx0phrt" path="res://scripts/mvp_scripts/minddive_preparation/concept_recipe.gd" id="2_0t2er"]
+[ext_resource type="Script" uid="uid://6j3aodx0phrt" path="res://scripts/minddive_preparation/concept_recipe.gd" id="2_0t2er"]
 [ext_resource type="Resource" uid="uid://14dwmvkh6c57" path="res://resources/mvp_resources/information/i_cd_lazy.tres" id="3_o32ct"]
 [ext_resource type="Resource" uid="uid://4jo3omdl7kum" path="res://resources/mvp_resources/concept_items/ci_tv_lazy.tres" id="4_2sv6i"]
 

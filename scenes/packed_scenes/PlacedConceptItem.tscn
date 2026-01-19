@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsipmrbwdtgwg"]
 
-[ext_resource type="Script" uid="uid://c27f0e3kv7cvi" path="res://scripts/mvp_scripts/minddive_planning_execution/placed_concept_item.gd" id="1_uy7s3"]
+[ext_resource type="Script" uid="uid://c27f0e3kv7cvi" path="res://scripts/minddive_planning_execution/placed_concept_item.gd" id="1_uy7s3"]
 
 [node name="PlacedConceptItem" type="Node3D"]
 script = ExtResource("1_uy7s3")

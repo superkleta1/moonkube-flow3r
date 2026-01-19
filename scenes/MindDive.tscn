@@ -1,21 +1,21 @@
 [gd_scene load_steps=22 format=3 uid="uid://umrb2tqp65aa"]
 
-[ext_resource type="MeshLibrary" uid="uid://w3dr7gwqc2k2" path="res://assets/mvp_assets/mvp_mesh_library.tres" id="1_hv7ke"]
-[ext_resource type="Script" uid="uid://buhagbtnm6qat" path="res://scripts/mvp_scripts/minddive_planning_execution/minddive_manager.gd" id="1_pb75a"]
-[ext_resource type="MeshLibrary" uid="uid://c3n10ewajoe11" path="res://assets/mvp_assets/mvp_nav_mesh_library.tres" id="3_o8kv6"]
-[ext_resource type="Script" uid="uid://bo6rkv3kpmsbv" path="res://scripts/mvp_scripts/minddive_planning_execution/planning_ui.gd" id="4_3e04g"]
-[ext_resource type="Texture2D" uid="uid://ckmrrn2ep1237" path="res://assets/mvp_assets/sprites2000/Aki_Inspired2000.png" id="4_r4kow"]
-[ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="4_rcodr"]
-[ext_resource type="Script" uid="uid://c6hxekvtqldm1" path="res://scripts/mvp_scripts/minddive_planning_execution/spirit_grid_mover.gd" id="4_u04nj"]
-[ext_resource type="Script" uid="uid://dh5bipvbfl6rs" path="res://scripts/mvp_scripts/minddive_planning_execution/planning_mode.gd" id="5_mxtt2"]
-[ext_resource type="PackedScene" uid="uid://bsipmrbwdtgwg" path="res://scenes/mvp_scenes/mvp_packed_scenes/PlacedConceptItem.tscn" id="6_m0qkf"]
-[ext_resource type="Script" uid="uid://l02pevw83or5" path="res://scripts/mvp_scripts/minddive_planning_execution/execution_mode.gd" id="6_ubxsn"]
-[ext_resource type="Texture2D" uid="uid://c41e8lly2c8q2" path="res://assets/mvp_assets/card.png" id="8_ubxsn"]
-[ext_resource type="FontFile" uid="uid://cotbysrbdbpnq" path="res://assets/mvp_assets/fonts/Monoton-Regular.ttf" id="9_hr07a"]
-[ext_resource type="Script" uid="uid://bxugqbqt3r8jt" path="res://scripts/mvp_scripts/minddive_planning_execution/execution_ui.gd" id="9_ubxsn"]
-[ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/mvp_scenes/mvp_packed_scenes/SlotButton.tscn" id="9_uo8iw"]
-[ext_resource type="Texture2D" uid="uid://dheq71a2mcn10" path="res://assets/mvp_assets/sprites224/CDPlayer224.png" id="10_hr07a"]
-[ext_resource type="FontFile" uid="uid://cioepgr1gabwi" path="res://assets/mvp_assets/fonts/CaesarDressing-Regular.ttf" id="11_hd2mt"]
+[ext_resource type="Script" uid="uid://buhagbtnm6qat" path="res://scripts/minddive_planning_execution/minddive_manager.gd" id="1_u6ybt"]
+[ext_resource type="MeshLibrary" uid="uid://c3n10ewajoe11" path="res://assets/mvp_assets/mvp_nav_mesh_library.tres" id="2_frgdn"]
+[ext_resource type="MeshLibrary" uid="uid://w3dr7gwqc2k2" path="res://assets/mvp_assets/mvp_mesh_library.tres" id="3_5rs8m"]
+[ext_resource type="Script" uid="uid://c6hxekvtqldm1" path="res://scripts/minddive_planning_execution/spirit_grid_mover.gd" id="4_3lqmu"]
+[ext_resource type="Texture2D" uid="uid://ckmrrn2ep1237" path="res://assets/mvp_assets/sprites2000/Aki_Inspired2000.png" id="5_hnkkq"]
+[ext_resource type="Script" uid="uid://dh5bipvbfl6rs" path="res://scripts/minddive_planning_execution/planning_mode.gd" id="6_ajo3u"]
+[ext_resource type="PackedScene" uid="uid://bsipmrbwdtgwg" path="res://scenes/packed_scenes/PlacedConceptItem.tscn" id="7_bgjkm"]
+[ext_resource type="Script" uid="uid://l02pevw83or5" path="res://scripts/minddive_planning_execution/execution_mode.gd" id="8_pkqqb"]
+[ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="9_dvhuj"]
+[ext_resource type="Script" uid="uid://bo6rkv3kpmsbv" path="res://scripts/minddive_planning_execution/planning_ui.gd" id="10_lx1jq"]
+[ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/packed_scenes/SlotButton.tscn" id="11_61xmi"]
+[ext_resource type="Texture2D" uid="uid://c41e8lly2c8q2" path="res://assets/mvp_assets/card.png" id="12_btogk"]
+[ext_resource type="FontFile" uid="uid://cotbysrbdbpnq" path="res://assets/mvp_assets/fonts/Monoton-Regular.ttf" id="13_ji337"]
+[ext_resource type="Texture2D" uid="uid://dheq71a2mcn10" path="res://assets/mvp_assets/sprites224/CDPlayer224.png" id="14_wfwe4"]
+[ext_resource type="FontFile" uid="uid://cioepgr1gabwi" path="res://assets/mvp_assets/fonts/CaesarDressing-Regular.ttf" id="15_68hnv"]
+[ext_resource type="Script" uid="uid://bxugqbqt3r8jt" path="res://scripts/minddive_planning_execution/execution_ui.gd" id="16_61jb5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv7ke"]
 albedo_color = Color(0, 0, 0, 1)
@@ -26,19 +26,19 @@ material = SubResource("StandardMaterial3D_hv7ke")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8kv6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0qkf"]
-albedo_texture = ExtResource("4_r4kow")
+albedo_texture = ExtResource("5_hnkkq")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_o8kv6"]
 material = SubResource("StandardMaterial3D_m0qkf")
 
 [node name="MindDive" type="Node3D"]
-script = ExtResource("1_pb75a")
+script = ExtResource("1_u6ybt")
 
 [node name="World" type="Node3D" parent="."]
 
 [node name="GridMapNav" type="GridMap" parent="World"]
 visible = false
-mesh_library = ExtResource("3_o8kv6")
+mesh_library = ExtResource("2_frgdn")
 cell_size = Vector3(1, 1, 1)
 bake_navigation = true
 data = {
@@ -46,7 +46,7 @@ data = {
 }
 
 [node name="GridMapLevel" type="GridMap" parent="World"]
-mesh_library = ExtResource("1_hv7ke")
+mesh_library = ExtResource("3_5rs8m")
 cell_size = Vector3(1, 1, 1)
 collision_layer = 2
 data = {
@@ -54,7 +54,7 @@ data = {
 }
 
 [node name="Floor" type="MeshInstance3D" parent="World"]
-transform = Transform3D(37.635956, 0, 0, 0, 1.0022488, 0, 0, 0, 44.48812, 0, 0, 0)
+transform = Transform3D(37.635956, 0, 0, 0, 1.0022488, 0, 0, 0, 44.48812, -0.009585381, -0.0076527596, -0.0030794144)
 mesh = SubResource("PlaneMesh_hv7ke")
 skeleton = NodePath("../..")
 
@@ -70,7 +70,7 @@ transform = Transform3D(1, 0, 0, 0, -0.09938926, 0.99504864, 0, -0.99504864, -0.
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="World/Spirit" node_paths=PackedStringArray("gridmap_nav", "gridmap_level")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 2.5275073, 0)
-script = ExtResource("4_u04nj")
+script = ExtResource("4_3lqmu")
 gridmap_nav = NodePath("../../GridMapNav")
 gridmap_level = NodePath("../../GridMapLevel")
 speed_tiles_per_second = 1.0
@@ -88,12 +88,12 @@ mesh = SubResource("CapsuleMesh_o8kv6")
 [node name="Modes" type="Node" parent="."]
 
 [node name="PlanningMode" type="Node" parent="Modes" node_paths=PackedStringArray("planning_camera")]
-script = ExtResource("5_mxtt2")
+script = ExtResource("6_ajo3u")
 planning_camera = NodePath("../../World/Camera3D")
-placed_concept_item_scene = ExtResource("6_m0qkf")
+placed_concept_item_scene = ExtResource("7_bgjkm")
 
 [node name="ExecutionMode" type="Node" parent="Modes" node_paths=PackedStringArray("spirit_grid_mover", "spirit")]
-script = ExtResource("6_ubxsn")
+script = ExtResource("8_pkqqb")
 spirit_grid_mover = NodePath("../../World/Spirit/CharacterBody3D")
 spirit = NodePath("../../World/Spirit")
 
@@ -107,9 +107,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("4_rcodr")
-script = ExtResource("4_3e04g")
-slot_button_scene = ExtResource("9_uo8iw")
+theme = ExtResource("9_dvhuj")
+script = ExtResource("10_lx1jq")
+slot_button_scene = ExtResource("11_61xmi")
 
 [node name="AvailableConceptItems" type="Panel" parent="UI/PlanningUI"]
 layout_mode = 0
@@ -150,7 +150,7 @@ layout_mode = 0
 offset_right = 756.0
 offset_bottom = 986.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_ubxsn")
+texture = ExtResource("12_btogk")
 stretch_mode = 4
 
 [node name="Name" type="Label" parent="UI/PlanningUI/ConceptItemDeatil"]
@@ -160,7 +160,7 @@ offset_top = 48.0
 offset_right = 277.0
 offset_bottom = 119.0
 rotation = 0.092202865
-theme_override_fonts/font = ExtResource("9_hr07a")
+theme_override_fonts/font = ExtResource("13_ji337")
 text = "Title"
 
 [node name="Icon" type="TextureRect" parent="UI/PlanningUI/ConceptItemDeatil"]
@@ -170,7 +170,7 @@ offset_top = 72.0
 offset_right = 264.0
 offset_bottom = 296.0
 scale = Vector2(1.3078017, 1.3138906)
-texture = ExtResource("10_hr07a")
+texture = ExtResource("14_wfwe4")
 
 [node name="Description" type="Label" parent="UI/PlanningUI/ConceptItemDeatil"]
 layout_mode = 0
@@ -189,7 +189,7 @@ offset_top = 416.0
 offset_right = 320.0
 offset_bottom = 456.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("11_hd2mt")
+theme_override_fonts/font = ExtResource("15_68hnv")
 theme_override_font_sizes/font_size = 15
 text = "Notes"
 
@@ -199,7 +199,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("9_ubxsn")
+script = ExtResource("16_61jb5")
 
 [node name="DebubgHUD" type="Control" parent="UI"]
 visible = false

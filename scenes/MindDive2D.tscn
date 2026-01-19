@@ -1,16 +1,16 @@
 [gd_scene load_steps=12 format=4 uid="uid://de4xfs0jlrm16"]
 
-[ext_resource type="Script" uid="uid://de8p8idelkomc" path="res://scripts/mvp_scripts/minddive_planning_execution2d/minddive_manager2d.gd" id="1_n7ui8"]
+[ext_resource type="Script" uid="uid://de8p8idelkomc" path="res://scripts/minddive_planning_execution2d/minddive_manager2d.gd" id="1_n7ui8"]
 [ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="2_mech5"]
 [ext_resource type="TileSet" uid="uid://b2kg0tj63ofru" path="res://resources/tilesets/MVP_tilesets.tres" id="3_6esgb"]
 [ext_resource type="Texture2D" uid="uid://ckmrrn2ep1237" path="res://assets/mvp_assets/sprites2000/Aki_Inspired2000.png" id="4_7xu2x"]
-[ext_resource type="Script" uid="uid://b2bovsr5lkq2y" path="res://scripts/mvp_scripts/minddive_planning_execution2d/planning_mode2d.gd" id="5_b2f6q"]
-[ext_resource type="PackedScene" uid="uid://dw5an5nol8400" path="res://scenes/mvp_scenes/PlacedConceptItem2D.tscn" id="6_rlpfm"]
-[ext_resource type="Script" uid="uid://b682c4uxewsd3" path="res://scripts/mvp_scripts/minddive_planning_execution2d/execution_mode2d.gd" id="7_21050"]
+[ext_resource type="Script" uid="uid://b2bovsr5lkq2y" path="res://scripts/minddive_planning_execution2d/planning_mode2d.gd" id="5_b2f6q"]
+[ext_resource type="PackedScene" uid="uid://dw5an5nol8400" path="res://scenes/PlacedConceptItem2D.tscn" id="6_rlpfm"]
+[ext_resource type="Script" uid="uid://b682c4uxewsd3" path="res://scripts/minddive_planning_execution2d/execution_mode2d.gd" id="7_21050"]
 [ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="8_22fio"]
-[ext_resource type="Script" uid="uid://82uwb6wxklsf" path="res://scripts/mvp_scripts/minddive_planning_execution2d/planning_ui2d.gd" id="9_56nh5"]
-[ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/mvp_scenes/mvp_packed_scenes/SlotButton.tscn" id="10_kiye3"]
-[ext_resource type="Script" uid="uid://bxrqd23nysdvx" path="res://scripts/mvp_scripts/minddive_planning_execution2d/execution_ui2d.gd" id="11_okf8p"]
+[ext_resource type="Script" uid="uid://82uwb6wxklsf" path="res://scripts/minddive_planning_execution2d/planning_ui2d.gd" id="9_56nh5"]
+[ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/packed_scenes/SlotButton.tscn" id="10_kiye3"]
+[ext_resource type="Script" uid="uid://bxrqd23nysdvx" path="res://scripts/minddive_planning_execution2d/execution_ui2d.gd" id="11_okf8p"]
 
 [node name="MindDive" type="Node2D"]
 script = ExtResource("1_n7ui8")

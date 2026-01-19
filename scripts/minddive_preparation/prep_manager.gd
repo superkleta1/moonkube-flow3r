@@ -194,4 +194,4 @@ func _on_finished_prep_button_clicked() -> void:
 		return
 	
 	RunContext.crafted_concepts = crafted.duplicate() # shallow copy ok (Resources)
-	get_tree().change_scene_to_file("res://scenes/mvp_scenes/MindDive.tscn")
+	get_tree().change_scene_to_file("res://scenes/MindDive.tscn")

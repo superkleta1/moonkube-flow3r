@@ -71,7 +71,7 @@ func calc_item_influence(
 	return attraction
 
 func _on_spirit_reached_target() -> void:
-	get_tree().change_scene_to_file("res://scenes/mvp_scenes/MindDiveCompleted.tscn")
+	get_tree().change_scene_to_file("res://scenes/MindDiveCompleted.tscn")
 
 func _on_spirit_arrived_at_cell(cell: Vector3i) -> void:
 	var item_id: int = gridmap.get_cell_item(cell)

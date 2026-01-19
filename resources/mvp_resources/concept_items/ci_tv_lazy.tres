@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4odtxcbqnk0y" path="res://assets/mvp_assets/sprites224/TV_Lazy224.png" id="1_3e2gn"]
 [ext_resource type="PackedScene" uid="uid://jck2u8x4v7bn" path="res://assets/mvp_assets/meshes/tv_test.fbx" id="2_m5ifp"]
-[ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/mvp_scripts/minddive_preparation/concept_item.gd" id="3_r6wnp"]
+[ext_resource type="Script" uid="uid://b6a4o566xv4vs" path="res://scripts/minddive_preparation/concept_item.gd" id="3_r6wnp"]
 
 [resource]
 script = ExtResource("3_r6wnp")
