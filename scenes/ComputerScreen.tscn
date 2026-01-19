@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnfv6x223kwuh"]
 
-[ext_resource type="Script" uid="uid://c7s3q6gox7jt5" path="res://scripts/computerscreen.gd" id="1_3wd8d"]
+[ext_resource type="Script" uid="uid://c7s3q6gox7jt5" path="res://scripts/apps/computerscreen.gd" id="1_3wd8d"]
 [ext_resource type="Texture2D" uid="uid://cmj4doxkqjncq" path="res://assets/images/Whatsapp.png" id="2_uvtvd"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qpc4k"]

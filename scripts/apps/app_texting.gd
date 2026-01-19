@@ -1,5 +1,5 @@
 #scripts/texting_app.gd
-extends "res://scripts/app_base.gd"
+extends "res://scripts/apps/app_base.gd"
 
 @onready var messages_list: ItemList = $VBoxContainer/Messages
 @onready var input_field: LineEdit = $VBoxContainer/InputRow/PlayerInputText
