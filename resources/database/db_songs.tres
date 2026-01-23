@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SongDB" load_steps=3 format=3 uid="uid://d2xbovef0kf38"]
-
-[ext_resource type="Script" uid="uid://dnj5j5uc5w7re" path="res://scripts/apps/app_music/song.gd" id="1_7xfta"]
-[ext_resource type="Script" uid="uid://defjvbqvo0a2o" path="res://scripts/apps/app_music/db_songs.gd" id="2_uqsik"]
-
-[resource]
-script = ExtResource("2_uqsik")
-metadata/_custom_type_script = "uid://defjvbqvo0a2o"

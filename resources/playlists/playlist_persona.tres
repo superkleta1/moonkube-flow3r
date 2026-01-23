@@ -8,6 +8,5 @@
 
 [resource]
 script = ExtResource("1_vho67")
-playlist_id = "persona"
 songs = Array[ExtResource("2_eo0ua")]([ExtResource("3_jsske"), ExtResource("4_m3rqf"), ExtResource("5_ipad5")])
 metadata/_custom_type_script = "uid://5ujoqrp8akn6"
