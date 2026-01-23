@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="User" load_steps=3 format=3 uid="uid://dn1ljkaikjqil"]
+
+[ext_resource type="Texture2D" uid="uid://dqbvedt3pnbqr" path="res://assets/images/avatars/avatar_aki224.png" id="1_52i0e"]
+[ext_resource type="Script" uid="uid://bptbn073kscht" path="res://scripts/apps/user.gd" id="1_al7q4"]
+
+[resource]
+script = ExtResource("1_al7q4")
+user_id = "aki"
+display_name = "Aki"
+avatar = ExtResource("1_52i0e")
+metadata/_custom_type_script = "uid://bptbn073kscht"

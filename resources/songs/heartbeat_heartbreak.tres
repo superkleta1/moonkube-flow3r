@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://dxgrgxtt8hfdx"]
+
+[ext_resource type="AudioStream" uid="uid://ot6ujgbs5tr4" path="res://assets/music/Heartbeat, Heartbreak.mp3" id="1_c4mpr"]
+[ext_resource type="Script" uid="uid://dnj5j5uc5w7re" path="res://scripts/apps/app_music/song.gd" id="1_mkr2t"]
+
+[resource]
+script = ExtResource("1_mkr2t")
+song_id = "h_h"
+title = "Heartbeat, Heartbreak"
+audio_stream = ExtResource("1_c4mpr")
+metadata/_custom_type_script = "uid://dnj5j5uc5w7re"

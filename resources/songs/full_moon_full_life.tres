@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://ynpljb7be867"]
+
+[ext_resource type="AudioStream" uid="uid://bhc1wynayy44r" path="res://assets/music/Full Moon Full Life.mp3" id="1_4hudi"]
+[ext_resource type="Script" uid="uid://dnj5j5uc5w7re" path="res://scripts/apps/app_music/song.gd" id="1_88t6g"]
+
+[resource]
+script = ExtResource("1_88t6g")
+song_id = "f_m_f_l"
+title = "Full Moon Full Life"
+audio_stream = ExtResource("1_4hudi")
+metadata/_custom_type_script = "uid://dnj5j5uc5w7re"

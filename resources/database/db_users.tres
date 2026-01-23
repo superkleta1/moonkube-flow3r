@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="UserDB" load_steps=3 format=3 uid="uid://d1vs7arwqw7ef"]
+
+[ext_resource type="Script" uid="uid://bptbn073kscht" path="res://scripts/apps/user.gd" id="1_c1kyt"]
+[ext_resource type="Script" uid="uid://1egcllyawrb" path="res://scripts/apps/db_users.gd" id="2_wj56j"]
+
+[resource]
+script = ExtResource("2_wj56j")
+metadata/_custom_type_script = "uid://1egcllyawrb"

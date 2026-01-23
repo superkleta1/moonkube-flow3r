@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Song" load_steps=3 format=3 uid="uid://cntnn2w6uwso4"]
+
+[ext_resource type="Script" uid="uid://dnj5j5uc5w7re" path="res://scripts/apps/app_music/song.gd" id="1_3jak1"]
+[ext_resource type="AudioStream" uid="uid://bxwarpmmobrtp" path="res://assets/music/Colors Flying High.mp3" id="1_s74mj"]
+
+[resource]
+script = ExtResource("1_3jak1")
+song_id = "c_f_h"
+title = "Colors Flying High"
+audio_stream = ExtResource("1_s74mj")
+metadata/_custom_type_script = "uid://dnj5j5uc5w7re"

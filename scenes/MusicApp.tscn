@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://crgujkn23bxc7"]
+[gd_scene load_steps=2 format=3 uid="uid://crgujkn23bxc7"]
+
+[ext_resource type="Script" uid="uid://dwn81lue4mw5x" path="res://scripts/apps/app_music/app_music_manager.gd" id="1_e280s"]
 
 [node name="MusicApp" type="Control"]
 layout_mode = 3
@@ -7,3 +9,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_e280s")
