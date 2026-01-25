@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://crgujkn23bxc7"]
+[gd_scene load_steps=7 format=3 uid="uid://crgujkn23bxc7"]
 
-[ext_resource type="Script" uid="uid://dwn81lue4mw5x" path="res://scripts/apps/app_music/app_music_manager.gd" id="1_e280s"]
-[ext_resource type="Script" uid="uid://brddgi3isguga" path="res://scripts/apps/app_music/app_music_ui.gd" id="2_f8g4d"]
+[ext_resource type="Script" uid="uid://b78vafhnx5oqe" path="res://scripts/apps/app_music/app_music_manager.gd" id="1_e280s"]
+[ext_resource type="Script" uid="uid://cw11f26t8u75x" path="res://scripts/apps/app_music/app_music_ui.gd" id="2_f8g4d"]
 [ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="2_ix24h"]
+[ext_resource type="Resource" uid="uid://0yvulnrt4qlv" path="res://resources/playlists/playlist_persona.tres" id="2_vgasc"]
 [ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="4_c56cc"]
+[ext_resource type="PackedScene" uid="uid://cy7mol6j4jwxw" path="res://scenes/packed_scenes/SongCommentUI.tscn" id="5_163ma"]
 
 [node name="MusicApp" type="Control"]
 layout_mode = 3
@@ -13,6 +15,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e280s")
+playlist = ExtResource("2_vgasc")
+comments_csv_path = "uid://dd1lrhsi5c72g"
 
 [node name="MusicAppUI" type="Control" parent="."]
 anchors_preset = 0
@@ -20,6 +24,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("2_ix24h")
 script = ExtResource("2_f8g4d")
+song_comment_ui_scene = ExtResource("5_163ma")
 
 [node name="Background" type="TextureRect" parent="MusicAppUI"]
 layout_mode = 0

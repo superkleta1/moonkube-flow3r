@@ -14,7 +14,7 @@ var user_to_id: Dictionary[User, String]
 
 var current_song_id: String
 var current_song: Song
-var current_users: Array[User]
+var current_comments: Array[Comment]
 
 func _on_ready() -> void:
 	_parse_csv_to_comments()
@@ -77,7 +77,8 @@ func _parse_csv_to_comments() -> void:
 		comment.timestamp = row[col.get("timestamp", 3)]
 		
 		comments.append(comment)
-
+	
+	current_comments = comments
 	file.close()
 	
 	return
@@ -96,3 +97,13 @@ func _previous() -> void:
 
 func get_songs() -> Array[Song]:
 	return songs
+	
+func get_current_comments() -> Array[Comment]:
+	return current_comments
+
+func get_user(user_id: String) -> User:
+	if not id_to_user.has(user_id):
+		push_error("Given user_id", user_id, "is not in id_to_user!")
+		return null
+	
+	return id_to_user[user_id]
