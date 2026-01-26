@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://crgujkn23bxc7"]
 
-[ext_resource type="Script" uid="uid://b78vafhnx5oqe" path="res://scripts/apps/app_music/app_music_manager.gd" id="1_e280s"]
-[ext_resource type="Script" uid="uid://cw11f26t8u75x" path="res://scripts/apps/app_music/app_music_ui.gd" id="2_f8g4d"]
+[ext_resource type="Script" uid="uid://dtatnqyxi30bw" path="res://scripts/apps/app_music/app_music_manager.gd" id="1_e280s"]
+[ext_resource type="Script" uid="uid://tssoergxxawt" path="res://scripts/apps/app_music/app_music_ui.gd" id="2_f8g4d"]
 [ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="2_ix24h"]
 [ext_resource type="Resource" uid="uid://0yvulnrt4qlv" path="res://resources/playlists/playlist_persona.tres" id="2_vgasc"]
 [ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="4_c56cc"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="UserDB" load_steps=7 format=3 uid="uid://d1vs7arwqw7ef"]
+
+[ext_resource type="Script" uid="uid://brqal8c3t6ef4" path="res://scripts/apps/user.gd" id="1_c1kyt"]
+[ext_resource type="Resource" uid="uid://dn1ljkaikjqil" path="res://resources/users/user_aki.tres" id="2_l3dlq"]
+[ext_resource type="Script" uid="uid://jw64e0e3t6lu" path="res://scripts/apps/db_user.gd" id="2_wj56j"]
+[ext_resource type="Resource" uid="uid://bs8g37r4l7ifa" path="res://resources/users/user_sumi.tres" id="3_a4axm"]
+[ext_resource type="Resource" uid="uid://ddwkgn8lt52ky" path="res://resources/users/user_natsu.tres" id="4_cx5d5"]
+[ext_resource type="Resource" uid="uid://dljutxa4i6v0s" path="res://resources/users/user_ritsu.tres" id="5_ic03l"]
+
+[resource]
+script = ExtResource("2_wj56j")
+id_to_user = Dictionary[String, ExtResource("1_c1kyt")]({
+"user_aki": ExtResource("2_l3dlq"),
+"user_natsu": ExtResource("4_cx5d5"),
+"user_ritsu": ExtResource("5_ic03l"),
+"user_sumi": ExtResource("3_a4axm")
+})
+metadata/_custom_type_script = "uid://jw64e0e3t6lu"

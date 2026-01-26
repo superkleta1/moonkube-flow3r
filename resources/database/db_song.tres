@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SongDB" load_steps=6 format=3 uid="uid://c15t45ls4l8m6"]
+
+[ext_resource type="Script" uid="uid://bnoudgc1o1eb5" path="res://scripts/apps/app_music/song.gd" id="1_syldv"]
+[ext_resource type="Script" uid="uid://xwjgp8wqnmpa" path="res://scripts/apps/app_music/db_song.gd" id="2_mcda1"]
+[ext_resource type="Resource" uid="uid://dxgrgxtt8hfdx" path="res://resources/songs/heartbeat_heartbreak.tres" id="2_r8tix"]
+[ext_resource type="Resource" uid="uid://ynpljb7be867" path="res://resources/songs/full_moon_full_life.tres" id="3_wb5i7"]
+[ext_resource type="Resource" uid="uid://cntnn2w6uwso4" path="res://resources/songs/colors_flying_high.tres" id="4_in0p0"]
+
+[resource]
+script = ExtResource("2_mcda1")
+id_to_song = Dictionary[String, ExtResource("1_syldv")]({
+"c_f_h": ExtResource("4_in0p0"),
+"f_m_f_l": ExtResource("3_wb5i7"),
+"h_h": ExtResource("2_r8tix")
+})
+metadata/_custom_type_script = "uid://xwjgp8wqnmpa"

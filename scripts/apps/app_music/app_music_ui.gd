@@ -24,7 +24,8 @@ func _on_ready() -> void:
 	pause_button.pressed.connect(_on_pause_button_pressed)
 	next_button.pressed.connect(_on_next_button_pressed)
 	previous_button.pressed.connect(_on_previous_button_pressed)
-	
+
+func _on_start() -> void:
 	_build_comments()
 	
 func _on_play_button_pressed() -> void:
@@ -54,11 +55,14 @@ func _build_comments() -> void:
 		push_warning("There is no assigned song comment ui scene!")
 		return
 	
+	for c in comments_vbox_container.get_children():
+		c.queue_free()
+	
 	var current_comments: Array[Comment] = music_app_manager.get_current_comments()
 	
 	for comment: Comment in current_comments:
 		var song_comment_ui := song_comment_ui_scene.instantiate() as SongCommentUI
-		var user := music_app_manager.get_user(comment.user_id)
+		var user := Database.user_db.get_user(comment.user_id)
 		if user == null:
 			push_error("User with user id", comment.user_id, "is null!")
 		song_comment_ui.set_values(user.avatar, user.display_name, comment.time_stamp, comment.content)

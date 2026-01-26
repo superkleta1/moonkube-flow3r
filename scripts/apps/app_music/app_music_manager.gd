@@ -5,20 +5,15 @@ class_name MusicAppManager
 @export_file("*.csv") var comments_csv_path: String
 @onready var music_app_ui: MusicAppUI = $MusicAppUI
 
+# need to cache this probably somewhere else so we don't parse everything again once starting this scene
 var comments: Array[Comment]
-var id_to_song: Dictionary[String, Song]
-var song_to_id: Dictionary[Song, String]
 var songs: Array[Song]
-var id_to_user: Dictionary[String, User]
-var user_to_id: Dictionary[User, String]
 
 var current_song_id: String
 var current_song: Song
 var current_comments: Array[Comment]
 
 func _on_ready() -> void:
-	_parse_csv_to_comments()
-	
 	if music_app_ui != null and music_app_ui.has_signal("play_button_pressed"):
 		music_app_ui.connect("play_button_pressed", Callable(self, "_on_play"))
 	else:
@@ -38,6 +33,18 @@ func _on_ready() -> void:
 		music_app_ui.connect("previous_button_pressed", Callable(self, "_on_previous"))
 	else:
 		push_warning("MusicAppUI is missing signal previous_button_pressed()")
+	
+	if playlist.songs.is_empty():
+		push_error("There's no songs in the playlist!")
+		return
+	
+	# default set song to the first in the playlist
+	var song: Song = playlist.songs[0]
+	current_song_id = song.song_id
+	current_song = song
+	
+	_parse_csv_to_comments()
+	_update_current_comments()
 
 func set_playlist(_playlist: Playlist) -> void:
 	playlist = _playlist
@@ -78,7 +85,6 @@ func _parse_csv_to_comments() -> void:
 		
 		comments.append(comment)
 	
-	current_comments = comments
 	file.close()
 	
 	return
@@ -95,15 +101,11 @@ func _next() -> void:
 func _previous() -> void:
 	return
 
+func _update_current_comments() -> void:
+	return
+
 func get_songs() -> Array[Song]:
 	return songs
-	
+
 func get_current_comments() -> Array[Comment]:
 	return current_comments
-
-func get_user(user_id: String) -> User:
-	if not id_to_user.has(user_id):
-		push_error("Given user_id", user_id, "is not in id_to_user!")
-		return null
-	
-	return id_to_user[user_id]
