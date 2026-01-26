@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgwqhaesj8jis"]
+
+[ext_resource type="Script" uid="uid://caf4h7pahx4se" path="res://scripts/autoload/db.gd" id="1_fdjp0"]
+[ext_resource type="Resource" uid="uid://c15t45ls4l8m6" path="res://resources/database/db_song.tres" id="2_u8yip"]
+[ext_resource type="Resource" uid="uid://d1vs7arwqw7ef" path="res://resources/database/db_user.tres" id="3_ohyqd"]
+
+[node name="Database" type="Node"]
+script = ExtResource("1_fdjp0")
+song_db = ExtResource("2_u8yip")
+user_db = ExtResource("3_ohyqd")
+comments_csv_path = "uid://xe1cwaaqkdvi"

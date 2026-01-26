@@ -2,18 +2,21 @@ extends Control
 class_name MusicAppManager
 
 @export var playlist: Playlist
-@export_file("*.csv") var comments_csv_path: String
+
 @onready var music_app_ui: MusicAppUI = $MusicAppUI
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 # need to cache this probably somewhere else so we don't parse everything again once starting this scene
-var comments: Array[Comment]
 var songs: Array[Song]
 
-var current_song_id: String
+var current_song_index: int = 0
+var current_song_id: String = ""
 var current_song: Song
 var current_comments: Array[Comment]
 
-func _on_ready() -> void:
+signal song_changed()
+
+func _ready() -> void:
 	if music_app_ui != null and music_app_ui.has_signal("play_button_pressed"):
 		music_app_ui.connect("play_button_pressed", Callable(self, "_on_play"))
 	else:
@@ -39,69 +42,64 @@ func _on_ready() -> void:
 		return
 	
 	# default set song to the first in the playlist
-	var song: Song = playlist.songs[0]
+	current_song_index = 0
+	songs = playlist.songs
+	var song: Song = songs[current_song_index]
 	current_song_id = song.song_id
 	current_song = song
+	audio_player.stream = current_song.audio_stream
 	
-	_parse_csv_to_comments()
 	_update_current_comments()
+	song_changed.emit()
 
 func set_playlist(_playlist: Playlist) -> void:
 	playlist = _playlist
 
-func _parse_csv_to_comments() -> void:
-	if comments_csv_path == null:
-		push_error("comments_csv_path has not been set!")
+func _on_play() -> void:
+	if current_song == null:
+		push_error("current_song is null!")
 		return
 	
-	if not FileAccess.file_exists(comments_csv_path):
-		push_error("comments_csv_path is not a valid file path!")
-		return
-	
-	var file := FileAccess.open(comments_csv_path, FileAccess.READ)
-	if file == null:
-		push_error("comments_csv_path opens to a null file!")
-		return
-	
-	# header
-	var header := file.get_csv_line()
-	var col := {}
-	for i in header.size():
-		col[header[i]] = i
-
-	while not file.eof_reached():
-		var row := file.get_csv_line()
-		if row.size() == 0:
-			continue
-		# skip blank lines that sometimes appear at EOF
-		if row.size() == 1 and String(row[0]).strip_edges() == "":
-			continue
-		
-		var comment:= Comment.new()
-		comment.song_id = row[col.get("song_id", 0)]
-		comment.user_id = row[col.get("user_id", 1)]
-		comment.content = row[col.get("content", 2)]
-		comment.timestamp = row[col.get("timestamp", 3)]
-		
-		comments.append(comment)
-	
-	file.close()
+	if not audio_player.stream_paused:
+		audio_player.play()
+	else:
+		audio_player.stream_paused = false
 	
 	return
 
-func _play() -> void:
+func _on_pause() -> void:
+	audio_player.stream_paused = true
 	return
 
-func _pause() -> void:
+func _on_next() -> void:
+	current_song_index = (current_song_index + 1) % songs.size()
+	current_song = songs[current_song_index]
+	current_song_id = current_song.song_id
+	audio_player.stream = current_song.audio_stream
+	audio_player.play()
+	_update_current_comments()
+	song_changed.emit()
 	return
 
-func _next() -> void:
-	return
-
-func _previous() -> void:
+func _on_previous() -> void:
+	current_song_index = (current_song_index - 1) % songs.size()
+	current_song = songs[current_song_index]
+	current_song_id = current_song.song_id
+	audio_player.stream = current_song.audio_stream
+	audio_player.play()
+	_update_current_comments()
+	song_changed.emit()
 	return
 
 func _update_current_comments() -> void:
+	if current_song_id == "":
+		push_error("current_song_id is empty!")
+		return
+	
+	current_comments = Database.get_comments(current_song_id)
+	if current_comments.is_empty():
+		push_warning("current_comments is empty!")
+	
 	return
 
 func get_songs() -> Array[Song]:
@@ -109,3 +107,6 @@ func get_songs() -> Array[Song]:
 
 func get_current_comments() -> Array[Comment]:
 	return current_comments
+
+func get_current_song() -> Song:
+	return current_song

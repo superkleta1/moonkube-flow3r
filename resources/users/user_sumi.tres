@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="User" load_steps=3 format=3 uid="uid://bs8g37r4l7ifa"]
 
-[ext_resource type="Script" uid="uid://brqal8c3t6ef4" path="res://scripts/apps/user.gd" id="1_12144"]
+[ext_resource type="Script" uid="uid://bptbn073kscht" path="res://scripts/apps/user.gd" id="1_12144"]
 [ext_resource type="Texture2D" uid="uid://2he8hykkvspw" path="res://assets/images/avatars/avatar_sumi224.png" id="1_kv2j1"]
 
 [resource]
