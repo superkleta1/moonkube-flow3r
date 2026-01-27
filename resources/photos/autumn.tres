@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Photo" load_steps=3 format=3 uid="uid://ch61ixgpjh11t"]
+
+[ext_resource type="Script" uid="uid://dh47f88fnwuat" path="res://scripts/apps/app_album/photo.gd" id="1_83tiy"]
+[ext_resource type="Texture2D" uid="uid://dgr7cwqo4a0vc" path="res://assets/images/photos/photo_autumn224.png" id="1_ptpt7"]
+
+[resource]
+script = ExtResource("1_83tiy")
+image = ExtResource("1_ptpt7")
+location = "Ueno Park"
+time = "03/01/2026"
+metadata/_custom_type_script = "uid://dh47f88fnwuat"

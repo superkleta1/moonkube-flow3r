@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b023nsea1oaox"]
+
+[ext_resource type="Script" uid="uid://txjq6l85hbdv" path="res://scripts/apps/app_album/photo_button.gd" id="1_8u8rr"]
+
+[node name="PhotoButton" type="TextureButton"]
+script = ExtResource("1_8u8rr")
+metadata/_custom_type_script = "uid://txjq6l85hbdv"
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 0
+stretch_mode = 5

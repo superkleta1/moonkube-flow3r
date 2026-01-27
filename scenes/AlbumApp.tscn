@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://caclm4cp7f712"]
+
+[ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="1_lw1lo"]
+[ext_resource type="Script" uid="uid://c1txko2q8g0v4" path="res://scripts/apps/app_album/app_album_ui_manager.gd" id="1_mmj5r"]
+[ext_resource type="Resource" uid="uid://bgn1x6h60k1sp" path="res://resources/albums/album_aki.tres" id="2_bh3rw"]
+[ext_resource type="PackedScene" uid="uid://b023nsea1oaox" path="res://scenes/packed_scenes/PhotoButton.tscn" id="2_imj2j"]
+[ext_resource type="PackedScene" uid="uid://cwqy6frgimfyp" path="res://scenes/packed_scenes/PhotoViewer.tscn" id="3_1d318"]
+
+[node name="AlbumApp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mmj5r")
+album = ExtResource("2_bh3rw")
+photo_button_ui_scene = ExtResource("2_imj2j")
+photo_viewer_ui_scene = ExtResource("3_1d318")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_lw1lo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 224
+columns = 5
+
+[node name="PhotoViewerAnchor" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

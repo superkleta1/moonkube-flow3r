@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Album" load_steps=6 format=3 uid="uid://bgn1x6h60k1sp"]
+
+[ext_resource type="Script" uid="uid://dh47f88fnwuat" path="res://scripts/apps/app_album/photo.gd" id="1_fuhii"]
+[ext_resource type="Resource" uid="uid://c2bt5ki0byt24" path="res://resources/photos/fish.tres" id="2_e2g3e"]
+[ext_resource type="Script" uid="uid://cgm32rofoxunl" path="res://scripts/apps/app_album/albums.gd" id="2_sn02b"]
+[ext_resource type="Resource" uid="uid://ch61ixgpjh11t" path="res://resources/photos/autumn.tres" id="3_7qy2i"]
+[ext_resource type="Resource" uid="uid://b3xtlqcpliarl" path="res://resources/photos/merryground.tres" id="4_p0rw5"]
+
+[resource]
+script = ExtResource("2_sn02b")
+photos = Array[ExtResource("1_fuhii")]([ExtResource("2_e2g3e"), ExtResource("3_7qy2i"), ExtResource("4_p0rw5")])
+metadata/_custom_type_script = "uid://cgm32rofoxunl"

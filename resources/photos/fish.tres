@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Photo" load_steps=3 format=3 uid="uid://c2bt5ki0byt24"]
+
+[ext_resource type="Script" uid="uid://dh47f88fnwuat" path="res://scripts/apps/app_album/photo.gd" id="1_csnwx"]
+[ext_resource type="Texture2D" uid="uid://t6wsawa6g7bh" path="res://assets/images/photos/photo_fish224.png" id="1_xb78v"]
+
+[resource]
+script = ExtResource("1_csnwx")
+image = ExtResource("1_xb78v")
+location = "Shinagawa Aquarium"
+time = "10/08/2026"
+metadata/_custom_type_script = "uid://dh47f88fnwuat"

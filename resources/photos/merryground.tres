@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Photo" load_steps=3 format=3 uid="uid://b3xtlqcpliarl"]
+
+[ext_resource type="Script" uid="uid://dh47f88fnwuat" path="res://scripts/apps/app_album/photo.gd" id="1_0xf5r"]
+[ext_resource type="Texture2D" uid="uid://c27fvqktbi7ap" path="res://assets/images/photos/photo_merryground224.png" id="1_3bj5u"]
+
+[resource]
+script = ExtResource("1_0xf5r")
+image = ExtResource("1_3bj5u")
+location = "Tokyo Destinyland"
+time = "03/23/2026"
+metadata/_custom_type_script = "uid://dh47f88fnwuat"

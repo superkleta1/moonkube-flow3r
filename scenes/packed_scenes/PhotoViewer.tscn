@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwqy6frgimfyp"]
+
+[ext_resource type="Script" uid="uid://djmk3308hw476" path="res://scripts/apps/app_album/photo_viewer.gd" id="1_bhblw"]
+
+[node name="PhotoViewer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bhblw")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 64.0
+offset_right = 1280.0
+offset_bottom = 1024.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Location" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2

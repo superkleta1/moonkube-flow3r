@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgxxkwv5ej35c"]
 
 [ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="1_lc8jm"]
-[ext_resource type="Script" uid="uid://dgety7djvi5cj" path="res://scripts/minddive_preparation/prep_manager.gd" id="2_m1tut"]
+[ext_resource type="Script" uid="uid://duxb47w3mu08a" path="res://scripts/minddive_preparation/prep_manager.gd" id="2_m1tut"]
 [ext_resource type="Resource" uid="uid://32xys63xq4r7" path="res://resources/mvp_resources/mvp_prepconfig.tres" id="3_5cea4"]
 [ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/packed_scenes/SlotButton.tscn" id="4_07w38"]
 [ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="5_s4mjt"]
