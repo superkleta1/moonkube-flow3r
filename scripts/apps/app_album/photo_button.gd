@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func set_values(_photo: Photo) -> void:
 	photo = _photo
-	image.texture = _photo.image
+	image.texture = _photo.image_album_view
 
 func _on_pressed() -> void:
 	photo_picked.emit(photo)

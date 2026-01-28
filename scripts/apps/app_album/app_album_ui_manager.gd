@@ -38,12 +38,19 @@ func _build_photos() -> void:
 			"  script=", photo_button.get_script(),
 			"  is PhotoButton? ", photo_button is PhotoButton)
 		
-		photo_button.photo_picked.connect(_on_photo_picked)
+		photo_button.photo_picked.connect(_enter_photo_viewer)
 		
 	return
 
-func _on_photo_picked(photo: Photo) -> void:
+func _enter_photo_viewer(photo: Photo) -> void:
 	var photo_viewer := photo_viewer_ui_scene.instantiate() as PhotoViewer
 	photo_viewer_anchor.add_child(photo_viewer)
 	photo_viewer.set_values(photo)
+	photo_viewer.exit_pressed.connect(_exit_photo_viewer)
+	return
+
+func _exit_photo_viewer() -> void:
+	for c in photo_viewer_anchor.get_children():
+		c.queue_free()
+	
 	return

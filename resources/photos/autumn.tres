@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_83tiy")
-image = ExtResource("1_ptpt7")
+image_album_view = ExtResource("1_ptpt7")
+image_photo_view = ExtResource("1_ptpt7")
 location = "Ueno Park"
 time = "03/01/2026"
 metadata/_custom_type_script = "uid://dh47f88fnwuat"

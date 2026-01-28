@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_0xf5r")
-image = ExtResource("1_3bj5u")
+image_album_view = ExtResource("1_3bj5u")
+image_photo_view = ExtResource("1_3bj5u")
 location = "Tokyo Destinyland"
 time = "03/23/2026"
 metadata/_custom_type_script = "uid://dh47f88fnwuat"

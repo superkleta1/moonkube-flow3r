@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_csnwx")
-image = ExtResource("1_xb78v")
+image_album_view = ExtResource("1_xb78v")
+image_photo_view = ExtResource("1_xb78v")
 location = "Shinagawa Aquarium"
 time = "10/08/2026"
 metadata/_custom_type_script = "uid://dh47f88fnwuat"
