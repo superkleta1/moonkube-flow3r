@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BrowserHistory" load_steps=8 format=3 uid="uid://edoimel55u8t"]
+
+[ext_resource type="Script" uid="uid://bk0dnd3u7ifoa" path="res://scripts/apps/app_browser/history_entry.gd" id="1_sysot"]
+[ext_resource type="Script" uid="uid://6o6bsx83vff7" path="res://scripts/apps/app_browser/browser_history.gd" id="2_24atj"]
+[ext_resource type="Resource" uid="uid://ckxrfq8kihyr6" path="res://resources/history_entries/web_bnet.tres" id="2_fo380"]
+[ext_resource type="Resource" uid="uid://sorubu2irxlb" path="res://resources/history_entries/web_slack.tres" id="3_f8qus"]
+[ext_resource type="Resource" uid="uid://codtrxof1ga57" path="res://resources/history_entries/web_steam.tres" id="4_6kgji"]
+[ext_resource type="Resource" uid="uid://dfkdejyn2rjoa" path="res://resources/history_entries/web_google.tres" id="5_08xus"]
+[ext_resource type="Resource" uid="uid://bx40mg1cv0cyv" path="res://resources/history_entries/web_terraria.tres" id="6_mvpie"]
+
+[resource]
+script = ExtResource("2_24atj")
+history_entries = Array[ExtResource("1_sysot")]([ExtResource("2_fo380"), ExtResource("3_f8qus"), ExtResource("4_6kgji"), ExtResource("5_08xus"), ExtResource("6_mvpie")])
+metadata/_custom_type_script = "uid://6o6bsx83vff7"

@@ -3,6 +3,7 @@ class_name DB
 
 @export var song_db: SongDB
 @export var user_db: UserDB
+@export var browser_history: BrowserHistory
 @export_file("*.csv") var comments_csv_path: String
 
 var comments: Array[Comment]

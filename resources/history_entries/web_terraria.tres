@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HistoryEntry" load_steps=3 format=3 uid="uid://bx40mg1cv0cyv"]
+
+[ext_resource type="Script" uid="uid://bk0dnd3u7ifoa" path="res://scripts/apps/app_browser/history_entry.gd" id="1_4klmt"]
+[ext_resource type="Texture2D" uid="uid://t28gat552bf3" path="res://assets/images/Terraria.png" id="1_w7erb"]
+
+[resource]
+script = ExtResource("1_4klmt")
+url = "https://terraria.org/"
+title = "Terraria"
+favicon = ExtResource("1_w7erb")
+metadata/_custom_type_script = "uid://bk0dnd3u7ifoa"

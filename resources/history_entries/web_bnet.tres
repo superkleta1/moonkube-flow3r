@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HistoryEntry" load_steps=3 format=3 uid="uid://ckxrfq8kihyr6"]
+
+[ext_resource type="Script" uid="uid://bk0dnd3u7ifoa" path="res://scripts/apps/app_browser/history_entry.gd" id="1_4klmt"]
+[ext_resource type="Texture2D" uid="uid://c330reye1xe4q" path="res://assets/images/Battle.png" id="1_w7erb"]
+
+[resource]
+script = ExtResource("1_4klmt")
+url = "http://battle.net/"
+title = "Battle.net"
+timestamp = "02/01/2026 10:50AM"
+favicon = ExtResource("1_w7erb")
+description = "Heroes of the Storm!"
+metadata/_custom_type_script = "uid://bk0dnd3u7ifoa"

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://boutw7p30fphh"]
+
+[ext_resource type="Script" uid="uid://da2ri6ct826bi" path="res://scripts/apps/app_browser/history_entry_button.gd" id="1_2uo2l"]
+
+[node name="HistoryEntryButton" type="HBoxContainer"]
+script = ExtResource("1_2uo2l")
+
+[node name="FaviconTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="ContentVBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="ContentVBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+[node name="URLLabel" type="Label" parent="ContentVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3529412, 0.3529412, 0.3529412, 1)
+theme_override_font_sizes/font_size = 10
+
+[node name="Spacer" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimestampLabel" type="Label" parent="."]
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="OpenButton" type="Button" parent="."]
+layout_mode = 2
+text = "Open
+"

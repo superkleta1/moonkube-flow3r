@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvr7jfvounciw"]
+
+[ext_resource type="Script" uid="uid://dgi6q261ft5m5" path="res://scripts/apps/app_browser/browser_app_ui.gd" id="1_kp8q1"]
+[ext_resource type="Texture2D" uid="uid://twlwayty7e4x" path="res://assets/mvp_assets/Background.png" id="2_041eo"]
+
+[node name="BrowserAppUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kp8q1")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_041eo")
+
+[node name="SearchBar" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 255.99997
+offset_top = 192.0
+offset_right = 441.99997
+offset_bottom = 232.0
+scale = Vector2(2.3612423, 2.3612423)
+
+[node name="SearchInput" type="LineEdit" parent="SearchBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search history..."
+
+[node name="SearchButton" type="Button" parent="SearchBar"]
+layout_mode = 2
+text = "Search"
+
+[node name="ClearButton" type="Button" parent="SearchBar"]
+layout_mode = 2
+text = "Clear"
+
+[node name="HistoryScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1024.0
+
+[node name="HistoryListContainer" type="VBoxContainer" parent="HistoryScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
