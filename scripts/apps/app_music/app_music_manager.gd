@@ -59,12 +59,14 @@ func _on_play() -> void:
 	if current_song == null:
 		push_error("current_song is null!")
 		return
-	
+
 	if not audio_player.stream_paused:
 		audio_player.play()
+		# Unlock codex entries when song first plays
+		CodexManager.unlock_entries_from_content(current_song)
 	else:
 		audio_player.stream_paused = false
-	
+
 	return
 
 func _on_pause() -> void:
@@ -79,6 +81,8 @@ func _on_next() -> void:
 	audio_player.play()
 	_update_current_comments()
 	song_changed.emit()
+	# Unlock codex entries for the new song
+	CodexManager.unlock_entries_from_content(current_song)
 	return
 
 func _on_previous() -> void:
@@ -89,6 +93,8 @@ func _on_previous() -> void:
 	audio_player.play()
 	_update_current_comments()
 	song_changed.emit()
+	# Unlock codex entries for the new song
+	CodexManager.unlock_entries_from_content(current_song)
 	return
 
 func _update_current_comments() -> void:

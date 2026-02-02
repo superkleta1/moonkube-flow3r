@@ -93,6 +93,9 @@ func _on_history_entry_clicked(entry: HistoryEntry) -> void:
 	entry_clicked.emit(entry)
 
 func _on_show_page(entry: HistoryEntry) -> void:
+	# Unlock codex entries when page is visited
+	CodexManager.unlock_entries_from_content(entry)
+
 	# Instantiate and show the page scene
 	if entry.page_scene == null:
 		push_error("Entry '%s' has no page_scene!" % entry.title)

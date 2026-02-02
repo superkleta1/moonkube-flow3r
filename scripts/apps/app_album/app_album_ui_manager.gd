@@ -13,7 +13,11 @@ func _ready() -> void:
 		push_error("photo_button not assigned")
 	if photo_viewer_ui_scene == null:
 		push_error("photo_viewer not assigned")
-	
+
+	# Unlock album codex entries when album is opened
+	if album:
+		CodexManager.unlock_entries_from_content(album)
+
 	_build_photos()
 
 func set_album(_album: Album) -> void:
@@ -43,6 +47,9 @@ func _build_photos() -> void:
 	return
 
 func _enter_photo_viewer(photo: Photo) -> void:
+	# Unlock codex entries when photo is viewed
+	CodexManager.unlock_entries_from_content(photo)
+
 	var photo_viewer := photo_viewer_ui_scene.instantiate() as PhotoViewer
 	photo_viewer_anchor.add_child(photo_viewer)
 	photo_viewer.set_values(photo)

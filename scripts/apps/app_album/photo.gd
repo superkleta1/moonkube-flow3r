@@ -5,3 +5,6 @@ class_name Photo
 @export var image_photo_view: Texture
 @export var location: String = ""
 @export var time: String = ""
+
+## Codex entries unlocked when this photo is viewed
+@export var codex_entries: Array[Resource] = []  # Can contain CodexBaseItem or CodexInformation
