@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="HistoryEntry" load_steps=3 format=3 uid="uid://ckxrfq8kihyr6"]
+[gd_resource type="Resource" script_class="HistoryEntry" load_steps=4 format=3 uid="uid://ckxrfq8kihyr6"]
 
-[ext_resource type="Script" uid="uid://bk0dnd3u7ifoa" path="res://scripts/apps/app_browser/history_entry.gd" id="1_4klmt"]
-[ext_resource type="Texture2D" uid="uid://c330reye1xe4q" path="res://assets/images/Battle.png" id="1_w7erb"]
+[ext_resource type="Texture2D" uid="uid://c330reye1xe4q" path="res://assets/images/Battle.png" id="1_i40tr"]
+[ext_resource type="Script" uid="uid://bk0dnd3u7ifoa" path="res://scripts/apps/app_browser/history_entry.gd" id="1_yqn07"]
+[ext_resource type="PackedScene" uid="uid://bcpbqtle4xavl" path="res://scenes/page_scenes/BattleNetPage.tscn" id="2_8fbxp"]
 
 [resource]
-script = ExtResource("1_4klmt")
+script = ExtResource("1_yqn07")
 url = "http://battle.net/"
 title = "Battle.net"
 timestamp = "02/01/2026 10:50AM"
-favicon = ExtResource("1_w7erb")
+favicon = ExtResource("1_i40tr")
 description = "Heroes of the Storm!"
+page_scene = ExtResource("2_8fbxp")
 metadata/_custom_type_script = "uid://bk0dnd3u7ifoa"

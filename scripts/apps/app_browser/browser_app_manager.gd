@@ -8,8 +8,11 @@ class_name BrowserAppManager
 
 var all_entries: Array[HistoryEntry] = []
 var current_entries: Array[HistoryEntry] = []
+var current_search_query: String = ""
 
 signal history_updated()
+signal show_page(entry: HistoryEntry)
+signal show_search_results(query: String, results: Array[HistoryEntry])
 
 func _ready() -> void:
 	if browser_app_ui != null and browser_app_ui.has_signal("search_requested"):
@@ -34,18 +37,21 @@ func _ready() -> void:
 
 func _on_search_requested(query: String) -> void:
 	var trimmed_query := query.strip_edges().to_lower()
+	current_search_query = trimmed_query
 
 	if trimmed_query.is_empty():
-		# Show all entries if search is empty
+		# Show all history if search is empty (back to history view)
 		current_entries = all_entries.duplicate()
+		history_updated.emit()
 	else:
 		# Filter entries by search query
-		current_entries.clear()
+		var search_results: Array[HistoryEntry] = []
 		for entry: HistoryEntry in all_entries:
 			if _matches_query(entry, trimmed_query):
-				current_entries.append(entry)
+				search_results.append(entry)
 
-	history_updated.emit()
+		current_entries = search_results
+		show_search_results.emit(trimmed_query, search_results)
 
 func _matches_query(entry: HistoryEntry, query: String) -> bool:
 	# Check if query matches title, URL, or description
@@ -58,11 +64,11 @@ func _matches_query(entry: HistoryEntry, query: String) -> bool:
 	return false
 
 func _on_entry_clicked(entry: HistoryEntry) -> void:
-	# Open URL in default browser
-	if entry.url != "":
-		OS.shell_open(entry.url)
+	# Show the page scene for this entry
+	if entry.page_scene != null:
+		show_page.emit(entry)
 	else:
-		push_warning("Tried to open entry with empty URL!")
+		push_warning("Entry '%s' has no page_scene assigned!" % entry.title)
 
 func get_current_entries() -> Array[HistoryEntry]:
 	return current_entries

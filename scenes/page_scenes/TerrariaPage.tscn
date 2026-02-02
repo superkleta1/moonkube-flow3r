@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmx6bshhiw3fy"]
+
+[ext_resource type="Script" uid="uid://cakc0xq5dry2s" path="res://scripts/apps/app_browser/page_base.gd" id="1_qpydr"]
+[ext_resource type="Texture2D" uid="uid://chph671mofrw4" path="res://assets/images/291-3840x2160-desktop-4k-overwatch-background.jpg" id="2_dp1i5"]
+
+[node name="TerrariaPage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qpydr")
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.50056726, 0.50056726)
+texture = ExtResource("2_dp1i5")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 512.0
+offset_bottom = 320.0
+text = "Back"

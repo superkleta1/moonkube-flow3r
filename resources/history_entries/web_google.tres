@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="HistoryEntry" load_steps=3 format=3 uid="uid://dfkdejyn2rjoa"]
+[gd_resource type="Resource" script_class="HistoryEntry" load_steps=4 format=3 uid="uid://dfkdejyn2rjoa"]
 
 [ext_resource type="Texture2D" uid="uid://cxquv28pcciq2" path="res://assets/images/Google.png" id="1_mrggu"]
+[ext_resource type="PackedScene" uid="uid://b8yksw4b4bg26" path="res://scenes/page_scenes/GooglePage.tscn" id="2_8hniq"]
 [ext_resource type="Script" uid="uid://bk0dnd3u7ifoa" path="res://scripts/apps/app_browser/history_entry.gd" id="2_ekuuc"]
 
 [resource]
@@ -8,4 +9,5 @@ script = ExtResource("2_ekuuc")
 url = "https://www.google.com/"
 title = "Google"
 favicon = ExtResource("1_mrggu")
+page_scene = ExtResource("2_8hniq")
 metadata/_custom_type_script = "uid://bk0dnd3u7ifoa"

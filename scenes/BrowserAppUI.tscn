@@ -18,12 +18,58 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_041eo")
 
+[node name="HistoryViewContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="HistoryScrollContainer" type="ScrollContainer" parent="HistoryViewContainer"]
+layout_mode = 0
+offset_left = 1408.0
+offset_top = 64.0
+offset_right = 1856.0
+offset_bottom = 1024.0
+
+[node name="HistoryListContainer" type="VBoxContainer" parent="HistoryViewContainer/HistoryScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SearchResultsViewContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="SearchResultsTitle" type="Label" parent="SearchResultsViewContainer"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 232.0
+offset_right = 166.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+text = "Search results for: ..."
+
+[node name="SearchResultsScrollContainer" type="ScrollContainer" parent="SearchResultsViewContainer"]
+layout_mode = 0
+offset_top = 320.0
+offset_right = 1024.0
+offset_bottom = 1080.0
+
+[node name="SearchResultsListContainer" type="VBoxContainer" parent="SearchResultsViewContainer/SearchResultsScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackToHistoryButton" type="Button" parent="SearchResultsViewContainer"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 960.0
+offset_right = 248.0
+offset_bottom = 1016.0
+text = "< - Back to History"
+
 [node name="SearchBar" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 255.99997
-offset_top = 192.0
-offset_right = 441.99997
-offset_bottom = 232.0
+offset_left = 175.99998
+offset_top = 55.999985
+offset_right = 362.0
+offset_bottom = 95.999985
 scale = Vector2(2.3612423, 2.3612423)
 
 [node name="SearchInput" type="LineEdit" parent="SearchBar"]
@@ -39,13 +85,11 @@ text = "Search"
 layout_mode = 2
 text = "Clear"
 
-[node name="HistoryScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
-offset_left = 1408.0
-offset_top = 64.0
-offset_right = 1856.0
-offset_bottom = 1024.0
-
-[node name="HistoryListContainer" type="VBoxContainer" parent="HistoryScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="PageViewerAnchor" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
