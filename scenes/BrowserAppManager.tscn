@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://nn733143qf8v"]
 
-[ext_resource type="Script" uid="uid://ikkl7lsixnw5" path="res://scripts/apps/app_browser/browser_app_manager.gd" id="1_eja3c"]
+[ext_resource type="Script" uid="uid://dhm8o2rsh6ipj" path="res://scripts/apps/app_browser/browser_app_manager.gd" id="1_eja3c"]
 [ext_resource type="Resource" uid="uid://edoimel55u8t" path="res://resources/browser_histories/aki_browser_history.tres" id="2_40ihb"]
 [ext_resource type="PackedScene" uid="uid://cvr7jfvounciw" path="res://scenes/BrowserAppUI.tscn" id="2_763s1"]
-[ext_resource type="PackedScene" uid="uid://boutw7p30fphh" path="res://scenes/packed_scenes/HistoryEntryButton.tscn" id="3_cox38"]
+[ext_resource type="PackedScene" path="res://scenes/packed_scenes/HistoryEntryButton.tscn" id="3_cox38"]
 
 [node name="BrowserAppManager" type="Control"]
 layout_mode = 3

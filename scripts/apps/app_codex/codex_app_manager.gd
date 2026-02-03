@@ -42,11 +42,11 @@ func _build_base_items_grid() -> void:
 	var all_items := CodexManager.get_all_base_items()
 
 	if all_items.is_empty():
-		push_warning("No CodexBaseItems registered in CodexManager")
+		push_warning("No BaseItems registered in CodexManager")
 		return
 
 	# Create a card for each item
-	for item: CodexBaseItem in all_items:
+	for item: BaseItem in all_items:
 		var card := codex_card_scene.instantiate() as CodexCard
 		base_items_grid.add_child(card)
 		card.set_entry(item)
@@ -67,11 +67,11 @@ func _build_information_grid() -> void:
 	var all_info := CodexManager.get_all_information()
 
 	if all_info.is_empty():
-		push_warning("No CodexInformation registered in CodexManager")
+		push_warning("No Information registered in CodexManager")
 		return
 
 	# Create a card for each information entry
-	for info: CodexInformation in all_info:
+	for info: Information in all_info:
 		var card := codex_card_scene.instantiate() as CodexCard
 		information_grid.add_child(card)
 		card.set_entry(info)
@@ -108,15 +108,15 @@ func _close_detail_viewer() -> void:
 
 ## Handle new unlock - refresh the grids
 func _on_entry_unlocked(entry: Resource) -> void:
-	if entry is CodexBaseItem:
+	if entry is BaseItem:
 		_build_base_items_grid()
-	elif entry is CodexInformation:
+	elif entry is Information:
 		_build_information_grid()
 
 
 ## Handle entry viewed - refresh to remove highlight
 func _on_entry_viewed(entry: Resource) -> void:
-	if entry is CodexBaseItem:
+	if entry is BaseItem:
 		_build_base_items_grid()
-	elif entry is CodexInformation:
+	elif entry is Information:
 		_build_information_grid()

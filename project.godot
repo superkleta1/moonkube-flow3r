@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 RunContext="*res://scripts/autoload/run_context.gd"
 Database="*res://scenes/autoload_scenes/Database.tscn"
+CodexManager="*res://scripts/autoload/codex_manager.gd"
 
 [display]
 

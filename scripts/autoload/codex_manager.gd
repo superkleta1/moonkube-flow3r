@@ -8,8 +8,8 @@ signal entry_unlocked(entry: Resource)  # Emitted when a new entry is unlocked
 signal entry_viewed(entry: Resource)    # Emitted when player views entry details (clears "new" status)
 
 ## All registered codex entries
-var all_base_items: Array[CodexBaseItem] = []
-var all_information: Array[CodexInformation] = []
+var all_base_items: Array[BaseItem] = []
+var all_information: Array[Information] = []
 
 ## Dictionaries for fast lookup: entry_id -> entry
 var base_items_dict: Dictionary = {}
@@ -27,38 +27,112 @@ func _ready() -> void:
 	load_progress()
 
 
-## Register a CodexBaseItem entry (call this when game loads resources)
-func register_base_item(item: CodexBaseItem) -> void:
-	if item.entry_id.is_empty():
-		push_error("Cannot register CodexBaseItem with empty entry_id")
+## Register a BaseItem entry (call this when game loads resources)
+func register_base_item(item: BaseItem) -> void:
+	if item.id.is_empty():
+		push_error("Cannot register BaseItem with empty entry_id")
 		return
 
-	if base_items_dict.has(item.entry_id):
-		push_warning("CodexBaseItem with ID '%s' already registered" % item.entry_id)
+	if base_items_dict.has(item.id):
+		push_warning("BaseItem with ID '%s' already registered" % item.id)
 		return
 
 	all_base_items.append(item)
-	base_items_dict[item.entry_id] = item
+	base_items_dict[item.id] = item
 
 	# Apply saved unlock state
 	_apply_unlock_state(item)
 
 
-## Register a CodexInformation entry (call this when game loads resources)
-func register_information(info: CodexInformation) -> void:
-	if info.entry_id.is_empty():
-		push_error("Cannot register CodexInformation with empty entry_id")
+## Register a Information entry (call this when game loads resources)
+func register_information(info: Information) -> void:
+	if info.id.is_empty():
+		push_error("Cannot register Information with empty entry_id")
 		return
 
-	if information_dict.has(info.entry_id):
-		push_warning("CodexInformation with ID '%s' already registered" % info.entry_id)
+	if information_dict.has(info.id):
+		push_warning("Information with ID '%s' already registered" % info.id)
 		return
 
 	all_information.append(info)
-	information_dict[info.entry_id] = info
+	information_dict[info.id] = info
 
 	# Apply saved unlock state
 	_apply_unlock_state(info)
+
+
+## HELPER: Load and register all BaseItems from a directory
+## Example: CodexManager.load_base_items_from_directory("res://resources/codex/base_items/")
+func load_base_items_from_directory(dir_path: String) -> void:
+	var dir := DirAccess.open(dir_path)
+	if not dir:
+		push_error("Failed to open directory: %s" % dir_path)
+		return
+
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".tres"):
+			var full_path := dir_path.path_join(file_name)
+			var resource := load(full_path)
+
+			if resource is BaseItem:
+				register_base_item(resource)
+			else:
+				push_warning("File %s is not a BaseItem" % file_name)
+
+		file_name = dir.get_next()
+
+	dir.list_dir_end()
+	print("Loaded BaseItems from: %s" % dir_path)
+
+
+## HELPER: Load and register all Information from a directory
+## Example: CodexManager.load_information_from_directory("res://resources/codex/information/")
+func load_information_from_directory(dir_path: String) -> void:
+	var dir := DirAccess.open(dir_path)
+	if not dir:
+		push_error("Failed to open directory: %s" % dir_path)
+		return
+
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".tres"):
+			var full_path := dir_path.path_join(file_name)
+			var resource := load(full_path)
+
+			if resource is Information:
+				register_information(resource)
+			else:
+				push_warning("File %s is not a Information" % file_name)
+
+		file_name = dir.get_next()
+
+	dir.list_dir_end()
+	print("Loaded Information from: %s" % dir_path)
+
+
+## HELPER: Register multiple BaseItems from an array
+## Example: CodexManager.register_base_items([item1, item2, item3])
+func register_base_items(items: Array) -> void:
+	for item in items:
+		if item is BaseItem:
+			register_base_item(item)
+		else:
+			push_warning("Item is not a BaseItem: %s" % item)
+
+
+## HELPER: Register multiple Information from an array
+## Example: CodexManager.register_information_entries([info1, info2, info3])
+func register_information_entries(entries: Array) -> void:
+	for entry in entries:
+		if entry is Information:
+			register_information(entry)
+		else:
+			push_warning("Entry is not a Information: %s" % entry)
 
 
 ## Unlock entries from a content resource (Song, Photo, Album, HistoryEntry)
@@ -68,20 +142,20 @@ func unlock_entries_from_content(content: Resource) -> void:
 
 	var codex_entries: Array = content.get("codex_entries")
 	for entry in codex_entries:
-		if entry is CodexBaseItem:
-			unlock_entry(entry.entry_id)
-		elif entry is CodexInformation:
-			unlock_entry(entry.entry_id)
+		if entry is BaseItem:
+			unlock_entry(entry.id)
+		elif entry is Information:
+			unlock_entry(entry.id)
 
 
 ## Unlock a codex entry by ID
 func unlock_entry(entry_id: String) -> void:
 	var entry: Resource = null
 
-	# Check if it's a CodexBaseItem
+	# Check if it's a BaseItem
 	if base_items_dict.has(entry_id):
 		entry = base_items_dict[entry_id]
-	# Check if it's CodexInformation
+	# Check if it's Information
 	elif information_dict.has(entry_id):
 		entry = information_dict[entry_id]
 	else:
@@ -98,11 +172,11 @@ func unlock_entry(entry_id: String) -> void:
 	newly_unlocked_ids.append(entry_id)
 
 	# Update entry state
-	if entry is CodexBaseItem:
+	if entry is BaseItem:
 		entry.is_unlocked = true
 		entry.unlock_timestamp = timestamp
 		entry.is_newly_unlocked = true
-	elif entry is CodexInformation:
+	elif entry is Information:
 		entry.is_unlocked = true
 		entry.unlock_timestamp = timestamp
 		entry.is_newly_unlocked = true
@@ -111,7 +185,7 @@ func unlock_entry(entry_id: String) -> void:
 	save_progress()
 	entry_unlocked.emit(entry)
 
-	print("Codex entry unlocked: %s - %s" % [entry_id, entry.title if entry.has_method("get") else ""])
+	print("Codex entry unlocked: %s - %s" % [entry_id, entry.display_name if entry.has_method("get") else ""])
 
 
 ## Check if an entry is unlocked
@@ -139,9 +213,9 @@ func mark_as_viewed(entry_id: String) -> void:
 		entry = information_dict[entry_id]
 
 	if entry:
-		if entry is CodexBaseItem:
+		if entry is BaseItem:
 			entry.is_newly_unlocked = false
-		elif entry is CodexInformation:
+		elif entry is Information:
 			entry.is_newly_unlocked = false
 
 		entry_viewed.emit(entry)
@@ -149,17 +223,17 @@ func mark_as_viewed(entry_id: String) -> void:
 	save_progress()
 
 
-## Get all CodexBaseItems (sorted by unlock status)
-func get_all_base_items() -> Array[CodexBaseItem]:
+## Get all BaseItems (sorted by unlock status)
+func get_all_base_items() -> Array[BaseItem]:
 	return all_base_items
 
 
-## Get all CodexInformation entries (sorted by unlock status)
-func get_all_information() -> Array[CodexInformation]:
+## Get all Information entries (sorted by unlock status)
+func get_all_information() -> Array[Information]:
 	return all_information
 
 
-## Get count of unlocked CodexBaseItems
+## Get count of unlocked BaseItems
 func get_unlocked_base_items_count() -> int:
 	var count := 0
 	for item in all_base_items:
@@ -168,7 +242,7 @@ func get_unlocked_base_items_count() -> int:
 	return count
 
 
-## Get count of unlocked CodexInformation entries
+## Get count of unlocked Information entries
 func get_unlocked_information_count() -> int:
 	var count := 0
 	for info in all_information:
@@ -181,21 +255,21 @@ func get_unlocked_information_count() -> int:
 func _apply_unlock_state(entry: Resource) -> void:
 	var entry_id := ""
 
-	if entry is CodexBaseItem:
-		entry_id = entry.entry_id
-	elif entry is CodexInformation:
-		entry_id = entry.entry_id
+	if entry is BaseItem:
+		entry_id = entry.id
+	elif entry is Information:
+		entry_id = entry.id
 	else:
 		return
 
 	if unlocked_entry_ids.has(entry_id):
 		var timestamp: int = unlocked_entry_ids[entry_id]
 
-		if entry is CodexBaseItem:
+		if entry is BaseItem:
 			entry.is_unlocked = true
 			entry.unlock_timestamp = timestamp
 			entry.is_newly_unlocked = newly_unlocked_ids.has(entry_id)
-		elif entry is CodexInformation:
+		elif entry is Information:
 			entry.is_unlocked = true
 			entry.unlock_timestamp = timestamp
 			entry.is_newly_unlocked = newly_unlocked_ids.has(entry_id)
@@ -237,9 +311,9 @@ func load_progress() -> void:
 ## Debug: Unlock all entries (for testing)
 func unlock_all() -> void:
 	for item in all_base_items:
-		unlock_entry(item.entry_id)
+		unlock_entry(item.id)
 	for info in all_information:
-		unlock_entry(info.entry_id)
+		unlock_entry(info.id)
 
 
 ## Debug: Reset all progress

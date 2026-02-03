@@ -9,4 +9,4 @@ class_name HistoryEntry
 @export var page_scene: PackedScene = null  # The actual page content scene
 
 ## Codex entries unlocked when this page is visited
-@export var codex_entries: Array[Resource] = []  # Can contain CodexBaseItem or CodexInformation
+@export var codex_entries: Array[Resource] = []  # Can contain BaseItem or Information

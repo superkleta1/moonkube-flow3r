@@ -7,4 +7,4 @@ class_name Photo
 @export var time: String = ""
 
 ## Codex entries unlocked when this photo is viewed
-@export var codex_entries: Array[Resource] = []  # Can contain CodexBaseItem or CodexInformation
+@export var codex_entries: Array[Resource] = []  # Can contain BaseItem or Information

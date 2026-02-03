@@ -6,4 +6,4 @@ class_name Song
 @export var audio_stream: AudioStream
 
 ## Codex entries unlocked when this song is played
-@export var codex_entries: Array[Resource] = []  # Can contain CodexBaseItem or CodexInformation
+@export var codex_entries: Array[Resource] = []  # Can contain BaseItem or Information

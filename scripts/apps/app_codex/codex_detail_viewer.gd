@@ -10,7 +10,7 @@ class_name CodexDetailViewer
 @onready var unlock_info_label: Label = $PanelContainer/VBoxContainer/UnlockInfoLabel
 @onready var exit_button: Button = $ExitButton
 
-var entry: Resource  # Can be CodexBaseItem or CodexInformation
+var entry: Resource  # Can be BaseItem or Information
 
 signal exit_pressed()
 
@@ -27,20 +27,20 @@ func set_entry(_entry: Resource) -> void:
 	var description_text := ""
 	var image: Texture2D = null
 	var unlock_timestamp: int = 0
-	var category_or_rarity := ""
+	var category_text := ""
 
-	if entry is CodexBaseItem:
-		title_text = entry.title
+	if entry is BaseItem:
+		title_text = entry.display_name
 		description_text = entry.description
 		image = entry.card_front_image
 		unlock_timestamp = entry.unlock_timestamp
-		category_or_rarity = "Rarity: %s" % entry.rarity.capitalize()
-	elif entry is CodexInformation:
-		title_text = entry.title
+		category_text = "Item"
+	elif entry is Information:
+		title_text = entry.display_name
 		description_text = entry.description
 		image = entry.card_front_image
 		unlock_timestamp = entry.unlock_timestamp
-		category_or_rarity = "Category: %s" % entry.category.capitalize()
+		category_text = "Category: %s" % entry.category.capitalize()
 
 	# Set UI elements
 	title_label.text = title_text
@@ -54,15 +54,15 @@ func set_entry(_entry: Resource) -> void:
 			datetime.year, datetime.month, datetime.day,
 			datetime.hour, datetime.minute
 		]
-		unlock_info_label.text = "%s\nUnlocked: %s" % [category_or_rarity, date_str]
+		unlock_info_label.text = "%s\nUnlocked: %s" % [category_text, date_str]
 	else:
-		unlock_info_label.text = category_or_rarity
+		unlock_info_label.text = category_text
 
 	# Mark as viewed in CodexManager
-	if entry is CodexBaseItem:
-		CodexManager.mark_as_viewed(entry.entry_id)
-	elif entry is CodexInformation:
-		CodexManager.mark_as_viewed(entry.entry_id)
+	if entry is BaseItem:
+		CodexManager.mark_as_viewed(entry.id)
+	elif entry is Information:
+		CodexManager.mark_as_viewed(entry.id)
 
 
 func _on_exit_button_pressed() -> void:

@@ -4,66 +4,66 @@ The Codex system allows players to collect and view Base Items and Information e
 
 ---
 
-## 📋 Setup Checklist
+## Setup Checklist
 
 ### 1. Add CodexManager as an Autoload
 
 **IMPORTANT:** You must add CodexManager to your project's autoload list:
 
-1. Go to **Project → Project Settings → Autoload**
+1. Go to **Project -> Project Settings -> Autoload**
 2. Add a new autoload entry:
    - **Path**: `res://scripts/autoload/codex_manager.gd`
    - **Node Name**: `CodexManager`
-   - **Enable**: ✓ (checked)
+   - **Enable**: checked
 3. Click **Add** and then **Close**
 
 This will make `CodexManager` globally accessible throughout your project.
 
 ---
 
-## 🎨 Creating Codex Entries
+## Creating Codex Entries
 
-### Creating a CodexBaseItem
+### Creating a BaseItem
 
 Base Items represent physical objects, artworks, or collectibles.
 
 1. In the FileSystem, right-click and select **New Resource**
-2. Search for `CodexBaseItem` and create it
+2. Search for `BaseItem` and create it
 3. Configure the following properties:
-   - **entry_id**: Unique identifier (e.g., `"item_guitar"`)
-   - **title**: Display name (e.g., `"Acoustic Guitar"`)
+   - **id**: Unique identifier (e.g., `"item_guitar"`)
+   - **display_name**: Display name (e.g., `"Acoustic Guitar"`)
    - **description**: Detailed description of the item
-   - **card_front_image**: Image shown when unlocked
-   - **card_back_image**: Image shown when locked (use a generic "???" card)
-   - **rarity**: `"common"`, `"rare"`, or `"legendary"`
-   - **unlock_hint**: Hint text for locked cards (e.g., `"Play Aki's favorite song"`)
+   - **icon**: Optional icon texture
+   - **card_front_image**: Image shown when unlocked in Codex
+   - **unlock_hint**: Hint text shown on locked cards (e.g., `"Play Aki's favorite song"`)
+   - **slot_count**: Number of slots (for minddive preparation, 0-3)
 4. Save as `res://resources/codex/base_items/item_guitar.tres`
 
-### Creating a CodexInformation
+### Creating an Information Entry
 
 Information entries represent lore, facts, or story fragments.
 
 1. In the FileSystem, right-click and select **New Resource**
-2. Search for `CodexInformation` and create it
+2. Search for `Information` and create it
 3. Configure the following properties:
-   - **entry_id**: Unique identifier (e.g., `"info_aki_backstory"`)
-   - **title**: Display name (e.g., `"Aki's Past"`)
+   - **id**: Unique identifier (e.g., `"info_aki_backstory"`)
+   - **display_name**: Display name (e.g., `"Aki's Past"`)
    - **description**: The information content
-   - **card_front_image**: Icon/image shown when unlocked
-   - **card_back_image**: Image shown when locked
+   - **icon**: Optional icon texture
+   - **card_front_image**: Image shown when unlocked in Codex
    - **category**: `"characters"`, `"locations"`, `"events"`, etc.
    - **unlock_hint**: Hint text for locked cards
 4. Save as `res://resources/codex/information/info_aki_backstory.tres`
 
 ---
 
-## 🔗 Linking Codex Entries to Content
+## Linking Codex Entries to Content
 
 ### Adding Entries to Songs
 
 1. Open a Song resource (e.g., `res://resources/songs/song_colors_flying_high.tres`)
 2. Find the **codex_entries** array property
-3. Drag and drop your CodexBaseItem or CodexInformation resources into the array
+3. Drag and drop your BaseItem or Information resources into the array
 4. Save the resource
 
 When this song plays, the linked codex entries will be unlocked!
@@ -88,68 +88,61 @@ When this song plays, the linked codex entries will be unlocked!
 
 ---
 
-## 🎮 Registering Codex Entries
+## Registering Codex Entries
 
-Before codex entries can be tracked, they need to be registered with the CodexManager. You have two options:
+Before codex entries can be tracked, they need to be registered with the CodexManager. Choose the method that works best for you:
 
-### Option A: Register in an Autoload Script
+### Option A: Load from Directory (EASIEST!)
 
-Create a script that runs at game startup:
+The simplest approach - just point to your directories and all .tres files will be loaded automatically:
 
 ```gdscript
 # res://scripts/autoload/codex_loader.gd
 extends Node
 
 func _ready() -> void:
-    # Load and register all base items
-    var item_guitar := preload("res://resources/codex/base_items/item_guitar.tres")
-    CodexManager.register_base_item(item_guitar)
-
-    var item_photo := preload("res://resources/codex/base_items/item_photo.tres")
-    CodexManager.register_base_item(item_photo)
-
-    # Load and register all information entries
-    var info_aki := preload("res://resources/codex/information/info_aki_backstory.tres")
-    CodexManager.register_information(info_aki)
-
-    var info_location := preload("res://resources/codex/information/info_location_cafe.tres")
-    CodexManager.register_information(info_location)
+    # Automatically load all codex entries from directories
+    CodexManager.load_base_items_from_directory("res://resources/codex/base_items/")
+    CodexManager.load_information_from_directory("res://resources/codex/information/")
 ```
 
-Then add this script as an autoload (after CodexManager).
+Then add this script as an autoload (after CodexManager). That's it! No need to preload each file.
 
-### Option B: Register in Your Main Scene
+### Option B: Register from Arrays
 
-In your main game scene's `_ready()` function:
+If you want more control or only want to register specific entries:
+
+```gdscript
+# In your main scene or autoload
+func _ready() -> void:
+    # Pass arrays directly - no individual preload() needed!
+    CodexManager.register_base_items([
+        preload("res://resources/codex/base_items/item_guitar.tres"),
+        preload("res://resources/codex/base_items/item_photo.tres"),
+    ])
+
+    CodexManager.register_information_entries([
+        preload("res://resources/codex/information/info_aki_backstory.tres"),
+        preload("res://resources/codex/information/info_location_cafe.tres"),
+    ])
+```
+
+### Option C: Register Individually
+
+For fine-grained control (rarely needed):
 
 ```gdscript
 func _ready() -> void:
-    # Register codex entries
-    _register_codex_entries()
+    var item := preload("res://resources/codex/base_items/item_guitar.tres")
+    CodexManager.register_base_item(item)
 
-func _register_codex_entries() -> void:
-    var base_items := [
-        preload("res://resources/codex/base_items/item_guitar.tres"),
-        preload("res://resources/codex/base_items/item_photo.tres"),
-        # Add more...
-    ]
-
-    for item in base_items:
-        CodexManager.register_base_item(item)
-
-    var information := [
-        preload("res://resources/codex/information/info_aki_backstory.tres"),
-        preload("res://resources/codex/information/info_location_cafe.tres"),
-        # Add more...
-    ]
-
-    for info in information:
-        CodexManager.register_information(info)
+    var info := preload("res://resources/codex/information/info_aki_backstory.tres")
+    CodexManager.register_information(info)
 ```
 
 ---
 
-## 🎨 Building the Codex UI Scenes
+## Building the Codex UI Scenes
 
 ### 1. Create CodexCard Scene
 
@@ -158,13 +151,13 @@ File: `res://scenes/apps/codex/codex_card.tscn`
 Structure:
 ```
 TextureButton (root) - Script: codex_card.gd
-├─ TextureRect (name: CardImage)
-│  └─ Properties: expand_mode = "Ignore Size", stretch_mode = "Keep Aspect Centered"
-├─ Panel (name: HighlightOverlay)
-│  └─ Properties: visible = false
-│  └─ Add a StyleBox with glowing border for highlight effect
-└─ Label (name: LockedLabel)
-   └─ Properties: text = "???", align = Center, visible = false
+|- TextureRect (name: CardImage)
+|  - Properties: expand_mode = "Ignore Size", stretch_mode = "Keep Aspect Centered"
+|- Panel (name: HighlightOverlay)
+|  - Properties: visible = false
+|  - Add a StyleBox with glowing border for highlight effect
+|- Label (name: LockedLabel)
+   - Properties: text = "???", align = Center, visible = false
 ```
 
 Set custom_minimum_size to something like (150, 200) for card dimensions.
@@ -176,16 +169,16 @@ File: `res://scenes/apps/codex/codex_detail_viewer.tscn`
 Structure:
 ```
 Control (root, anchors fill screen) - Script: codex_detail_viewer.gd
-├─ ColorRect (semi-transparent background overlay)
-├─ PanelContainer (centered modal)
-│  └─ VBoxContainer
-│     ├─ Control (name: ImageContainer)
-│     │  └─ TextureRect (name: EntryImage)
-│     ├─ Label (name: TitleLabel) - large font
-│     ├─ ScrollContainer (name: DescriptionScroll)
-│     │  └─ Label (name: DescriptionLabel)
-│     └─ Label (name: UnlockInfoLabel) - small font
-└─ Button (name: ExitButton) - positioned top-right
+|- ColorRect (semi-transparent background overlay)
+|- PanelContainer (centered modal)
+|  - VBoxContainer
+|     |- Control (name: ImageContainer)
+|     |  - TextureRect (name: EntryImage)
+|     |- Label (name: TitleLabel) - large font
+|     |- ScrollContainer (name: DescriptionScroll)
+|     |  - Label (name: DescriptionLabel)
+|     |- Label (name: UnlockInfoLabel) - small font
+|- Button (name: ExitButton) - positioned top-right
 ```
 
 ### 3. Create CodexApp Scene
@@ -195,19 +188,19 @@ File: `res://scenes/apps/codex/codex_app.tscn`
 Structure:
 ```
 Control (root) - Script: codex_app_manager.gd
-├─ TabContainer (name: TabContainer)
-│  ├─ Control (tab name: "Base Items")
-│  │  ├─ Label (name: CountLabel) - shows "Unlocked: X / Y"
-│  │  └─ ScrollContainer
-│  │     └─ GridContainer (name: GridContainer)
-│  │        └─ Properties: columns = 4
-│  └─ Control (tab name: "Information")
-│     ├─ Label (name: CountLabel)
-│     └─ ScrollContainer
-│        └─ GridContainer (name: GridContainer)
-│           └─ Properties: columns = 4
-└─ Control (name: DetailViewerAnchor, anchors fill screen)
-   └─ This is where detail viewer instances spawn
+|- TabContainer (name: TabContainer)
+|  |- Control (tab name: "Base Items")
+|  |  |- Label (name: CountLabel) - shows "Unlocked: X / Y"
+|  |  |- ScrollContainer
+|  |     - GridContainer (name: GridContainer)
+|  |        - Properties: columns = 4
+|  |- Control (tab name: "Information")
+|     |- Label (name: CountLabel)
+|     |- ScrollContainer
+|        - GridContainer (name: GridContainer)
+|           - Properties: columns = 4
+|- Control (name: DetailViewerAnchor, anchors fill screen)
+   - This is where detail viewer instances spawn
 ```
 
 **Export Variables to Set:**
@@ -230,7 +223,7 @@ const APP_SCENES := {
 
 ---
 
-## 🧪 Testing the System
+## Testing the System
 
 ### Test Unlock Flow
 
@@ -239,7 +232,7 @@ const APP_SCENES := {
 3. Open the Codex app
 4. You should see:
    - Newly unlocked cards with a highlight
-   - Locked cards showing the back image
+   - Locked cards showing "???" label
    - Correct unlock counts (e.g., "Unlocked: 1 / 5")
 
 ### Debug Commands
@@ -258,61 +251,60 @@ func _input(event: InputEvent) -> void:
 
 ---
 
-## 📁 Recommended File Structure
+## Recommended File Structure
 
 ```
 res://
-├─ scenes/
-│  └─ apps/
-│     └─ codex/
-│        ├─ CodexApp.tscn
-│        ├─ codex_card.tscn
-│        └─ codex_detail_viewer.tscn
-├─ scripts/
-│  ├─ apps/
-│  │  └─ app_codex/
-│  │     ├─ codex_app_manager.gd
-│  │     ├─ codex_card.gd
-│  │     └─ codex_detail_viewer.gd
-│  ├─ resources/
-│  │  ├─ CodexBaseItem.gd
-│  │  └─ CodexInformation.gd
-│  └─ autoload/
-│     ├─ codex_manager.gd
-│     └─ codex_loader.gd (optional)
-└─ resources/
-   └─ codex/
-      ├─ base_items/
-      │  ├─ item_guitar.tres
-      │  ├─ item_photo.tres
-      │  └─ ...
-      └─ information/
-         ├─ info_aki_backstory.tres
-         ├─ info_location_cafe.tres
-         └─ ...
+|- scenes/
+|  - apps/
+|     - codex/
+|        |- CodexApp.tscn
+|        |- codex_card.tscn
+|        |- codex_detail_viewer.tscn
+|- scripts/
+|  |- apps/
+|  |  - app_codex/
+|  |     |- codex_app_manager.gd
+|  |     |- codex_card.gd
+|  |     |- codex_detail_viewer.gd
+|  |- minddive_preparation/
+|  |  |- base_item.gd        # BaseItem resource class
+|  |  |- information.gd      # Information resource class
+|  - autoload/
+|     |- codex_manager.gd
+|     |- codex_loader.gd (optional)
+|- resources/
+   - codex/
+      |- base_items/
+      |  |- item_guitar.tres
+      |  |- item_photo.tres
+      |  - ...
+      - information/
+         |- info_aki_backstory.tres
+         |- info_location_cafe.tres
+         - ...
 ```
 
 ---
 
-## 🎯 Tips & Best Practices
+## Tips & Best Practices
 
 1. **Card Images**: Create consistent card designs with the same aspect ratio (e.g., 3:4)
-2. **Locked Cards**: Use a generic "???" design for all locked card_back_images
-3. **Entry IDs**: Use descriptive prefixes like `item_`, `info_`, `char_`, `loc_`
-4. **Unlock Hints**: Make hints specific but not spoilery
-5. **Categories**: Use consistent category names across your information entries
-6. **Testing**: Register a few test entries early to verify the unlock flow
+2. **Entry IDs**: Use descriptive prefixes like `item_`, `info_`, `char_`, `loc_`
+3. **Unlock Hints**: Make hints specific but not spoilery
+4. **Categories**: Use consistent category names across your information entries
+5. **Testing**: Register a few test entries early to verify the unlock flow
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### "CodexManager not declared in scope"
 - Make sure you added CodexManager as an autoload in Project Settings
 
 ### Cards not showing up
 - Verify you've called `CodexManager.register_base_item()` or `register_information()`
-- Check that entry_id is not empty in your resources
+- Check that id is not empty in your resources
 
 ### Entries not unlocking
 - Confirm codex_entries array is filled in Song/Photo/Album/HistoryEntry resources
@@ -324,6 +316,6 @@ res://
 
 ---
 
-## 🎉 You're Ready!
+## You're Ready!
 
 The Codex system is now fully set up! Start creating codex entries and linking them to your game content. Players will enjoy discovering and collecting these entries as they explore your game's world!
