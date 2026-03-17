@@ -1,21 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://umrb2tqp65aa"]
+[gd_scene load_steps=24 format=3 uid="uid://umrb2tqp65aa"]
 
-[ext_resource type="Script" uid="uid://buhagbtnm6qat" path="res://scripts/minddive_planning_execution/minddive_manager.gd" id="1_u6ybt"]
+[ext_resource type="Script" uid="uid://byrhtx1vbgnem" path="res://scripts/minddive_planning_execution/minddive_manager.gd" id="1_u6ybt"]
 [ext_resource type="MeshLibrary" uid="uid://c3n10ewajoe11" path="res://assets/mvp_assets/mvp_nav_mesh_library.tres" id="2_frgdn"]
 [ext_resource type="MeshLibrary" uid="uid://w3dr7gwqc2k2" path="res://assets/mvp_assets/mvp_mesh_library.tres" id="3_5rs8m"]
-[ext_resource type="Script" uid="uid://c6hxekvtqldm1" path="res://scripts/minddive_planning_execution/spirit_grid_mover.gd" id="4_3lqmu"]
-[ext_resource type="Texture2D" uid="uid://ckmrrn2ep1237" path="res://assets/mvp_assets/sprites2000/Aki_Inspired2000.png" id="5_hnkkq"]
-[ext_resource type="Script" uid="uid://dh5bipvbfl6rs" path="res://scripts/minddive_planning_execution/planning_mode.gd" id="6_ajo3u"]
+[ext_resource type="Script" uid="uid://btcxiur1ucyk6" path="res://scripts/minddive_planning_execution/spirit_grid_mover.gd" id="4_3lqmu"]
+[ext_resource type="Texture2D" uid="uid://b3omq2mte3gi0" path="res://assets/mvp_assets/sprites2000/Aki_Inspired2000.png" id="5_hnkkq"]
+[ext_resource type="Script" uid="uid://c53e5yur7ibes" path="res://scripts/minddive_planning_execution/planning_mode.gd" id="6_ajo3u"]
 [ext_resource type="PackedScene" uid="uid://bsipmrbwdtgwg" path="res://scenes/packed_scenes/PlacedConceptItem.tscn" id="7_bgjkm"]
-[ext_resource type="Script" uid="uid://l02pevw83or5" path="res://scripts/minddive_planning_execution/execution_mode.gd" id="8_pkqqb"]
+[ext_resource type="Script" uid="uid://bi2circtucjvq" path="res://scripts/minddive_planning_execution/execution_mode.gd" id="8_pkqqb"]
 [ext_resource type="Theme" uid="uid://b80glpgan4anq" path="res://resources/mvp_resources/mvp_theme.tres" id="9_dvhuj"]
-[ext_resource type="Script" uid="uid://bo6rkv3kpmsbv" path="res://scripts/minddive_planning_execution/planning_ui.gd" id="10_lx1jq"]
+[ext_resource type="Script" uid="uid://cnnftgg55ehge" path="res://scripts/minddive_planning_execution/planning_ui.gd" id="10_lx1jq"]
 [ext_resource type="PackedScene" uid="uid://cppsaa4pkttq8" path="res://scenes/packed_scenes/SlotButton.tscn" id="11_61xmi"]
 [ext_resource type="Texture2D" uid="uid://c41e8lly2c8q2" path="res://assets/mvp_assets/card.png" id="12_btogk"]
 [ext_resource type="FontFile" uid="uid://cotbysrbdbpnq" path="res://assets/mvp_assets/fonts/Monoton-Regular.ttf" id="13_ji337"]
 [ext_resource type="Texture2D" uid="uid://dheq71a2mcn10" path="res://assets/mvp_assets/sprites224/CDPlayer224.png" id="14_wfwe4"]
 [ext_resource type="FontFile" uid="uid://cioepgr1gabwi" path="res://assets/mvp_assets/fonts/CaesarDressing-Regular.ttf" id="15_68hnv"]
-[ext_resource type="Script" uid="uid://bxugqbqt3r8jt" path="res://scripts/minddive_planning_execution/execution_ui.gd" id="16_61jb5"]
+[ext_resource type="Script" uid="uid://hct1l7jjhwma" path="res://scripts/minddive_planning_execution/execution_ui.gd" id="16_61jb5"]
+[ext_resource type="Resource" path="res://resources/johndoe/preset_items/ci_jd_bed.tres" id="17_bed"]
+[ext_resource type="Resource" path="res://resources/johndoe/preset_items/ci_jd_light.tres" id="18_light"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv7ke"]
 albedo_color = Color(0, 0, 0, 1)
@@ -66,6 +68,18 @@ transform = Transform3D(1, 0, 0, 0, -0.09938926, 0.99504864, 0, -0.99504864, -0.
 
 [node name="PlacedConceptItems" type="Node3D" parent="World"]
 
+[node name="PresetConceptItems" type="Node3D" parent="World"]
+
+[node name="BedPreset" parent="World/PresetConceptItems" instance=ExtResource("7_bgjkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 4)
+concept = ExtResource("17_bed")
+cell = Vector3i(7, 0, 4)
+
+[node name="LightPreset" parent="World/PresetConceptItems" instance=ExtResource("7_bgjkm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 6)
+concept = ExtResource("18_light")
+cell = Vector3i(5, 0, 6)
+
 [node name="Spirit" type="Node3D" parent="World"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="World/Spirit" node_paths=PackedStringArray("gridmap_nav", "gridmap_level")]
@@ -87,10 +101,11 @@ mesh = SubResource("CapsuleMesh_o8kv6")
 
 [node name="Modes" type="Node" parent="."]
 
-[node name="PlanningMode" type="Node" parent="Modes" node_paths=PackedStringArray("planning_camera")]
+[node name="PlanningMode" type="Node" parent="Modes" node_paths=PackedStringArray("planning_camera", "gridmap_nav")]
 script = ExtResource("6_ajo3u")
 planning_camera = NodePath("../../World/Camera3D")
 placed_concept_item_scene = ExtResource("7_bgjkm")
+gridmap_nav = NodePath("../../World/GridMapNav")
 
 [node name="ExecutionMode" type="Node" parent="Modes" node_paths=PackedStringArray("spirit_grid_mover", "spirit")]
 script = ExtResource("8_pkqqb")

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConceptRecipe" load_steps=4 format=3]
+
+[ext_resource type="Script" uid="uid://0xgkcidj3dgq" path="res://scripts/minddive_preparation/concept_recipe.gd" id="1"]
+[ext_resource type="Script" uid="uid://bxmmyjrshxol6" path="res://scripts/minddive_preparation/information.gd" id="2"]
+[ext_resource type="Resource" path="res://resources/johndoe/base_items/bi_jd_report.tres" id="3"]
+[ext_resource type="Resource" path="res://resources/johndoe/concept_items/ci_jd_report.tres" id="4"]
+
+[resource]
+script = ExtResource("1")
+base_item = ExtResource("3")
+informations = Array[ExtResource("2")]([])
+result = ExtResource("4")
+metadata/_custom_type_script = "uid://0xgkcidj3dgq"

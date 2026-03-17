@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=3 format=3 uid="uid://ds18vtlmpkxwp"]
+
+[ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="1_k7tgm"]
+
+[resource]
+script = ExtResource("1")
+id = "ci_jd_light"
+display_name = "Light (窗外的光)"
+description = "A shimmer of light from somewhere beyond. Barely there. In despair it becomes overwhelming — the only direction that feels real."
+base_attraction = 1.0
+left_pole_attraction = 4.0
+metadata/_custom_type_script = "uid://603685oo3hdu"

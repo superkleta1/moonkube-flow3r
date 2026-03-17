@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ProximityRule" load_steps=2 format=3 uid="uid://dve50cegbhnq1"]
+
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+other_concept_id = "ci_jd_echo"
+interaction_type = 2
+metadata/_custom_type_script = "uid://dtj3w6ptpyu6w"

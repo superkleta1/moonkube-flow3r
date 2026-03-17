@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=3 format=3 uid="uid://wll844lkmjop"]
+
+[ext_resource type="Script" uid="uid://c55vj86c1k1ps" path="res://scripts/minddive_preparation/base_item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://du18vlbjyw6fh" path="res://assets/sprites224/bi_jd_twisted_wire224.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = "bi_jd_twisted_wire"
+display_name = "Twisted Wire (扭曲的铁丝)"
+icon = ExtResource("2")
+description = "A length of wire bent into itself again and again. The ends are sharp. It was found in his desk drawer. No one knows what it was for."
+slot_count = 1
+metadata/_custom_type_script = "uid://c55vj86c1k1ps"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=3 format=3 uid="uid://cfslbh1t8skn5"]
+
+[ext_resource type="Script" uid="uid://c55vj86c1k1ps" path="res://scripts/minddive_preparation/base_item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://clgtw15mqxqo1" path="res://assets/sprites224/bi_jd_badge_item224.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = "bi_jd_badge_item"
+display_name = "Badge (工牌)"
+icon = ExtResource("2")
+description = "An employee identification card. The photo is still recognizable. The department printed on it no longer exists."
+metadata/_custom_type_script = "uid://c55vj86c1k1ps"

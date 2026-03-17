@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=6 format=3 uid="uid://cm4jqasw351wn"]
+
+[ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="2"]
+[ext_resource type="Resource" uid="uid://dd7t15obrdiuk" path="res://resources/johndoe/proximity_rules/pr_trash_art_with_bandage.tres" id="3"]
+[ext_resource type="Resource" uid="uid://ctw4qxyv7w3hp" path="res://resources/johndoe/proximity_rules/pr_trash_art_with_echo.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://clfnogkmb7ipy" path="res://assets/sprites224/ci_jd_trash_art224.png" id="5"]
+
+[resource]
+script = ExtResource("1")
+id = "ci_jd_trash_art"
+display_name = "\"Trash\" Art (\"垃圾\"作品)"
+icon = ExtResource("5")
+description = "A piece of art dismissed and discarded. To eyes filled with hope it becomes something worth approaching. To eyes filled with despair, it confirms the rejection."
+left_pole_attraction = -3.0
+right_pole_attraction = 3.0
+proximity_rules = Array[ExtResource("2")]([ExtResource("3"), ExtResource("4")])
+metadata/_custom_type_script = "uid://603685oo3hdu"

@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(grep -n \"report\" c:/Users/super/OneDrive/Desktop/MoonKube/moonkube-flow3r/resources/johndoe/proximity_rules/*.tres)"
     ]
   }
 }

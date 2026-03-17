@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=4 format=3 uid="uid://d0hfiayw6re8d"]
+
+[ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ccbr067jnj7xg" path="res://assets/sprites224/ci_jd_window224.png" id="2"]
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="2_wk0j1"]
+
+[resource]
+script = ExtResource("1")
+id = "ci_jd_window"
+display_name = "Burned Windowsill (烧毁的窗沿)"
+icon = ExtResource("2")
+description = "A scorched fragment of a windowsill. Passing through it from one direction opens toward the light. From the other, it recalls only the fire."
+placement_type = 1
+gate_emotion_shifts = Array[float]([0.0, 25.0, 0.0, -25.0])
+metadata/_custom_type_script = "uid://603685oo3hdu"

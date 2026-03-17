@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=6 format=3 uid="uid://cwnlhtvd7i1fh"]
+
+[ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="2"]
+[ext_resource type="Resource" uid="uid://cbvm142f0s8ts" path="res://resources/johndoe/proximity_rules/pr_bouquet_with_kaleidoscope.tres" id="3"]
+[ext_resource type="Resource" uid="uid://dve50cegbhnq1" path="res://resources/johndoe/proximity_rules/pr_bouquet_with_echo.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://bvno7wlnivugk" path="res://assets/sprites224/ci_jd_bouquet224.png" id="5"]
+
+[resource]
+script = ExtResource("1")
+id = "ci_jd_bouquet"
+display_name = "Glowing Bouquet (闪着光的花束)"
+icon = ExtResource("5")
+description = "Flowers caught mid-bloom, giving off a faint warmth. Their scent lingers regardless of distance — a persistent signal of something outside these walls."
+sense_type = 2
+base_emotion_influence = 2.0
+proximity_rules = Array[ExtResource("2")]([ExtResource("3"), ExtResource("4")])
+metadata/_custom_type_script = "uid://603685oo3hdu"

@@ -13,6 +13,10 @@ class_name SpiritGridMover
 @export var vision_radius: float = 8.0
 @export var vision_angle_degrees: float = 70.0
 
+## GridMap item IDs that block line-of-sight.
+## Default: 4 = SLOT, 5 = WALL (must match the level GridMap mesh library)
+@export var los_blocking_item_ids: Array[int] = [4, 5]
+
 # Behavior tuning
 @export var inertia_bonus: float = 0.35        # prefer continuing direction
 @export var noise_amount: float = 0.08         # small randomness to avoid ties/loops
@@ -23,7 +27,9 @@ var _placed_items: Array[PlacedConceptItem] = []
 var _current_cell: Vector3i
 var _target_cell: Vector3i
 var _moving: bool = false
-var _last_step_dir: Vector3i = Vector3i.ZERO
+
+## Public — last discrete step direction. Used by ExecutionMode for Emotion Gate entry direction.
+var last_step_dir: Vector3i = Vector3i.ZERO
 
 signal arrived_at_cell(cell: Vector3i)
 
@@ -37,7 +43,6 @@ func start() -> void:
 	_current_cell = _find_start_cell()
 	_target_cell = _current_cell
 
-	# One-time: keep physics happy by letting it settle first
 	global_position.y = 1.0
 
 	_snap_to_cell(_current_cell)
@@ -46,8 +51,8 @@ func start() -> void:
 func _physics_process(delta: float) -> void:
 	if not _moving:
 		return
-	
-	var target_pos := _cell_center_world(_target_cell) # already keeps y = current
+
+	var target_pos := _cell_center_world(_target_cell)
 	var to_target := target_pos - global_position
 	to_target.y = 0.0
 
@@ -69,16 +74,14 @@ func _physics_process(delta: float) -> void:
 	_face_dir(dir, delta)
 	move_and_slide()
 
-# ---------- Decision ----------
+# ── Decision ─────────────────────────────────────────────────────────────────
+
 func _take_next_step() -> void:
 	var next := choose_next_cell_local()
 	if next == _current_cell:
 		print("No move chosen; stuck at ", _current_cell)
 		return
-	_last_step_dir = next - _current_cell
-	
-	print("chosen next cell", next)
-	
+	last_step_dir = next - _current_cell
 	move_one_step_to(next)
 
 func choose_next_cell_local() -> Vector3i:
@@ -102,15 +105,14 @@ func choose_next_cell_local() -> Vector3i:
 	return best_cell
 
 func score_cell(cell: Vector3i) -> float:
-	# Evaluate as if standing on that neighbor cell.
 	var test_pos := _cell_center_world(cell)
-	var forward := -global_transform.basis.z # Godot forward
+	var forward := -global_transform.basis.z
 
 	var score := 0.0
 
-	# Inertia: keep going same direction to look less jittery
+	# Inertia: prefer continuing in same direction
 	var step_dir := cell - _current_cell
-	if step_dir == _last_step_dir and step_dir != Vector3i.ZERO:
+	if step_dir == last_step_dir and step_dir != Vector3i.ZERO:
 		score += inertia_bonus
 
 	# Sum item influences
@@ -122,11 +124,13 @@ func score_cell(cell: Vector3i) -> float:
 		if _execution != null:
 			score += _execution.calc_item_influence(placed, test_pos)
 
-	# Small noise so ties don’t create loops
+	# Small noise to avoid deterministic loops
 	score += randf_range(-noise_amount, noise_amount)
-	print("Cell ", cell, "score is ", score)
 	return score
 
+# ── Perception ────────────────────────────────────────────────────────────────
+
+## Returns true if `placed` is perceivable from `spirit_pos` with given `forward`.
 func _is_item_perceivable(placed: PlacedConceptItem, spirit_pos: Vector3, forward: Vector3) -> bool:
 	var c := placed.concept
 	if c == null:
@@ -134,10 +138,11 @@ func _is_item_perceivable(placed: PlacedConceptItem, spirit_pos: Vector3, forwar
 
 	match c.sense_type:
 		ConceptItem.SenseType.SEE:
-			# Distance check
 			var to_item := placed.global_position - spirit_pos
 			to_item.y = 0.0
 			var dist := to_item.length()
+
+			# Distance check
 			if dist > vision_radius:
 				return false
 
@@ -145,20 +150,65 @@ func _is_item_perceivable(placed: PlacedConceptItem, spirit_pos: Vector3, forwar
 			var f := forward
 			f.y = 0.0
 			f = f.normalized()
-
 			var d := to_item.normalized()
 			var cos_angle := f.dot(d)
 			var max_cos := cos(deg_to_rad(vision_angle_degrees * 0.5))
-			return cos_angle >= max_cos
+			if cos_angle < max_cos:
+				return false
+
+			# Line-of-sight: walls and slots block vision
+			var from_cell := Vector3i(roundi(_current_cell.x), 0, roundi(_current_cell.z))
+			return _has_line_of_sight(from_cell, placed.cell)
 
 		ConceptItem.SenseType.HEAR, ConceptItem.SenseType.SMELL:
-			# Global detect; ExecutionMode handles falloff
+			# Global — always perceivable regardless of position or facing
 			return true
 
 		_:
 			return true
 
-# ---------- Movement API ----------
+## Returns true if `placed` is perceivable from the Spirit's CURRENT position and facing.
+## Used by ExecutionMode after cell arrival to check visual emotion influence.
+func is_item_currently_visible(placed: PlacedConceptItem) -> bool:
+	if placed == null or placed.concept == null:
+		return false
+	if placed.concept.sense_type != ConceptItem.SenseType.SEE:
+		return false
+	var forward := -global_transform.basis.z
+	return _is_item_perceivable(placed, global_position, forward)
+
+# ── Line-of-sight ─────────────────────────────────────────────────────────────
+
+## Returns true if there is an unobstructed line of sight between `from_cell` and `to_cell`.
+## WALL and SLOT cells (empty or occupied) block line of sight.
+## Only intermediate cells are checked — source and destination are not.
+func _has_line_of_sight(from_cell: Vector3i, to_cell: Vector3i) -> bool:
+	var dx := to_cell.x - from_cell.x
+	var dz := to_cell.z - from_cell.z
+	var steps: int = maxi(abs(dx), abs(dz))
+
+	if steps == 0:
+		return true  # same cell
+
+	for i in range(1, steps):  # skip i=0 (from_cell) and i=steps (to_cell)
+		var fx := from_cell.x + dx * float(i) / float(steps)
+		var fz := from_cell.z + dz * float(i) / float(steps)
+		var check_cell := Vector3i(roundi(fx), 0, roundi(fz))
+		if _is_los_blocking(check_cell):
+			return false
+
+	return true
+
+func _is_los_blocking(cell: Vector3i) -> bool:
+	if gridmap_level == null:
+		return false
+	var item_id := gridmap_level.get_cell_item(cell)
+	if item_id == GridMap.INVALID_CELL_ITEM:
+		return false
+	return item_id in los_blocking_item_ids
+
+# ── Movement API ─────────────────────────────────────────────────────────────
+
 func move_one_step_to(cell: Vector3i) -> void:
 	cell.y = 0
 	if not is_walkable(cell):
@@ -171,7 +221,8 @@ func is_walkable(cell: Vector3i) -> bool:
 	var item_id := gridmap_nav.get_cell_item(cell)
 	return item_id != GridMap.INVALID_CELL_ITEM
 
-# ---------- Helpers ----------
+# ── Helpers ───────────────────────────────────────────────────────────────────
+
 func _neighbors(cell: Vector3i) -> Array[Vector3i]:
 	var out: Array[Vector3i] = []
 	if use_four_dirs:
@@ -190,13 +241,11 @@ func _neighbors(cell: Vector3i) -> Array[Vector3i]:
 func _cell_center_world(cell: Vector3i) -> Vector3:
 	cell.y = 0
 	var p := gridmap_nav.to_global(gridmap_nav.map_to_local(cell))
-	# IMPORTANT: keep the body's current Y so physics doesn't fight you
-	p.y = global_position.y
+	p.y = global_position.y  # keep physics-stable Y
 	return p
 
 func _snap_to_cell(cell: Vector3i) -> void:
-	var p := _cell_center_world(cell)
-	global_position = p
+	global_position = _cell_center_world(cell)
 
 func _tile_size_world() -> float:
 	var a := _cell_center_world(_current_cell)

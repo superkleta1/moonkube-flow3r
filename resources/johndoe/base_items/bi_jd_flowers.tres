@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=3 format=3 uid="uid://bv1u3x616rstm"]
+
+[ext_resource type="Script" uid="uid://c55vj86c1k1ps" path="res://scripts/minddive_preparation/base_item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://8teqt2onek6w" path="res://assets/sprites224/bi_jd_wilted_flower224.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = "bi_jd_wilted_flower"
+display_name = "Wilted Flower (枯萎的花)"
+icon = ExtResource("2")
+description = "A small bundle of flowers. They were brought for him. He never opened the wrapper. The petals have begun to brown at the edges."
+slot_count = 1
+metadata/_custom_type_script = "uid://c55vj86c1k1ps"

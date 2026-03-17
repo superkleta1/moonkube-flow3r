@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BaseItem" load_steps=3 format=3 uid="uid://b71w6irkiuinv"]
+
+[ext_resource type="Script" uid="uid://c55vj86c1k1ps" path="res://scripts/minddive_preparation/base_item.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cv128j12xom7r" path="res://assets/sprites224/bi_jd_window_frame224.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+id = "bi_jd_window_frame"
+display_name = "Window (窗户)"
+icon = ExtResource("2")
+description = "A charred fragment of wood. The paint is blistered. This was the frame of a window that no longer exists."
+slot_count = 1
+metadata/_custom_type_script = "uid://c55vj86c1k1ps"

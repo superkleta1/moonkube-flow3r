@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=3 format=3 uid="uid://bvd5papabwklg"]
+
+[ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="1_kyk6b"]
+
+[resource]
+script = ExtResource("1")
+id = "ci_jd_bed"
+display_name = "Bed (病床的轮廓)"
+description = "The outline of the bed. He fears it. Its shape alone pushes him away. But hope softens that fear — when there is something to live for, the bed stops being the end."
+base_attraction = -2.0
+right_pole_attraction = 2.0
+metadata/_custom_type_script = "uid://603685oo3hdu"

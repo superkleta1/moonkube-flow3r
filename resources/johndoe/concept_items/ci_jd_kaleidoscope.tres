@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=5 format=3 uid="uid://cep7n1f68bguo"]
+
+[ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="2"]
+[ext_resource type="Resource" uid="uid://dklhhab2hjk8s" path="res://resources/johndoe/proximity_rules/pr_kaleidoscope_with_bouquet.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://mt0og8qx8cce" path="res://assets/sprites224/ci_jd_kaleidoscope224.png" id="4"]
+
+[resource]
+script = ExtResource("1")
+id = "ci_jd_kaleidoscope"
+display_name = "Kaleidoscope (万花筒)"
+icon = ExtResource("4")
+description = "A small scope that breaks light into shifting, symmetrical patterns. Always draws the eye — no emotional condition required."
+base_attraction = 3.0
+proximity_rules = Array[ExtResource("2")]([ExtResource("3")])
+metadata/_custom_type_script = "uid://603685oo3hdu"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=5 format=3 uid="uid://d30ox7cccik6f"]
+
+[ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="1"]
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="2"]
+[ext_resource type="Resource" uid="uid://bl0qxjjcyu5v4" path="res://resources/johndoe/proximity_rules/pr_bandage_with_trash_art.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://bpvb3w2dm687n" path="res://assets/sprites224/ci_jd_bandage224.png" id="4"]
+
+[resource]
+script = ExtResource("1")
+id = "ci_jd_bandage"
+display_name = "Bloody Bandage & Petals (染血绷带与花瓣)"
+icon = ExtResource("4")
+description = "A bandage stained dark, wound around dried flower petals. In despair, this is the only familiar thing. In hope, it is a reminder he would rather forget."
+left_pole_attraction = 3.0
+right_pole_attraction = -3.0
+proximity_rules = Array[ExtResource("2")]([ExtResource("3")])
+metadata/_custom_type_script = "uid://603685oo3hdu"
