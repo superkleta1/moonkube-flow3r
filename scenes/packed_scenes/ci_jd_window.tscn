@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dutqs56vthdan"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_winm"]
+albedo_color = Color(0.2, 0.4, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_winx"]
+material = SubResource("StandardMaterial3D_winm")
+
+[node name="ci_jd_window" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_winx")

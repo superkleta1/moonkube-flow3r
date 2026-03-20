@@ -26,13 +26,18 @@ var recipes: Dictionary[ConceptItem, ConceptRecipe] = {}
 func _ready() -> void:
 	# fill out the containers
 	_build_recipe_lookup()
+
+	# Restore previously crafted concepts when returning from a MindDive
+	if RunContext.crafted_concepts.size() > 0:
+		_restore_from_run_context()
+
 	_build_base_row()
 	_build_info_row()
-	
+
 	# refresh the visuals
 	_refresh_result_row()
 	_refresh_concept_item_count()
-	
+
 	# setup callbacks
 	finished_prep_button.pressed.connect(_on_finished_prep_button_clicked)
 	
@@ -40,6 +45,18 @@ func _ready() -> void:
 	var g := $"BaseItemSelection/GridContainer" as GridContainer
 	print("h_sep = ", g.get_theme_constant("h_separation"))
 	print("v_sep = ", g.get_theme_constant("v_separation"))
+
+func _restore_from_run_context() -> void:
+	crafted = RunContext.crafted_concepts.duplicate()
+	for ci: ConceptItem in crafted:
+		var recipe: ConceptRecipe = recipes.get(ci) as ConceptRecipe
+		if recipe == null:
+			continue
+		if recipe.base_item != null and recipe.base_item not in used_base_items:
+			used_base_items.append(recipe.base_item)
+		for info: Information in recipe.informations:
+			if info not in used_infos:
+				used_infos.append(info)
 
 func _build_recipe_lookup() -> void:
 	recipe_lookup.clear()

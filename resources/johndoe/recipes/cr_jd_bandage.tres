@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bxmmyjrshxol6" path="res://scripts/minddive_preparation/information.gd" id="2"]
 [ext_resource type="Resource" uid="uid://bv1u3x616rstm" path="res://resources/johndoe/base_items/bi_jd_flowers.tres" id="3"]
 [ext_resource type="Resource" uid="uid://byll6ktl4axve" path="res://resources/johndoe/informations/i_jd_pain.tres" id="4"]
-[ext_resource type="Resource" path="res://resources/johndoe/concept_items/ci_jd_bandage.tres" id="5"]
+[ext_resource type="Resource" uid="uid://d30ox7cccik6f" path="res://resources/johndoe/concept_items/ci_jd_bandage.tres" id="5"]
 
 [resource]
 script = ExtResource("1")

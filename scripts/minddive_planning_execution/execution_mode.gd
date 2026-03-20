@@ -61,6 +61,15 @@ func _ready() -> void:
 func register_preset_items(items: Array[PlacedConceptItem]) -> void:
 	_preset_items = items
 
+func get_all_items() -> Array[PlacedConceptItem]:
+	return _all_items
+
+func get_total_doors() -> int:
+	return _all_door_cells.size()
+
+func get_opened_doors() -> int:
+	return _opened_doors.size()
+
 func begin_execution(placed_items: Array[PlacedConceptItem]) -> void:
 	_placed_items = placed_items
 	_all_items = _placed_items + _preset_items

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="ConceptItem" load_steps=6 format=3 uid="uid://dlng5s4ty5r2u"]
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=7 format=3 uid="uid://dlng5s4ty5r2u"]
 
 [ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="1"]
 [ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="2"]
 [ext_resource type="Resource" uid="uid://k0qh1bggbvca" path="res://resources/johndoe/proximity_rules/pr_echo_with_bouquet.tres" id="3"]
 [ext_resource type="Resource" uid="uid://bbxythk4nndqg" path="res://resources/johndoe/proximity_rules/pr_echo_with_trash_art.tres" id="4"]
-[ext_resource type="Texture2D" uid="uid://bon53etciye5h" path="res://assets/sprites224/ci_jd_echo224.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bnfis4uvrcbvd" path="res://assets/sprites224/ci_jd_echo224.png" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/packed_scenes/ci_jd_echo.tscn" id="6"]
 
 [resource]
 script = ExtResource("1")
@@ -12,6 +13,7 @@ id = "ci_jd_echo"
 display_name = "Echo Bottle (回声瓶子)"
 icon = ExtResource("5")
 description = "A sealed bottle that hums with a half-heard melody — something sung alone, at night, to no one. Its sound reaches everywhere."
+mesh_scene = ExtResource("6")
 sense_type = 1
 base_emotion_influence = -2.0
 proximity_rules = Array[ExtResource("2")]([ExtResource("3"), ExtResource("4")])

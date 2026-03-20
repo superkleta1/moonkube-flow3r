@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ConceptRecipe" load_steps=5 format=3 uid="uid://c78qevb343f6j"]
+
+[ext_resource type="Resource" uid="uid://cfslbh1t8skn5" path="res://resources/johndoe/base_items/bi_jd_report.tres" id="1_7sgh4"]
+[ext_resource type="Script" uid="uid://bxmmyjrshxol6" path="res://scripts/minddive_preparation/information.gd" id="2_vkv0p"]
+[ext_resource type="Resource" uid="uid://bcjl13jma3mt5" path="res://resources/johndoe/concept_items/ci_jd_badge.tres" id="3_kbtdr"]
+[ext_resource type="Script" uid="uid://0xgkcidj3dgq" path="res://scripts/minddive_preparation/concept_recipe.gd" id="4_k2y7x"]
+
+[resource]
+script = ExtResource("4_k2y7x")
+base_item = ExtResource("1_7sgh4")
+result = ExtResource("3_kbtdr")
+metadata/_custom_type_script = "uid://0xgkcidj3dgq"

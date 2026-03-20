@@ -29,7 +29,8 @@ func enter_planning() -> void:
 	planning_mode.set_process_unhandled_input(true)
 
 	planning_ui.set_concepts(RunContext.crafted_concepts)
-	planning_ui.concept_selected.connect(_on_concept_selected)
+	if not planning_ui.concept_selected.is_connected(_on_concept_selected):
+		planning_ui.concept_selected.connect(_on_concept_selected)
 
 func enter_execution() -> void:
 	_set_state(State.EXECUTION)

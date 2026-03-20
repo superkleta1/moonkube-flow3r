@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ConceptItem" load_steps=5 format=3 uid="uid://bcjl13jma3mt5"]
+
+[ext_resource type="Texture2D" uid="uid://djkorccucmm3j" path="res://assets/sprites224/ci_jd_badge224.png" id="1_4sv00"]
+[ext_resource type="PackedScene" uid="uid://c1utx8hvuer8c" path="res://scenes/packed_scenes/ci_jd_badge.tscn" id="2_hsomn"]
+[ext_resource type="Script" uid="uid://dtj3w6ptpyu6w" path="res://scripts/minddive_preparation/proximity_rule.gd" id="3_u48mk"]
+[ext_resource type="Script" uid="uid://603685oo3hdu" path="res://scripts/minddive_preparation/concept_item.gd" id="4_tq3r0"]
+
+[resource]
+script = ExtResource("4_tq3r0")
+id = "ci_jd_badge"
+display_name = "Badge (工牌)"
+icon = ExtResource("1_4sv00")
+description = "An employee ID card. The lanyard is still attached. It was never returned. Its presence in this place makes everything else feel smaller, less real."
+mesh_scene = ExtResource("2_hsomn")
+sense_type = 1
+base_attraction = -3.0
+is_suppressor = true
+metadata/_custom_type_script = "uid://603685oo3hdu"

@@ -31,7 +31,14 @@ var _moving: bool = false
 ## Public — last discrete step direction. Used by ExecutionMode for Emotion Gate entry direction.
 var last_step_dir: Vector3i = Vector3i.ZERO
 
+## Speed multiplier applied on top of speed_tiles_per_second. Changed by the UI speed controls.
+var speed_multiplier: float = 1.0
+
 signal arrived_at_cell(cell: Vector3i)
+
+func _ready() -> void:
+	var cone := VisionCone.new()
+	add_child(cone)
 
 func set_execution(exec: ExecutionMode) -> void:
 	_execution = exec
@@ -40,6 +47,7 @@ func set_placed_items(items: Array[PlacedConceptItem]) -> void:
 	_placed_items = items
 
 func start() -> void:
+	set_physics_process(true)
 	_current_cell = _find_start_cell()
 	_target_cell = _current_cell
 
@@ -47,6 +55,11 @@ func start() -> void:
 
 	_snap_to_cell(_current_cell)
 	_take_next_step()
+
+func stop() -> void:
+	_moving = false
+	velocity = Vector3.ZERO
+	set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
 	if not _moving:
@@ -65,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	var dir := to_target.normalized()
-	var speed := speed_tiles_per_second * _tile_size_world()
+	var speed: float = speed_tiles_per_second * _tile_size_world() * speed_multiplier
 
 	velocity.x = dir.x * speed
 	velocity.z = dir.z * speed

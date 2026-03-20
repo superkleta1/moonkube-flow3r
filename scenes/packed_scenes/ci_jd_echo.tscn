@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwlsiql0w2i12"]
+
+[ext_resource type="Texture2D" uid="uid://bnfis4uvrcbvd" path="res://assets/sprites224/ci_jd_echo224.png" id="1_echot"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_echom"]
+transparency = 1
+albedo_color = Color(0.1, 0.8, 0.9, 1)
+albedo_texture = ExtResource("1_echot")
+detail_enabled = true
+detail_albedo = ExtResource("1_echot")
+
+[sub_resource type="BoxMesh" id="BoxMesh_echox"]
+material = SubResource("StandardMaterial3D_echom")
+
+[node name="ci_jd_echo" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_echox")
